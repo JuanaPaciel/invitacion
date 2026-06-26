@@ -760,31 +760,6 @@ function enviarAsistencia(e) {
 
   </div>
 </div>
-<script>
-const API =
-"https://script.google.com/macros/s/AKfycbyVlW3T-LGoC88GhSAfGPmThzv0pCBmHBt4MD3PiWwZ9VNdh1G2eeU4QUN39O5wgsKKdA/exec";
-
-async function cargarInvitados(){
-
-    const params = new URLSearchParams(window.location.search);
-
-    const grupo = params.get("grupo");
-
-    if(!grupo){
-        console.log("No se indicó grupo");
-        return;
-    }
-
-    const response = await fetch(API + "?grupo=" + grupo);
-
-    const invitados = await response.json();
-
-    console.log(invitados);
-
-}
-
-cargarInvitados();
-</script>
 
 
 <script>
