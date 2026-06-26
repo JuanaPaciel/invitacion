@@ -295,6 +295,21 @@ transform:scale(1);
   }
 }
 
+#listaInvitados {
+  margin: 20px 0;
+}
+
+.invitado-item {
+  background: rgba(255,255,255,.75);
+  padding: 13px 18px;
+  margin: 10px auto;
+  border-radius: 18px;
+  max-width: 340px;
+  box-shadow: 0 5px 15px rgba(90,70,56,.10);
+  border: 1px solid rgba(201,167,106,.25);
+  font-size: 18px;
+}
+
     .divider {
       font-size: 34px;
       color: var(--dorado);
@@ -545,15 +560,21 @@ transform:scale(1);
     </p>
   </section>
 
-  <section class="light">
-    <img src="icono-frase.svg" class="section-icon" alt="">
-    <h2>Confirmación de asistencia</h2>
-    <p>Cuento con tu presencia. Confirmá por WhatsApp.</p>
+<section class="light">
+  <img src="icono-frase.svg" class="section-icon" alt="">
 
- <a class="btn confirmar-asistencia" href="#" onclick="abrirAsistencia(event)">
-  Confirmar asistencia
-</a>
-  </section>
+  <h2>Confirmación de asistencia</h2>
+
+  <p id="textoConfirmacion">
+    Cargando invitados...
+  </p>
+
+  <div id="listaInvitados"></div>
+
+  <a class="btn confirmar-asistencia" href="#" onclick="abrirAsistencia(event)">
+    Confirmar asistencia
+  </a>
+</section>
 
   <footer>
     Invitación digital creada con cariño ♥️
@@ -760,6 +781,39 @@ async function cargarInvitados(){
 
     console.log(invitados);
 
+}
+
+cargarInvitados();
+</script>
+<script>
+const API = "https://script.google.com/macros/s/AKfycbyVlW3T-LGoC88GhSAfGPmThzv0pCBmHBt4MD3PiWwZ9VNdh1G2eeU4QUN39O5wgsKKdA/exec";
+
+async function cargarInvitados() {
+  const params = new URLSearchParams(window.location.search);
+  const grupo = params.get("grupo");
+
+  if (!grupo) {
+    document.getElementById("textoConfirmacion").innerText =
+      "Cuento con tu presencia. Confirmá por WhatsApp.";
+    return;
+  }
+
+  const response = await fetch(API + "?grupo=" + grupo);
+  const invitados = await response.json();
+
+  document.getElementById("textoConfirmacion").innerText =
+    "Estos son los invitados de este pase:";
+
+  const lista = document.getElementById("listaInvitados");
+  lista.innerHTML = "";
+
+  invitados.forEach(inv => {
+    lista.innerHTML += `
+      <div class="invitado-item">
+        ${inv.nombre}
+      </div>
+    `;
+  });
 }
 
 cargarInvitados();
