@@ -6,8 +6,9 @@
   <title>Mis 15 años</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:wght@300;400;500;600;700&family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet">
-  <style>
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Qwitcher+Grypen:wght@700&display=swap" rel="stylesheet">
+
+ <style>
     :root {
       --fondo: #f6eee8;
       --claro: #fffaf6;
@@ -69,12 +70,12 @@
     }
 
     h1 {
-      font-family: "Qwitcher Grypen", cursive;
-      font-size: 140px;
+      font-family: "Parisienne", cursive;
+      font-size: 120px;
       font-weight: 700;
       line-height: .9;
       margin: 10px 0 20px;
-      color: var(--rosa-oscuro);
+      color: var(--claro);
       text-shadow: 0 2px 10px rgba(0,0,0,.08);
     }
 
@@ -429,21 +430,40 @@ transform:scale(1);
       border: none;
     }
 
-    .music {
+  .music{
       position: fixed;
-      bottom: 18px;
-      right: 18px;
-      background: var(--rosa-oscuro);
-      color: white;
+      top: 20px;
+      right: 20px;
+      width: 40px;
+      height: 40px;
+      background: transparent;
       border: none;
-      border-radius: 50%;
-      width: 58px;
-      height: 58px;
-      font-size: 22px;
       cursor: pointer;
-      box-shadow: 0 6px 18px rgba(0,0,0,.25);
-      z-index: 10;
-    }
+      z-index: 999;
+      padding: 0;
+  }
+
+  .music img{
+      width:100%;
+      opacity:.40;
+      transition:all .25s;
+  }
+
+  /* Respiración cuando está sonando */
+  .music.playing img{
+      animation: respirar 2.2s infinite ease-in-out;
+  }
+
+  /* Efecto al hacer clic */
+  .music:active img{
+      transform:scale(1.35);
+  }
+
+  @keyframes respirar{
+      0%   { transform:scale(1); }
+      50%  { transform:scale(1.12); }
+      100% { transform:scale(1); }
+  }
 
     .floating-icons {
       position: fixed;
@@ -537,15 +557,24 @@ transform:scale(1);
   </div>
 
   <audio id="musica" loop>
-    <source src="music.mp3" type="audio/mpeg">
+    <source src="musica.mp3" type="audio/mpeg">
   </audio>
 
-  <button class="music" onclick="toggleMusic()">▶️</button>
+  <button class="music" onclick="toggleMusic()">
+      <img src="musica.png" alt="Música">
+  </button>
 
   <section class="hero">
-    <div class="box">
-      <p class="small-title">MIS 15 AÑOS</p>
-      <h1>Juanita</h1>
+    <div class="box-nombres-fecha-portada">
+          
+          <span class="fecha">
+            22.08.2026          </span>
+
+          <h1>
+            Juana </h1>
+
+          <h2>Mis 15 años</h2>
+
       <p>Llegó esta gran noche, y quiero compartirla con vos.</p>
       <a href="#info" class="btn">Ver invitación</a>
     </div>
@@ -654,7 +683,7 @@ transform:scale(1);
 </section>
 
   <footer>
-    Invitación digital creada con cariño ♥️
+    Para Juanita!!!! de Titi ♥️♥️♥️♥️♥️♥️
   </footer>
 
   <script>
@@ -684,16 +713,16 @@ transform:scale(1);
     setInterval(actualizarCuenta, 1000);
 
     function toggleMusic() {
-      const musica = document.getElementById("musica");
-      const boton = document.querySelector(".music");
+        const musica = document.getElementById("musica");
+        const boton = document.querySelector(".music");
 
-      if (musica.paused) {
-        musica.play();
-        boton.innerText = "⏸️";
-      } else {
-        musica.pause();
-        boton.innerText = "▶️";
-      }
+        if (musica.paused) {
+            musica.play();
+            boton.classList.add("playing");
+        } else {
+            musica.pause();
+            boton.classList.remove("playing");
+        }
     }
 
     let fotoActual = 0;
@@ -969,11 +998,11 @@ function cancionGuardada(respuesta) {
     <span class="cerrarAsistencia" onclick="cerrarCancion()">&times;</span>
 
     <h2>Sugerir canción</h2>
-    <p>Decinos qué canción no puede faltar.</p>
+    <p>¿Qué canción no puede faltar en la PlayList de la fiesta?</p>
 
     <form>
       <input type="text" id="nombreCancion" placeholder="Tu nombre">
-      <input type="text" id="tituloCancion" placeholder="Nombre de canción y autor">
+      <input type="text" id="tituloCancion" placeholder="Nombre de canción y/o autor">
       <input type="text" id="linkCancion" placeholder="Link de YouTube, Spotify, etc.">
 
       <p id="errorCancion"></p>
