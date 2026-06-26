@@ -342,19 +342,31 @@ transform:scale(1);
   #listaInvitados {
     margin: 20px 0;
   }
+
+  #listaInvitados {
+  margin: 22px auto 30px;
+  max-width: 360px;
+  text-align: center;
+}
+
+#listaInvitados .invitado-item {
+  display: block;
+  width: 100%;
+}
   #listaInvitadosModal .invitado-item {
     text-align: left;
   }
 
 .invitado-item {
-  background: rgba(255,255,255,.55);
-  padding: 12px 18px;
-  margin: 8px auto;
-  border-radius: 14px;
-  max-width: 320px;
-  box-shadow: 0 3px 10px rgba(90,70,56,.07);
-  border: 1px solid rgba(201,167,106,.18);
-  font-size: 18px;
+  background: transparent;
+  padding: 7px 0;
+  margin: 4px auto;
+  border: none;
+  border-bottom: 1px solid rgba(201,167,106,.22);
+  box-shadow: none;
+  border-radius: 0;
+  max-width: 300px;
+  font-size: 20px;
   text-align: center;
   cursor: default;
   color: var(--texto);
