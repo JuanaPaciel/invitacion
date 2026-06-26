@@ -785,35 +785,43 @@ async function cargarInvitados(){
 
 cargarInvitados();
 </script>
+
+
 <script>
 const API = "https://script.google.com/macros/s/AKfycbyVlW3T-LGoC88GhSAfGPmThzv0pCBmHBt4MD3PiWwZ9VNdh1G2eeU4QUN39O5wgsKKdA/exec";
 
 async function cargarInvitados() {
-  const params = new URLSearchParams(window.location.search);
-  const grupo = params.get("grupo");
 
-  if (!grupo) {
-    document.getElementById("textoConfirmacion").innerText =
-      "Cuento con tu presencia. Confirmá por WhatsApp.";
-    return;
-  }
+    const texto = document.getElementById("textoConfirmacion");
+    const lista = document.getElementById("listaInvitados");
 
-  const response = await fetch(API + "?grupo=" + grupo);
-  const invitados = await response.json();
+    const params = new URLSearchParams(window.location.search);
+    const grupo = params.get("grupo");
 
-  document.getElementById("textoConfirmacion").innerText =
-    "Estos son los invitados de este pase:";
+    texto.innerHTML = "Grupo: " + grupo;
 
-  const lista = document.getElementById("listaInvitados");
-  lista.innerHTML = "";
+    try{
 
-  invitados.forEach(inv => {
-    lista.innerHTML += `
-      <div class="invitado-item">
-        ${inv.nombre}
-      </div>
-    `;
-  });
+        const response = await fetch(API + "?grupo=" + grupo);
+
+        texto.innerHTML += "<br>Status: " + response.status;
+
+        const invitados = await response.json();
+
+        lista.innerHTML = "";
+
+        invitados.forEach(inv=>{
+
+            lista.innerHTML += "<div class='invitado-item'>"+inv.nombre+"</div>";
+
+        });
+
+    }catch(e){
+
+        texto.innerHTML += "<br><b>ERROR:</b><br>"+e;
+
+    }
+
 }
 
 cargarInvitados();
