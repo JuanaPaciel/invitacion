@@ -422,7 +422,7 @@ transform:scale(1);
       transform: translateY(-2px);
       box-shadow: 0 12px 28px rgba(140,106,99,.35);
     }
-    
+
     .btn:focus,
     .btn:active {
       outline: none;
@@ -619,9 +619,9 @@ transform:scale(1);
     <h2>Playlist</h2>
     <p>Ayudame a elegir las canciones que no pueden faltar.</p>
 
-    <a class="btn" href="https://forms.google.com" target="_blank">
-      Sugerir canción
-    </a>
+   <a class="btn" href="#" onclick="abrirCancion(event)">
+     Sugerir canción
+   </a>
   </section>
 
   <section class="rosa">
@@ -912,7 +912,79 @@ function confirmacionGuardada(respuesta) {
 }
 
 cargarInvitados();
+
+function abrirCancion(e) {
+  e.preventDefault();
+  document.getElementById("modalCancion").style.display = "flex";
+}
+
+function cerrarCancion() {
+  document.getElementById("modalCancion").style.display = "none";
+}
+
+function enviarCancion(e) {
+  e.preventDefault();
+
+  const params = new URLSearchParams(window.location.search);
+  const grupo = params.get("grupo") || "";
+
+  const nombre = document.getElementById("nombreCancion").value.trim();
+  const cancion = document.getElementById("tituloCancion").value.trim();
+  const link = document.getElementById("linkCancion").value.trim();
+  const error = document.getElementById("errorCancion");
+
+  error.innerText = "";
+
+  if (nombre === "" || cancion === "") {
+    error.innerText = "Completá tu nombre y la canción.";
+    return;
+  }
+
+  const script = document.createElement("script");
+  script.src =
+    API +
+    "?accion=cancion" +
+    "&grupo=" + encodeURIComponent(grupo) +
+    "&nombre=" + encodeURIComponent(nombre) +
+    "&cancion=" + encodeURIComponent(cancion) +
+    "&link=" + encodeURIComponent(link) +
+    "&callback=cancionGuardada";
+
+  document.body.appendChild(script);
+}
+
+function cancionGuardada(respuesta) {
+  cerrarCancion();
+  alert("¡Gracias! La canción quedó sugerida.");
+
+  document.getElementById("nombreCancion").value = "";
+  document.getElementById("tituloCancion").value = "";
+  document.getElementById("linkCancion").value = "";
+}
 </script>
+
+<div id="modalCancion" class="modalAsistencia">
+  <div class="modalAsistenciaContenido">
+
+    <span class="cerrarAsistencia" onclick="cerrarCancion()">&times;</span>
+
+    <h2>Sugerir canción</h2>
+    <p>Decinos qué canción no puede faltar.</p>
+
+    <form>
+      <input type="text" id="nombreCancion" placeholder="Tu nombre">
+      <input type="text" id="tituloCancion" placeholder="Nombre de canción y autor">
+      <input type="text" id="linkCancion" placeholder="Link de YouTube, Spotify, etc.">
+
+      <p id="errorCancion"></p>
+
+      <button class="btn" onclick="enviarCancion(event)">
+        Sugerir canción
+      </button>
+    </form>
+
+  </div>
+</div>
 
 </body>
 </html>
