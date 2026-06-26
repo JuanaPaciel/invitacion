@@ -145,6 +145,50 @@
 
 }
 
+.respuesta-invitado {
+  background: rgba(255,255,255,.8);
+  padding: 16px;
+  margin: 14px auto;
+  border-radius: 20px;
+  max-width: 360px;
+  box-shadow: 0 5px 15px rgba(90,70,56,.10);
+  border: 1px solid rgba(201,167,106,.25);
+  text-align: center;
+}
+
+.nombre-invitado {
+  display: block;
+  font-size: 19px;
+  margin-bottom: 12px;
+  color: var(--rosa-oscuro);
+}
+
+.opciones-asistencia {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.opciones-asistencia input {
+  display: none;
+}
+
+.opciones-asistencia span {
+  display: inline-block;
+  padding: 10px 16px;
+  border-radius: 25px;
+  background: #f3e6e0;
+  color: var(--rosa-oscuro);
+  cursor: pointer;
+  border: 1px solid rgba(201,167,106,.35);
+  font-size: 15px;
+}
+
+.opciones-asistencia input:checked + span {
+  background: var(--rosa-oscuro);
+  color: white;
+}
+
 .modalContenido{
 
     width:min(92%,700px);
@@ -295,9 +339,12 @@ transform:scale(1);
   }
 }
 
-#listaInvitados {
-  margin: 20px 0;
-}
+  #listaInvitados {
+    margin: 20px 0;
+  }
+  #listaInvitadosModal .invitado-item {
+    text-align: left;
+  }
 
 .invitado-item {
   background: rgba(255,255,255,.75);
@@ -714,10 +761,10 @@ function cerrarAsistencia() {
     <span class="cerrarAsistencia" onclick="cerrarAsistencia()">&times;</span>
 
     <h2>Confirmar asistencia</h2>
-    <p>Confirmá la asistencia de las personas seleccionadas.</p>
+    <p>Indicá quiénes asisten y quiénes no.</p>
 
     <form id="formAsistencia">
-
+      <div id="listaInvitadosModal"></div>
 
       <textarea id="comentariosAsistente" placeholder="Comentario opcional"></textarea>
 
@@ -752,17 +799,35 @@ function mostrarInvitados(invitados) {
 
   const texto = document.getElementById("textoConfirmacion");
   const lista = document.getElementById("listaInvitados");
+  const listaModal = document.getElementById("listaInvitadosModal");
 
-  texto.innerHTML = "Marcá quiénes asisten:";
-
+  texto.innerHTML = "Estos son los invitados de este pase:";
   lista.innerHTML = "";
+  listaModal.innerHTML = "";
 
   invitados.forEach(inv => {
     lista.innerHTML += `
-      <label class="invitado-item">
-        <input type="checkbox" class="check-invitado" value="${inv.fila}">
+      <div class="invitado-item">
         ${inv.nombre}
-      </label>
+      </div>
+    `;
+
+    listaModal.innerHTML += `
+      <div class="respuesta-invitado">
+        <strong class="nombre-invitado">👤 ${inv.nombre}</strong>
+
+        <div class="opciones-asistencia">
+          <label>
+            <input type="radio" name="estado_${inv.fila}" value="asiste">
+            <span>Asiste</span>
+          </label>
+
+          <label>
+            <input type="radio" name="estado_${inv.fila}" value="no_asiste">
+            <span>No asiste</span>
+          </label>
+        </div>
+      </div>
     `;
   });
 }
@@ -770,14 +835,25 @@ function mostrarInvitados(invitados) {
 function enviarAsistencia(e) {
   e.preventDefault();
 
-  const seleccionados = [...document.querySelectorAll(".check-invitado:checked")]
-    .map(chk => chk.value);
-
   const comentarios = document.getElementById("comentariosAsistente").value.trim();
   const error = document.getElementById("errorAsistencia");
+  error.innerText = "";
 
-  if (seleccionados.length === 0) {
-    error.innerText = "Marcá al menos una persona que asiste.";
+  let respuestas = [];
+
+  invitadosActuales.forEach(inv => {
+    const seleccionado = document.querySelector(`input[name="estado_${inv.fila}"]:checked`);
+
+    if (seleccionado) {
+      respuestas.push({
+        fila: inv.fila,
+        estado: seleccionado.value
+      });
+    }
+  });
+
+  if (respuestas.length === 0) {
+    error.innerText = "Marcá al menos una respuesta.";
     return;
   }
 
@@ -785,7 +861,7 @@ function enviarAsistencia(e) {
   script.src =
     API +
     "?accion=confirmar" +
-    "&filas=" + encodeURIComponent(JSON.stringify(seleccionados)) +
+    "&respuestas=" + encodeURIComponent(JSON.stringify(respuestas)) +
     "&comentario=" + encodeURIComponent(comentarios) +
     "&callback=confirmacionGuardada";
 
