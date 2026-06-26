@@ -765,38 +765,30 @@ function enviarAsistencia(e) {
 <script>
 const API = "https://script.google.com/macros/s/AKfycbyVlW3T-LGoC88GhSAfGPmThzv0pCBmHBt4MD3PiWwZ9VNdh1G2eeU4QUN39O5wgsKKdA/exec";
 
-async function cargarInvitados() {
+function cargarInvitados() {
+  const texto = document.getElementById("textoConfirmacion");
+  const lista = document.getElementById("listaInvitados");
 
-    const texto = document.getElementById("textoConfirmacion");
-    const lista = document.getElementById("listaInvitados");
+  const params = new URLSearchParams(window.location.search);
+  const grupo = params.get("grupo");
 
-    const params = new URLSearchParams(window.location.search);
-    const grupo = params.get("grupo");
+  texto.innerHTML = "Grupo: " + grupo;
 
-    texto.innerHTML = "Grupo: " + grupo;
+  const script = document.createElement("script");
+  script.src = API + "?grupo=" + encodeURIComponent(grupo) + "&callback=mostrarInvitados";
+  document.body.appendChild(script);
+}
 
-    try{
+function mostrarInvitados(invitados) {
+  const texto = document.getElementById("textoConfirmacion");
+  const lista = document.getElementById("listaInvitados");
 
-        const response = await fetch(API + "?grupo=" + grupo);
+  texto.innerHTML = "Estos son los invitados de este pase:";
+  lista.innerHTML = "";
 
-        texto.innerHTML += "<br>Status: " + response.status;
-
-        const invitados = await response.json();
-
-        lista.innerHTML = "";
-
-        invitados.forEach(inv=>{
-
-            lista.innerHTML += "<div class='invitado-item'>"+inv.nombre+"</div>";
-
-        });
-
-    }catch(e){
-
-        texto.innerHTML += "<br><b>ERROR:</b><br>"+e;
-
-    }
-
+  invitados.forEach(inv => {
+    lista.innerHTML += "<div class='invitado-item'>" + inv.nombre + "</div>";
+  });
 }
 
 cargarInvitados();
