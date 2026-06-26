@@ -681,29 +681,6 @@ function cerrarAsistencia() {
   document.getElementById("modalAsistencia").style.display = "none";
 }
 
-function enviarAsistencia(e) {
-  e.preventDefault();
-
-  const nombre = document.getElementById("nombreAsistente").value.trim();
-  const cantidad = document.getElementById("cantidadAsistentes").value;
-  const comentarios = document.getElementById("comentariosAsistente").value.trim();
-  const error = document.getElementById("errorAsistencia");
-
-  if (nombre === "") {
-    error.innerText = "Por favor escribí tu nombre.";
-    return;
-  }
-
-  const mensaje =
-    "Hola, confirmo asistencia a los 15 de Juanita.%0A" +
-    "Nombre: " + encodeURIComponent(nombre) + "%0A" +
-    "Cantidad de personas: " + encodeURIComponent(cantidad) + "%0A" +
-    "Comentario: " + encodeURIComponent(comentarios);
-
-  window.open("https://wa.me/59899134504?text=" + mensaje, "_blank");
-
-  cerrarAsistencia();
-}
 
 </script>
 <div id="modalMapa" class="modalMapa">
@@ -740,7 +717,6 @@ function enviarAsistencia(e) {
     <p>Completá tus datos para confirmar.</p>
 
     <form id="formAsistencia">
-      <input type="text" id="nombreAsistente" placeholder="Tu nombre" required>
 
       <select id="cantidadAsistentes">
         <option value="1">1 persona</option>
@@ -761,18 +737,16 @@ function enviarAsistencia(e) {
   </div>
 </div>
 
-
 <script>
 const API = "https://script.google.com/macros/s/AKfycbyVlW3T-LGoC88GhSAfGPmThzv0pCBmHBt4MD3PiWwZ9VNdh1G2eeU4QUN39O5wgsKKdA/exec";
+let invitadosActuales = [];
 
 function cargarInvitados() {
   const texto = document.getElementById("textoConfirmacion");
-  const lista = document.getElementById("listaInvitados");
-
   const params = new URLSearchParams(window.location.search);
   const grupo = params.get("grupo");
 
-  texto.innerHTML = "Grupo: " + grupo;
+  texto.innerHTML = "Cargando invitados...";
 
   const script = document.createElement("script");
   script.src = API + "?grupo=" + encodeURIComponent(grupo) + "&callback=mostrarInvitados";
@@ -780,15 +754,55 @@ function cargarInvitados() {
 }
 
 function mostrarInvitados(invitados) {
+  invitadosActuales = invitados;
+
   const texto = document.getElementById("textoConfirmacion");
   const lista = document.getElementById("listaInvitados");
 
-  texto.innerHTML = "Estos son los invitados de este pase:";
+  texto.innerHTML = "Marcá quiénes asisten:";
+
   lista.innerHTML = "";
 
   invitados.forEach(inv => {
-    lista.innerHTML += "<div class='invitado-item'>" + inv.nombre + "</div>";
+    lista.innerHTML += `
+      <label class="invitado-item">
+        <input type="checkbox" class="check-invitado" value="${inv.fila}">
+        ${inv.nombre}
+      </label>
+    `;
   });
+}
+
+function enviarAsistencia(e) {
+  e.preventDefault();
+
+  const seleccionados = [...document.querySelectorAll(".check-invitado:checked")]
+    .map(chk => chk.value);
+
+  const comentarios = document.getElementById("comentariosAsistente").value.trim();
+  const error = document.getElementById("errorAsistencia");
+
+  if (seleccionados.length === 0) {
+    error.innerText = "Marcá al menos una persona que asiste.";
+    return;
+  }
+
+  const script = document.createElement("script");
+  script.src =
+    API +
+    "?accion=confirmar" +
+    "&filas=" + encodeURIComponent(JSON.stringify(seleccionados)) +
+    "&comentario=" + encodeURIComponent(comentarios) +
+    "&callback=confirmacionGuardada";
+
+  document.body.appendChild(script);
+}
+
+function confirmacionGuardada(respuesta) {
+  cerrarAsistencia();
+  document.getElementById("textoConfirmacion").innerHTML =
+    "¡Gracias! La asistencia quedó confirmada.";
+  document.getElementById("listaInvitados").innerHTML = "";
 }
 
 cargarInvitados();
