@@ -857,6 +857,9 @@ function enviarAsistencia(e) {
     return;
   }
 
+  alert(JSON.stringify(respuestas));
+
+
   const script = document.createElement("script");
   script.src =
     API +
@@ -869,10 +872,16 @@ function enviarAsistencia(e) {
 }
 
 function confirmacionGuardada(respuesta) {
+
+  alert(JSON.stringify(respuesta));
+
   cerrarAsistencia();
+
   document.getElementById("textoConfirmacion").innerHTML =
-    "¡Gracias! La asistencia quedó confirmada.";
+      "¡Gracias! La asistencia quedó confirmada.";
+
   document.getElementById("listaInvitados").innerHTML = "";
+
 }
 
 cargarInvitados();
