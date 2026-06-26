@@ -405,13 +405,28 @@ transform:scale(1);
     .btn {
       display: inline-block;
       margin-top: 20px;
-      background: linear-gradient(135deg, var(--rosa), var(--rosa-oscuro));
+      background: linear-gradient(135deg,#d1b0a8,#8c6a63);
       color: white;
-      padding: 14px 30px;
-      border-radius: 30px;
+      padding: 16px 38px;
+      border: none;
+      border-radius: 40px;
       text-decoration: none;
-      font-size: 17px;
-      box-shadow: 0 8px 18px rgba(157,111,99,.25);
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(140,106,99,.28);
+      transition: all .25s ease;
+    }
+
+    .btn:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(140,106,99,.35);
+    }
+    
+    .btn:focus,
+    .btn:active {
+      outline: none;
+      border: none;
     }
 
     .music {
