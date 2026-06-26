@@ -347,14 +347,17 @@ transform:scale(1);
   }
 
 .invitado-item {
-  background: rgba(255,255,255,.75);
-  padding: 13px 18px;
-  margin: 10px auto;
-  border-radius: 18px;
-  max-width: 340px;
-  box-shadow: 0 5px 15px rgba(90,70,56,.10);
-  border: 1px solid rgba(201,167,106,.25);
+  background: rgba(255,255,255,.55);
+  padding: 12px 18px;
+  margin: 8px auto;
+  border-radius: 14px;
+  max-width: 320px;
+  box-shadow: 0 3px 10px rgba(90,70,56,.07);
+  border: 1px solid rgba(201,167,106,.18);
   font-size: 18px;
+  text-align: center;
+  cursor: default;
+  color: var(--texto);
 }
 
     .divider {
@@ -814,7 +817,7 @@ function mostrarInvitados(invitados) {
 
     listaModal.innerHTML += `
       <div class="respuesta-invitado">
-        <strong class="nombre-invitado">👤 ${inv.nombre}</strong>
+        <strong class="nombre-invitado"> ${inv.nombre}</strong>
 
         <div class="opciones-asistencia">
           <label>
@@ -857,8 +860,6 @@ function enviarAsistencia(e) {
     return;
   }
 
-  alert(JSON.stringify(respuestas));
-
 
   const script = document.createElement("script");
   script.src =
@@ -873,7 +874,6 @@ function enviarAsistencia(e) {
 
 function confirmacionGuardada(respuesta) {
 
-  alert(JSON.stringify(respuesta));
 
   cerrarAsistencia();
 
