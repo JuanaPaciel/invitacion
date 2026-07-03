@@ -876,16 +876,22 @@ footer {
   }
 
   .modalAsistencia {
-    align-items: flex-start;
-    padding: 8px 0;
+   align-items: flex-start;
+    justify-content: center;
+    padding: 8px;
+    overflow-y: auto;
   }
 
   .modalAsistenciaContenidoGrande {
-    width: calc(100vw - 16px);
+   width: 100%;
+    max-width: 390px;
     max-height: 92vh;
     margin: 0 auto;
     padding: 14px 10px;
     border-radius: 20px;
+    left: auto;
+    right: auto;
+    transform: none;
   }
 
   .modalAsistenciaContenidoGrande h2 {
