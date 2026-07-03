@@ -34,7 +34,9 @@
   font-style: normal;
 }
 
-/* GENERAL */
+/* =========================
+   GENERAL
+========================= */
 body {
   margin: 0;
   font-family: Georgia, serif;
@@ -70,19 +72,9 @@ h2 {
   font-size: 30px;
   color: var(--rosa-oscuro);
   margin-bottom: 10px;
-  font-family: "Quicksand", sans-serif;
-  font-weight: 500;
-  letter-spacing: .2px;
-}
-
-.titulo-bloque {
-  margin: 0;
-  font-size: 30px;
-  color: var(--rosa-oscuro);
-  font-family: "Quicksand", sans-serif;
-  font-weight: 500;
-  letter-spacing: .2px;
-  text-shadow: none;
+  font-family: Georgia, serif;
+  font-weight: normal;
+  letter-spacing: 0;
 }
 
 h3 {
@@ -99,7 +91,9 @@ h4 {
   font-weight: normal;
 }
 
-/* SECCIONES */
+/* =========================
+   SECCIONES
+========================= */
 .light {
   background: var(--claro);
   max-width: none;
@@ -119,7 +113,9 @@ h4 {
   margin-right: auto;
 }
 
-/* PORTADA */
+/* =========================
+   PORTADA
+========================= */
 .hero {
   max-width: none;
   min-height: 100vh;
@@ -182,7 +178,9 @@ h4 {
   letter-spacing: 8px;
 }
 
-/* FIRULETES */
+/* =========================
+   FIRULETES
+========================= */
 .firulete {
   display: block;
   width: 80px;
@@ -240,7 +238,9 @@ h4 {
   }
 }
 
-/* ICONOS */
+/* =========================
+   ICONOS
+========================= */
 .section-icon {
   width: 72px;
   height: 72px;
@@ -265,39 +265,29 @@ h4 {
   }
 }
 
-/* BOTONES */
+/* =========================
+   BOTONES (MISMO ESTILO EN TODA LA INVITACIÓN)
+========================= */
 .btn {
   display: inline-block;
   margin-top: 20px;
-  background: linear-gradient(135deg,#d1b0a8,#865458);
+  background: linear-gradient(135deg,#ddb8b1,#c8928b);
   color: white;
-  padding: 16px 38px;
+  padding: 14px 34px;
   border: none;
   border-radius: 40px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 17px;
+  font-family: "Quicksand", sans-serif;
   font-weight: 600;
+  letter-spacing: .4px;
   cursor: pointer;
-  box-shadow: 0 8px 22px rgba(140,106,99,.28);
+  box-shadow: 0 10px 22px rgba(200,146,139,.20);
   transition: all .25s ease;
 }
 
 .btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(140,106,99,.35);
-}
-
-.modalAsistencia .btn {
-  margin-top: 14px;
-  padding: 13px 28px;
-  font-size: 16px;
-  font-family: "Quicksand", sans-serif;
-  font-weight: 600;
-  background: linear-gradient(135deg,#ddb8b1,#c8928b);
-  box-shadow: 0 10px 22px rgba(200,146,139,.20);
-}
-
-.modalAsistencia .btn:hover {
   background: linear-gradient(135deg,#d9afa7,#c28780);
   box-shadow: 0 12px 24px rgba(200,146,139,.28);
 }
@@ -308,7 +298,9 @@ h4 {
   border: none;
 }
 
-/* CUENTA REGRESIVA */
+/* =========================
+   CUENTA REGRESIVA
+========================= */
 .countdown {
   display: flex;
   justify-content: center;
@@ -333,7 +325,9 @@ h4 {
   color: var(--rosa-oscuro);
 }
 
-/* MÚSICA */
+/* =========================
+   MÚSICA
+========================= */
 .music {
   position: fixed;
   top: 20px;
@@ -366,7 +360,9 @@ h4 {
   50% { transform: scale(1.12); }
 }
 
-/* ICONOS FLOTANTES */
+/* =========================
+   ICONOS FLOTANTES
+========================= */
 .floating-icons {
   position: fixed;
   inset: 0;
@@ -393,7 +389,9 @@ h4 {
   50% { transform: translateY(-28px) rotate(12deg); }
 }
 
-/* CARRUSEL */
+/* =========================
+   CARRUSEL
+========================= */
 .carousel {
   position: relative;
   margin-top: 25px;
@@ -444,7 +442,9 @@ h4 {
   transform: scale(1.25);
 }
 
-/* LIGHTBOX */
+/* =========================
+   LIGHTBOX
+========================= */
 .lightbox {
   display: none;
   position: fixed;
@@ -492,7 +492,9 @@ h4 {
 .lightbox-prev { left: 18px; }
 .lightbox-next { right: 18px; }
 
-/* MODAL MAPA */
+/* =========================
+   MODAL MAPA
+========================= */
 .modalMapa {
   display: none;
   position: fixed;
@@ -540,7 +542,9 @@ h4 {
   }
 }
 
-/* MODAL ASISTENCIA */
+/* =========================
+   MODAL ASISTENCIA
+========================= */
 .modalAsistencia {
   display: none;
   position: fixed;
@@ -552,9 +556,6 @@ h4 {
 }
 
 .modalAsistenciaContenido {
-  margin-bottom: 6px;
-  font-weight: 400;
-  letter-spacing: .3px;
   width: min(92%, 430px);
   background: #fffaf8;
   border-radius: 24px;
@@ -564,13 +565,6 @@ h4 {
   box-shadow: 0 18px 45px rgba(90,70,56,.18);
   border: 1px solid rgba(209,176,168,.18);
   animation: aparecerModal .35s ease;
-}
-
-.modalAsistenciaContenido h2,
-.bloque-alimentacion .titulo-bloque {
-  font-family: "Quicksand", sans-serif;
-  font-weight: 500;
-  letter-spacing: .2px;
 }
 
 .modalAsistenciaContenidoGrande {
@@ -603,12 +597,29 @@ h4 {
 .modalAsistencia select,
 .modalAsistencia textarea {
   width: 100%;
-  padding: 12px;
+  padding: 12px 14px;
   margin: 8px 0;
-  border-radius: 12px;
-  border: 1px solid var(--rosa);
-  font-size: 16px;
-  font-family: Georgia, serif;
+  border-radius: 10px;
+  border: 1px solid rgba(209,176,168,.55);
+  background: rgba(255,255,255,.88);
+  color: var(--texto);
+  font-size: 15px;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 400;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.modalAsistencia input::placeholder,
+.modalAsistencia textarea::placeholder {
+  color: rgba(90,70,56,.55);
+}
+
+.modalAsistencia input:focus,
+.modalAsistencia textarea:focus,
+.dropdown-boton:focus {
+  border-color: #c8928b;
+  box-shadow: 0 0 0 3px rgba(221,184,177,.18);
 }
 
 .modalAsistencia textarea {
@@ -633,7 +644,9 @@ h4 {
   }
 }
 
-/* LISTA INVITADOS */
+/* =========================
+   LISTA INVITADOS
+========================= */
 #listaInvitados {
   margin: 22px auto 30px;
   max-width: 360px;
@@ -657,9 +670,11 @@ h4 {
   color: var(--texto);
 }
 
-/* TARJETAS DE ASISTENCIA */
+/* =========================
+   TARJETAS DE ASISTENCIA
+========================= */
 .respuesta-invitado {
-  background: rgba(255,255,255,.88);
+  background: rgba(255,255,255,.92);
   padding: 16px 14px;
   margin: 11px auto;
   border-radius: 22px;
@@ -674,6 +689,8 @@ h4 {
   font-size: 18px;
   margin-bottom: 10px;
   color: var(--rosa-oscuro);
+  font-family: Georgia, serif;
+  font-weight: normal;
 }
 
 .opciones-asistencia {
@@ -703,6 +720,10 @@ h4 {
   transition: .22s ease;
 }
 
+.opciones-asistencia span:hover {
+  background: #f2ddda;
+}
+
 .opciones-asistencia input:checked + span {
   background: linear-gradient(135deg,#ddb8b1,#c8928b);
   color: white;
@@ -710,7 +731,9 @@ h4 {
   box-shadow: 0 8px 18px rgba(200,146,139,.22);
 }
 
-/* BLOQUE ALIMENTACIÓN */
+/* =========================
+   BLOQUE ALIMENTACIÓN
+========================= */
 .bloque-alimentacion {
   background: rgba(255,255,255,.92);
   padding: 18px 14px 16px;
@@ -733,9 +756,10 @@ h4 {
   margin: 0;
   font-size: 30px;
   color: var(--rosa-oscuro);
-  font-family: "Quicksand", sans-serif;
-  font-weight: 500;
-  letter-spacing: .2px;
+  font-family: Georgia, serif;
+  font-weight: normal;
+  letter-spacing: 0;
+  line-height: 1.1;
   text-shadow: none;
 }
 
@@ -746,7 +770,9 @@ h4 {
   opacity: .85;
 }
 
-/* DROPDOWN RESTRICCIÓN */
+/* =========================
+   DROPDOWN RESTRICCIÓN
+========================= */
 .dropdown-delicado {
   position: relative;
   width: 100%;
@@ -854,7 +880,9 @@ h4 {
   }
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 footer {
   padding: 32px;
   font-size: 14px;
@@ -863,7 +891,9 @@ footer {
   z-index: 2;
 }
 
-/* CELULAR */
+/* =========================
+   CELULAR
+========================= */
 @media (max-width: 520px) {
   section {
     padding: 30px 14px;
@@ -897,14 +927,14 @@ footer {
   }
 
   .modalAsistencia {
-   align-items: flex-start;
+    align-items: flex-start;
     justify-content: center;
     padding: 8px;
     overflow-y: auto;
   }
 
   .modalAsistenciaContenidoGrande {
-   width: 100%;
+    width: 100%;
     max-width: 390px;
     max-height: 92vh;
     margin: 0 auto;
@@ -918,6 +948,8 @@ footer {
   .modalAsistenciaContenidoGrande h2,
   .titulo-bloque {
     font-size: 22px;
+    font-family: Georgia, serif;
+    font-weight: normal;
   }
 
   .subtituloAsistencia {
@@ -976,10 +1008,6 @@ footer {
     margin-bottom: 8px;
   }
 
-  .titulo-bloque {
-    font-size: 18px;
-  }
-
   .decoracion-hoja,
   .corazon {
     font-size: 17px;
@@ -1004,8 +1032,8 @@ footer {
     min-height: 58px;
   }
 
-  .modalAsistencia .btn {
-    margin-top: 10px;
+  .modalAsistencia .btn,
+  .btn {
     padding: 11px 22px;
     font-size: 15px;
   }
@@ -1023,7 +1051,6 @@ footer {
     height: 330px;
   }
 }
-
   </style>
 </head>
 
@@ -1353,7 +1380,7 @@ function cerrarAsistencia() {
       <div class="bloque-alimentacion">
   <div class="bloque-header">
     <span class="decoracion-hoja">⌞</span>
-    <h3 class="titulo-bloque">Restricción alimentaria</h3>
+    <h2 class="titulo-bloque">Restricción alimentaria</h2>
     <span class="corazon">❤</span>
   </div>
 
