@@ -513,6 +513,170 @@ transform:scale(1);
   color: var(--texto);
 }
 
+/* ===== Modal asistencia más grande ===== */
+.modalAsistenciaContenidoGrande{
+  width: min(92%, 560px);
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 34px 22px 28px;
+}
+
+.subtituloAsistencia{
+  margin-top: -4px;
+  margin-bottom: 22px;
+  font-size: 17px;
+  color: var(--texto);
+}
+
+/* ===== Tarjetas de invitados ===== */
+.respuesta-invitado {
+  background: rgba(255,255,255,.88);
+  padding: 20px 18px;
+  margin: 14px auto;
+  border-radius: 28px;
+  max-width: 100%;
+  box-shadow: 0 8px 25px rgba(90,70,56,.08);
+  border: 1px solid rgba(201,167,106,.20);
+  text-align: center;
+}
+
+.nombre-invitado {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 14px;
+  color: var(--rosa-oscuro);
+}
+
+.opciones-asistencia {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.opciones-asistencia input {
+  display: none;
+}
+
+.opciones-asistencia span {
+  display: inline-block;
+  min-width: 120px;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: #f6ebe7;
+  color: var(--rosa-oscuro);
+  cursor: pointer;
+  border: 1px solid rgba(201,167,106,.35);
+  font-size: 16px;
+  transition: .2s ease;
+}
+
+.opciones-asistencia input:checked + span {
+  background: linear-gradient(135deg,#d1b0a8,#a67f77);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 8px 20px rgba(140,106,99,.18);
+}
+
+/* ===== Bloque alimentación ===== */
+.bloque-alimentacion{
+  background: rgba(255,255,255,.88);
+  padding: 22px 18px 18px;
+  margin: 18px auto 14px;
+  border-radius: 28px;
+  max-width: 100%;
+  box-shadow: 0 8px 25px rgba(90,70,56,.08);
+  border: 1px solid rgba(201,167,106,.20);
+}
+
+.titulo-bloque{
+  margin: 0 0 8px;
+  font-size: 22px;
+  color: var(--rosa-oscuro);
+}
+
+.texto-bloque{
+  margin: 0 0 16px;
+  font-size: 15px;
+  color: var(--texto);
+  opacity: .9;
+}
+
+.chips-comida{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.chip-comida input{
+  display: none;
+}
+
+.chip-comida span{
+  display: inline-block;
+  padding: 11px 16px;
+  border-radius: 999px;
+  background: #f6ebe7;
+  color: var(--rosa-oscuro);
+  border: 1px solid rgba(201,167,106,.35);
+  cursor: pointer;
+  font-size: 15px;
+  transition: .2s ease;
+}
+
+.chip-comida input:checked + span{
+  background: linear-gradient(135deg,#d1b0a8,#a67f77);
+  color: white;
+  border-color: transparent;
+  box-shadow: 0 8px 20px rgba(140,106,99,.18);
+}
+
+.campo-detalle-restriccion{
+  margin-top: 14px !important;
+}
+
+/* textarea comentario */
+#comentariosAsistente{
+  margin-top: 14px;
+}
+
+/* mobile */
+@media (max-width: 520px){
+  .modalAsistenciaContenidoGrande{
+    width: min(94%, 560px);
+    padding: 28px 16px 24px;
+  }
+
+  .modalAsistenciaContenidoGrande h2{
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .subtituloAsistencia{
+    font-size: 16px;
+    margin-bottom: 18px;
+  }
+
+  .nombre-invitado{
+    font-size: 18px;
+  }
+
+  .opciones-asistencia span{
+    min-width: 105px;
+    font-size: 15px;
+    padding: 11px 14px;
+  }
+
+  .titulo-bloque{
+    font-size: 20px;
+  }
+
+  .chip-comida span{
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+}
     .divider {
       font-size: 34px;
       color: var(--dorado);
@@ -1070,36 +1234,54 @@ function cerrarAsistencia() {
 </div>
 
 <div id="modalAsistencia" class="modalAsistencia">
-  <div class="modalAsistenciaContenido">
+  <div class="modalAsistenciaContenido modalAsistenciaContenidoGrande">
 
     <span class="cerrarAsistencia" onclick="cerrarAsistencia()">&times;</span>
 
     <h2>Confirmar asistencia</h2>
-    <p>Indicá quiénes asisten y quiénes no.</p>
+    <p class="subtituloAsistencia">Indicá quiénes asisten y quiénes no.</p>
 
     <form id="formAsistencia">
       <div id="listaInvitadosModal"></div>
 
-      <div class="respuesta-invitado">
-  <strong class="nombre-invitado">Restricción alimentaria</strong>
+      <div class="bloque-alimentacion">
+        <h3 class="titulo-bloque">Alimentación</h3>
+        <p class="texto-bloque">Si tenés alguna preferencia o restricción, avisanos.</p>
 
-  <select id="restriccionAlimentaria">
-    <option value="">¿Tenés alguna restricción o preferencia alimentaria?</option>
-    <option value="ninguna">No</option>
-    <option value="vegetariano">Vegetariano/a</option>
-    <option value="vegano">Vegano/a</option>
-    <option value="celiaco">Celíaco/a / Sin TACC</option>
-    <option value="lacteos">Intolerancia a lácteos</option>
-    <option value="frutos_secos">Alergia a frutos secos</option>
-    <option value="otra">Otra</option>
-  </select>
+        <div class="chips-comida" id="chipsComida">
+          <label class="chip-comida">
+            <input type="radio" name="restriccionAlimentaria" value="ninguna">
+            <span>No</span>
+          </label>
 
-  <textarea
-    id="detalleRestriccion"
-    placeholder="Si querés, contanos cuál"
-    style="display:none;"
-  ></textarea>
-</div>
+          <label class="chip-comida">
+            <input type="radio" name="restriccionAlimentaria" value="vegetariano">
+            <span>Veggie</span>
+          </label>
+
+          <label class="chip-comida">
+            <input type="radio" name="restriccionAlimentaria" value="vegano">
+            <span>Vegana</span>
+          </label>
+
+          <label class="chip-comida">
+            <input type="radio" name="restriccionAlimentaria" value="celiaco">
+            <span>Sin TACC</span>
+          </label>
+
+          <label class="chip-comida">
+            <input type="radio" name="restriccionAlimentaria" value="otra">
+            <span>Otra</span>
+          </label>
+        </div>
+
+        <textarea
+          id="detalleRestriccion"
+          class="campo-detalle-restriccion"
+          placeholder="Contanos cuál (opcional)"
+          style="display:none;"
+        ></textarea>
+      </div>
 
       <textarea id="comentariosAsistente" placeholder="Comentario opcional"></textarea>
 
@@ -1171,8 +1353,11 @@ function enviarAsistencia(e) {
   e.preventDefault();
 
   const comentarios = document.getElementById("comentariosAsistente").value.trim();
-  const restriccion = document.getElementById("restriccionAlimentaria").value;
   const detalleRestriccion = document.getElementById("detalleRestriccion").value.trim();
+
+  const restriccionSeleccionada = document.querySelector('input[name="restriccionAlimentaria"]:checked');
+  const restriccion = restriccionSeleccionada ? restriccionSeleccionada.value : "";
+
   const error = document.getElementById("errorAsistencia");
   error.innerText = "";
 
@@ -1193,7 +1378,6 @@ function enviarAsistencia(e) {
     error.innerText = "Marcá al menos una respuesta.";
     return;
   }
-
 
   const script = document.createElement("script");
   script.src =
@@ -1221,6 +1405,20 @@ function confirmacionGuardada(respuesta) {
 }
 
 cargarInvitados();
+
+document.addEventListener("change", function(e){
+  if (e.target && e.target.name === "restriccionAlimentaria") {
+    const detalle = document.getElementById("detalleRestriccion");
+    if (!detalle) return;
+
+    if (e.target.value === "otra") {
+      detalle.style.display = "block";
+    } else {
+      detalle.style.display = "none";
+      detalle.value = "";
+    }
+  }
+});
 
 const restriccionSelect = document.getElementById("restriccionAlimentaria");
 const detalleRestriccion = document.getElementById("detalleRestriccion");
