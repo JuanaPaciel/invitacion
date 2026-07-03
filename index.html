@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mis 15 años</title>
+  <title>Juana  •  Mis 15 años</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Qwitcher+Grypen:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Quicksand:wght@300;400;600;700&display=swap&family=Qwitcher+Grypen:wght@700&display=swap" rel="stylesheet">
+
+
 
  <style>
     :root {
@@ -25,7 +27,12 @@
     * {
       box-sizing: border-box;
     }
-
+@font-face {
+    font-family: "Dantina";
+    src: url("Dantina.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
     body {
       margin: 0;
       font-family: Georgia, serif;
@@ -53,7 +60,10 @@
       justify-content: center;
       padding: 40px 25px;
     }
-
+.nombre{
+    font-family: "Dantina", cursive;
+    font-size: 6rem;
+}
     .box {
       background: var(--blanco);
       padding: 42px 28px;
@@ -72,11 +82,11 @@
     }
 
     h1 {
-      font-family: "Parisienne", cursive;
-      font-size: 120px;
-      font-weight: 700;
-      line-height: .9;
-      margin: 10px 0 15px;
+      font-family: "Dantina", cursive;
+      font-size: 80px;
+      font-weight: 400;
+      line-height: 2.9;
+      margin: 30px 0 30px;
       color: var(--claro);
       text-shadow: 10 2px 10px rgba(0,0,0,.08);
     }
@@ -137,38 +147,53 @@
       max-width: none;
     }
 
-
-.fecha::before{
-    content:"";
-    position:absolute;
-    width:40px;
-    height:1px;
-    background:white;
-
-    right:110%;
-    top:50%;
+.mis{
+    position: relative;
+    display: inline-block;
 }
 
-.fecha::after{
-    content:"";
-    position:absolute;
-    width:40px;
-    height:1px;
-    background:white;
+.mis::before,
+.mis::after{
+    content: "";
+    position: absolute;
 
-    left:110%;
-    top:50%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 120px;
+    height: 1px;
+
+    background: rgba(255,255,255,.9);
 }
 
+.mis::before{
+    right: calc(100% + 18px);
+}
+
+.mis::after{
+    left: calc(100% + 18px);
+}
+
+.lovestory {
+  font-family: "Dantina", cursive;
+	line-height: 3.00 
+}
 
     .fecha{
     display:block;
-    font-size:20px;
+    font-size:18px;
     letter-spacing:3px;
     color:rgba(255,255,255,.85);
     margin:2px 0;
     position:relative;
     z-index:5;
+}
+
+.fecha-recuadro{
+  border:1px solid #ffffff;
+  padding:10px 18px;
+  color:#ffffff;
+  letter-spacing:8px;
 }
 .box-nombres-fecha-portada{
     display:flex;
@@ -754,17 +779,20 @@ transform:scale(1);
 
   <section class="hero">
     <div class="box-nombres-fecha-portada">
-              <img src="hojitas.png" class="firulete firulete-arriba" alt="">
-          <span class="fecha">
-            22.08.2026          </span>
-              <img src="hojitas.png" class="firulete firulete-abajo" alt="">
+<h3 class="mis">Mis 15 años</h3>
 
-          <h1>
+     
+            
+
+          <h1 class="nombre">
             Juana </h1>
-
-          <h3>Mis 15 años</h3>
-
+ <span class="fecha fecha-recuadro roboto-condensed-font">&nbsp;22 • 08 • 2026&nbsp;
+               </span>
+  <img src="hojitas.png" class="firulete firulete-arriba" alt="">
+          
      <h4> <p>Llegó esta gran noche, y quiero compartirla con vos.</p></h4>
+
+              <img src="hojitas.png" class="firulete firulete-abajo" alt="">
       <a href="#info" class="btn">Ver invitación</a>
     </div>
   </section>
@@ -1052,6 +1080,27 @@ function cerrarAsistencia() {
     <form id="formAsistencia">
       <div id="listaInvitadosModal"></div>
 
+      <div class="respuesta-invitado">
+  <strong class="nombre-invitado">Restricción alimentaria</strong>
+
+  <select id="restriccionAlimentaria">
+    <option value="">¿Tenés alguna restricción o preferencia alimentaria?</option>
+    <option value="ninguna">No</option>
+    <option value="vegetariano">Vegetariano/a</option>
+    <option value="vegano">Vegano/a</option>
+    <option value="celiaco">Celíaco/a / Sin TACC</option>
+    <option value="lacteos">Intolerancia a lácteos</option>
+    <option value="frutos_secos">Alergia a frutos secos</option>
+    <option value="otra">Otra</option>
+  </select>
+
+  <textarea
+    id="detalleRestriccion"
+    placeholder="Si querés, contanos cuál"
+    style="display:none;"
+  ></textarea>
+</div>
+
       <textarea id="comentariosAsistente" placeholder="Comentario opcional"></textarea>
 
       <p id="errorAsistencia"></p>
@@ -1122,6 +1171,8 @@ function enviarAsistencia(e) {
   e.preventDefault();
 
   const comentarios = document.getElementById("comentariosAsistente").value.trim();
+  const restriccion = document.getElementById("restriccionAlimentaria").value;
+  const detalleRestriccion = document.getElementById("detalleRestriccion").value.trim();
   const error = document.getElementById("errorAsistencia");
   error.innerText = "";
 
@@ -1150,6 +1201,8 @@ function enviarAsistencia(e) {
     "?accion=confirmar" +
     "&respuestas=" + encodeURIComponent(JSON.stringify(respuestas)) +
     "&comentario=" + encodeURIComponent(comentarios) +
+    "&restriccion=" + encodeURIComponent(restriccion) +
+    "&detalleRestriccion=" + encodeURIComponent(detalleRestriccion) +
     "&callback=confirmacionGuardada";
 
   document.body.appendChild(script);
@@ -1168,6 +1221,20 @@ function confirmacionGuardada(respuesta) {
 }
 
 cargarInvitados();
+
+const restriccionSelect = document.getElementById("restriccionAlimentaria");
+const detalleRestriccion = document.getElementById("detalleRestriccion");
+
+if (restriccionSelect) {
+  restriccionSelect.addEventListener("change", function () {
+    if (this.value === "otra") {
+      detalleRestriccion.style.display = "block";
+    } else {
+      detalleRestriccion.style.display = "none";
+      detalleRestriccion.value = "";
+    }
+  });
+}
 
 function abrirCancion(e) {
   e.preventDefault();
@@ -1217,6 +1284,8 @@ function cancionGuardada(respuesta) {
   document.getElementById("tituloCancion").value = "";
   document.getElementById("linkCancion").value = "";
 }
+
+
 </script>
 
 <div id="modalCancion" class="modalAsistencia">
