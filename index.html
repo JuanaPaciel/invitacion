@@ -641,6 +641,58 @@ transform:scale(1);
   margin-top: 14px;
 }
 
+.bloque-alimentacion{
+  background: rgba(255,255,255,.88);
+  padding: 22px 18px 20px;
+  margin: 18px auto 14px;
+  border-radius: 28px;
+  max-width: 100%;
+  box-shadow: 0 8px 25px rgba(90,70,56,.08);
+  border: 1px solid rgba(201,167,106,.20);
+  text-align: center;
+}
+
+.titulo-bloque{
+  margin: 0 0 16px;
+  font-size: 24px;
+  color: var(--rosa-oscuro);
+  font-weight: bold;
+}
+
+.select-delicado{
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(140,106,99,.35);
+  background: rgba(255,255,255,.72);
+  color: var(--texto);
+  font-family: Georgia, serif;
+  font-size: 16px;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--rosa-oscuro) 50%),
+    linear-gradient(135deg, var(--rosa-oscuro) 50%, transparent 50%);
+  background-position:
+    calc(100% - 22px) 50%,
+    calc(100% - 16px) 50%;
+  background-size:
+    6px 6px,
+    6px 6px;
+  background-repeat: no-repeat;
+}
+
+.select-delicado:focus{
+  border-color: var(--rosa-oscuro);
+  box-shadow: 0 0 0 3px rgba(209,176,168,.25);
+}
+
+.campo-detalle-restriccion{
+  margin-top: 12px !important;
+}
+
 /* mobile */
 @media (max-width: 520px){
   .modalAsistenciaContenidoGrande{
@@ -920,6 +972,144 @@ transform:scale(1);
       position: relative;
       z-index: 2;
     }
+
+.bloque-alimentacion{
+  background: rgba(255,255,255,.92);
+  padding: 24px 18px 20px;
+  margin: 18px auto 14px;
+  border-radius: 28px;
+  max-width: 100%;
+  box-shadow: 0 8px 25px rgba(90,70,56,.08);
+  border: 1px solid rgba(201,167,106,.18);
+  text-align: center;
+}
+
+.bloque-header{
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.titulo-bloque{
+  margin: 0;
+  font-size: 24px;
+  color: var(--rosa-oscuro);
+  font-weight: bold;
+  text-shadow: none;
+}
+
+.decoracion-hoja,
+.corazon{
+  color: #d9a09b;
+  font-size: 24px;
+  opacity: .85;
+}
+
+.dropdown-delicado{
+  position: relative;
+  width: 100%;
+}
+
+.dropdown-boton{
+  width: 100%;
+  padding: 15px 18px;
+  border-radius: 16px;
+  border: 1px solid #dfa9a5;
+  background: rgba(255,255,255,.85);
+  color: var(--texto);
+  font-family: Georgia, serif;
+  font-size: 17px;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#flechaRestriccion{
+  font-size: 24px;
+  color: var(--rosa-oscuro);
+  transition: transform .25s ease;
+}
+
+.dropdown-delicado.abierto #flechaRestriccion{
+  transform: rotate(180deg);
+}
+
+.dropdown-menu-delicado{
+  display: none;
+  margin-top: 8px;
+  background: rgba(255,255,255,.96);
+  border: 1px solid rgba(223,169,165,.45);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(90,70,56,.13);
+  animation: abrirDropdown .25s ease;
+}
+
+.dropdown-delicado.abierto .dropdown-menu-delicado{
+  display: block;
+}
+
+.dropdown-menu-delicado button{
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(201,167,106,.16);
+  padding: 14px 16px;
+  font-family: Georgia, serif;
+  font-size: 17px;
+  color: var(--texto);
+  display: grid;
+  grid-template-columns: 35px 1fr 28px;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown-menu-delicado button:last-child{
+  border-bottom: none;
+}
+
+.dropdown-menu-delicado button:hover{
+  background: rgba(234,215,208,.35);
+}
+
+.icono-opcion{
+  color: #d9a09b;
+  font-size: 21px;
+}
+
+.check-opcion{
+  display: none;
+  color: #d9a09b;
+  font-size: 20px;
+}
+
+.dropdown-menu-delicado button.seleccionado{
+  background: rgba(234,215,208,.45);
+}
+
+.dropdown-menu-delicado button.seleccionado .check-opcion{
+  display: inline;
+}
+
+.campo-detalle-restriccion{
+  margin-top: 12px !important;
+}
+
+@keyframes abrirDropdown{
+  from{
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
   </style>
 </head>
 
@@ -1244,44 +1434,58 @@ function cerrarAsistencia() {
     <form id="formAsistencia">
       <div id="listaInvitadosModal"></div>
 
+
+
       <div class="bloque-alimentacion">
-        <h3 class="titulo-bloque">Alimentación</h3>
-        <p class="texto-bloque">Si tenés alguna preferencia o restricción, avisanos.</p>
+  <div class="bloque-header">
+    <span class="decoracion-hoja">⌞</span>
+    <h3 class="titulo-bloque">Restricción alimentaria</h3>
+    <span class="corazon">❤</span>
+  </div>
 
-        <div class="chips-comida" id="chipsComida">
-          <label class="chip-comida">
-            <input type="radio" name="restriccionAlimentaria" value="ninguna">
-            <span>No</span>
-          </label>
+  <div class="dropdown-delicado" id="dropdownRestriccion">
+    <button type="button" class="dropdown-boton" onclick="toggleRestriccion()">
+      <span id="textoRestriccion">Elegí una opción</span>
+      <span id="flechaRestriccion">⌄</span>
+    </button>
 
-          <label class="chip-comida">
-            <input type="radio" name="restriccionAlimentaria" value="vegetariano">
-            <span>Veggie</span>
-          </label>
+    <div class="dropdown-menu-delicado" id="menuRestriccion">
+      <button type="button" onclick="elegirRestriccion('ninguna', 'No')">
+        <span class="icono-opcion">⌞</span>
+        <span>No</span>
+        <span class="check-opcion" id="check_ninguna">✓</span>
+      </button>
 
-          <label class="chip-comida">
-            <input type="radio" name="restriccionAlimentaria" value="vegano">
-            <span>Vegana</span>
-          </label>
+      <button type="button" onclick="elegirRestriccion('vegano_vegetariano', 'Vegano / Vegetariano')">
+        <span class="icono-opcion">♡</span>
+        <span>Vegano / Vegetariano</span>
+        <span class="check-opcion" id="check_vegano_vegetariano">✓</span>
+      </button>
 
-          <label class="chip-comida">
-            <input type="radio" name="restriccionAlimentaria" value="celiaco">
-            <span>Sin TACC</span>
-          </label>
+      <button type="button" onclick="elegirRestriccion('celiaco', 'Celíaco / Sin TACC')">
+        <span class="icono-opcion">◎</span>
+        <span>Celíaco / Sin TACC</span>
+        <span class="check-opcion" id="check_celiaco">✓</span>
+      </button>
 
-          <label class="chip-comida">
-            <input type="radio" name="restriccionAlimentaria" value="otra">
-            <span>Otra</span>
-          </label>
-        </div>
+      <button type="button" onclick="elegirRestriccion('otra', 'Otra')">
+        <span class="icono-opcion">…</span>
+        <span>Otra</span>
+        <span class="check-opcion" id="check_otra">✓</span>
+      </button>
+    </div>
+  </div>
 
-        <textarea
-          id="detalleRestriccion"
-          class="campo-detalle-restriccion"
-          placeholder="Contanos cuál (opcional)"
-          style="display:none;"
-        ></textarea>
-      </div>
+  <input type="hidden" id="restriccionAlimentaria" value="">
+
+  <textarea
+    id="detalleRestriccion"
+    class="campo-detalle-restriccion"
+    placeholder="Contanos más (opcional)"
+    style="display:none;"
+  ></textarea>
+</div>
+
 
       <textarea id="comentariosAsistente" placeholder="Comentario opcional"></textarea>
 
@@ -1355,8 +1559,7 @@ function enviarAsistencia(e) {
   const comentarios = document.getElementById("comentariosAsistente").value.trim();
   const detalleRestriccion = document.getElementById("detalleRestriccion").value.trim();
 
-  const restriccionSeleccionada = document.querySelector('input[name="restriccionAlimentaria"]:checked');
-  const restriccion = restriccionSeleccionada ? restriccionSeleccionada.value : "";
+  const restriccion = document.getElementById("restriccionAlimentaria").value;
 
   const error = document.getElementById("errorAsistencia");
   error.innerText = "";
@@ -1406,33 +1609,43 @@ function confirmacionGuardada(respuesta) {
 
 cargarInvitados();
 
-document.addEventListener("change", function(e){
-  if (e.target && e.target.name === "restriccionAlimentaria") {
-    const detalle = document.getElementById("detalleRestriccion");
-    if (!detalle) return;
+function toggleRestriccion() {
+  document.getElementById("dropdownRestriccion").classList.toggle("abierto");
+}
 
-    if (e.target.value === "otra") {
-      detalle.style.display = "block";
-    } else {
-      detalle.style.display = "none";
-      detalle.value = "";
-    }
+function elegirRestriccion(valor, texto) {
+  document.getElementById("restriccionAlimentaria").value = valor;
+  document.getElementById("textoRestriccion").innerText = texto;
+
+  document.querySelectorAll(".dropdown-menu-delicado button").forEach(btn => {
+    btn.classList.remove("seleccionado");
+  });
+
+  const check = document.getElementById("check_" + valor);
+  if (check) {
+    check.parentElement.classList.add("seleccionado");
+  }
+
+  const detalle = document.getElementById("detalleRestriccion");
+
+  if (valor === "otra") {
+    detalle.style.display = "block";
+  } else {
+    detalle.style.display = "none";
+    detalle.value = "";
+  }
+
+  document.getElementById("dropdownRestriccion").classList.remove("abierto");
+}
+
+document.addEventListener("click", function(e) {
+  const dropdown = document.getElementById("dropdownRestriccion");
+
+  if (dropdown && !dropdown.contains(e.target)) {
+    dropdown.classList.remove("abierto");
   }
 });
 
-const restriccionSelect = document.getElementById("restriccionAlimentaria");
-const detalleRestriccion = document.getElementById("detalleRestriccion");
-
-if (restriccionSelect) {
-  restriccionSelect.addEventListener("change", function () {
-    if (this.value === "otra") {
-      detalleRestriccion.style.display = "block";
-    } else {
-      detalleRestriccion.style.display = "none";
-      detalleRestriccion.value = "";
-    }
-  });
-}
 
 function abrirCancion(e) {
   e.preventDefault();
