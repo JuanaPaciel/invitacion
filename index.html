@@ -324,25 +324,50 @@ h4 {
 .countdown {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  align-items: flex-start;
+  gap: 34px;
   margin-top: 25px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .time {
-  background: var(--claro);
-  border-radius: 12px;
-  padding: 13px 8px;
-  width: 78px;
-  box-shadow: 0 5px 15px rgba(90,70,56,.12);
-  border: 1px solid rgba(201,167,106,.35);
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  width: auto;
+  min-width: 70px;
+  padding: 0;
+  color: white;
+  font-family: "Quicksand", sans-serif;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1px;
 }
 
 .time span {
   display: block;
-  font-size: 28px;
-  font-weight: bold;
-  color: var(--rosa-oscuro);
+  font-size: 44px;
+  font-weight: 300;
+  line-height: 1;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.time small {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.count-sep {
+  font-size: 52px;
+  line-height: 1;
+  font-weight: 300;
+  color: #fff;
+  margin-top: 0;
+  transform: translateY(0px);
 }
 
 /* =========================
@@ -662,6 +687,7 @@ h4 {
   color: var(--texto);
 }
 
+
 /* =========================
    TARJETAS DE ASISTENCIA
 ========================= */
@@ -884,6 +910,17 @@ footer {
 }
 
 /* =========================
+   PLAYLIST
+========================= */
+.firulete-playlist{
+  display: block;
+  width: 180px;
+  max-width: 45%;
+  height: auto;
+  margin: 5px auto 5px;
+  
+}
+/* =========================
    CELULAR
 ========================= */
 @media (max-width: 520px) {
@@ -1058,12 +1095,162 @@ footer {
   .modalContenido iframe {
     height: 330px;
   }
+
+  .countdown {
+  gap: 10px;
+  margin-top: 22px;
 }
+
+.time {
+  min-width: 58px;
+}
+
+.time span {
+  font-size: 34px;
+  margin-bottom: 6px;
+}
+
+.time small {
+  font-size: 10px;
+  letter-spacing: .8px;
+}
+
+.count-sep {
+  font-size: 34px;
+}
+
+}
+
+/* =========================
+   PANTALLA DE INICIO
+========================= */
+
+.pantalla-inicio{
+  position: fixed;
+  inset: 0;
+  background: var(--rosa);
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* corazón PNG */
+.loader-corazon-img{
+  width: 120px;
+  height: auto;
+  animation: latido 1.15s infinite ease-in-out;
+  filter: drop-shadow(0 0 18px rgba(255,255,255,.25));
+}
+
+@keyframes latido{
+  0%,100%{
+    transform: scale(1);
+    opacity: .75;
+  }
+  50%{
+    transform: scale(1.22);
+    opacity: 1;
+  }
+}
+
+/* =========================
+   MODAL DE ENTRADA
+========================= */
+.modal-entrada{
+  position: fixed;
+  inset: 0;
+  background: #ead7d0;
+  z-index: 99999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+}
+
+.modal-entrada-contenido{
+  width: min(90%, 420px);
+  padding: 24px;
+}
+
+.corazon-modal{
+  width: 42px;
+  margin-bottom: 26px;
+  opacity: .9;
+}
+
+.modal-pretitle{
+  font-size: 16px;
+  letter-spacing: .08em;
+  color: #7d625c;
+  margin: 0 0 20px;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 16px;
+}
+
+.modal-entrada-contenido h2{
+  font-family: "Dantina", cursive;
+  font-size: 50px;
+  line-height: 1.5;
+  margin: 40px 0 46px;
+  color: #8c6a63;
+  font-weight: normal;
+}
+
+.modal-subtitle{
+  font-size: 14px;
+  letter-spacing: .08em;
+  line-height: 1.9;
+  color: #5a4638;
+  max-width: 300px;
+  margin: 0 auto 30px;
+}
+
+.modal-entrada-contenido button{
+  display: block;
+  width: 100%;
+  max-width: 250px;
+  margin: 12px auto;
+  padding: 12px 20px;
+  border-radius: 20px;
+  border: 1px solid #8c6a63;
+  background: #8c6a63;
+  color: white;
+  font-size: 15px;
+  font-family: Georgia, serif;
+  cursor: pointer;
+}
+
+.modal-entrada-contenido .btn-secundario{
+  background: transparent;
+  color: #8c6a63;
+}
+
   </style>
 </head>
 
 <body>
 
+<div id="pantallaInicio" class="pantalla-inicio">
+  <img src="corazon_blanco.png" alt="" class="loader-corazon-img">
+</div>
+
+<div id="modalEntrada" class="modal-entrada">
+  <div class="modal-entrada-contenido">
+  <p class="modal-pretitle">Bienvenidos a la invitación de</p>
+
+    <h2>Juana</h2>
+
+    <p class="modal-subtitle">
+      La música de fondo es parte de la experiencia
+    </p>
+
+    <button onclick="entrarConMusica()">Ingresar con música</button>
+    <button onclick="entrarSinMusica()" class="btn-secundario">Ingresar sin música</button>
+  </div>
+</div>
 
 
   <audio id="musica" loop>
@@ -1089,39 +1276,67 @@ footer {
   </section>
 
   <section id="info">
-    <img src="icono-fiesta.svg" class="section-icon dress-icon" alt="">
+      <img src="icono_calendario.gif" class="section-icon dress-icon" > 
     <h2>Faltan...</h2>
-
     <div class="countdown">
       <div class="time"><span id="dias">0</span>días</div>
+        <div class="count-sep">:</div>
       <div class="time"><span id="horas">0</span>hs</div>
-      <div class="time"><span id="minutos">0</span>min</div>
+        <div class="count-sep">:</div>
+    <div class="time"><span id="minutos">0</span>min</div>
+        <div class="count-sep">:</div>
       <div class="time"><span id="segundos">0</span>seg</div>
     </div>
   </section>
 
   <section class="light">
-    <img src="icono-frase.svg" class="section-icon dress-icon" alt="">
-    <h2>Galería</h2>
+    <img src="icono_camara.gif" class="section-icon dress-icon" alt="">
     <p>Un recorrido de estos 15 años...</p>
 
     <div class="carousel">
       <img src="carrusel1.png" class="active" alt="Foto 1">
+            <img src="carrusel01.png" class="active" alt="Foto 1">
+
       <img src="carrusel2.png" class="active" alt="Foto 1">
+            <img src="carrusel02.png" class="active" alt="Foto 1">
+
       <img src="carrusel3.png" class="active" alt="Foto 1">
       <img src="carrusel4.png" class="active" alt="Foto 1">
       <img src="carrusel5.png" class="active" alt="Foto 1">
       <img src="carrusel6.png" class="active" alt="Foto 1">
+            <img src="carrusel06.png" class="active" alt="Foto 1">
+
       <img src="carrusel8.png" class="active" alt="Foto 1">
       <img src="carrusel9.png" class="active" alt="Foto 1">
-      <img src="carrusel10.png" class="active" alt="Foto 1">
-      <img src="carrusel11.png" class="active" alt="Foto 1">
-      <img src="carrusel12.png" class="active" alt="Foto 1">
-      <img src="carrusel13.png" class="active" alt="Foto 1">
-      <img src="carrusel14.png" class="active" alt="Foto 1">
-      <img src="carrusel16.png" class="active" alt="Foto 1">
-      <img src="carrusel17.png" class="active" alt="Foto 1">
-      <img src="carrusel18.png" class="active" alt="Foto 1">
+            <img src="carrusel18.png" class="active" alt="Foto 1">
+
+      <img src="carrusel19.png" class="active" alt="Foto 1">
+      <img src="carrusel20.png" class="active" alt="Foto 1">
+      <img src="carrusel21.png" class="active" alt="Foto 1">
+      <img src="carrusel22.jpeg" class="active" alt="Foto 1">
+      <img src="carrusel23.jpeg" class="active" alt="Foto 1">
+      <img src="carrusel24.jpeg" class="active" alt="Foto 1">
+      <img src="carrusel25.jpeg" class="active" alt="Foto 1">
+      <img src="carrusel26.jpeg" class="active" alt="Foto 1">
+
+            <img src="carrusel28.jpeg" class="active" alt="Foto 1">
+                  <img src="carrusel30.jpeg" class="active" alt="Foto 1">
+                        <img src="carrusel31.jpeg" class="active" alt="Foto 1">
+
+      <img src="carrusel33.jpeg" class="active" alt="Foto 1">
+      <img src="carrusel34.jpeg" class="active" alt="Foto 1">
+      <img src="carrusel37.jpeg" class="active" alt="Foto 1">
+      <img src="carrusel38.jpeg" class="active" alt="Foto 1">
+
+            <img src="carrusel100.png" class="active" alt="Foto 1">
+      <img src="carrusel101.jpeg" class="active" alt="Foto 1">
+      <img src="carrusel130.png" class="active" alt="Foto 1">
+      <img src="carrusel145.jpeg" class="active" alt="Foto 1">
+      <img src="carrusel149.png" class="active" alt="Foto 1">
+      <img src="carrusel166.jpeg" class="active" alt="Foto 1">
+
+      <img src="carrusel170.png" class="active" alt="Foto 1">
+
 
 
     </div>
@@ -1130,7 +1345,7 @@ footer {
   </section>
 
   <section class="rosa">
-    <img src="icono-fiesta.svg" class="section-icon dress-icon" alt="">
+    <img src="corazon.png" class="section-icon dress-icon" alt="">
     <h2>Fiesta</h2>
         <p>Hagamos juntos una fiesta épica. </p>
     <p><strong>Sábado 22 de Agosto</strong></p>
@@ -1144,13 +1359,13 @@ footer {
   </section>
 
   <section class="light">
-  <img src="vestuario-negro.png" class="section-icon dress-icon" alt="Vestimenta">    <h2>Dress Code</h2>
-    <p>Una orientación para
-tu vestuario</p>
+  <img src="icono_dress.gif" class="section-icon dress-icon" alt="Vestimenta">    <h2>Dress Code</h2>
+    <p>Orientación para
+tu vestuario :: Formal</br> </p>
   </section>
 
   <section class="rosa">
-    <img src="icono-instagram.svg" class="section-icon dress-icon" alt="">
+    <img src="icono_insta.gif" class="section-icon dress-icon" alt="">
     <h2>Una gran fiesta junto a vos</h2>
     <p>Subí tus fotos y etiquetame.</p>
     <p><strong>@juanita</strong></p>
@@ -1160,18 +1375,22 @@ tu vestuario</p>
     </a>
   </section>
 
-  <section class="light">
-    <img src="icono-canciones.svg" class="section-icon dress-icon"  alt="">
+ <section class="light playlist-section">
+  <div class="playlist-content">
+    <img src="icono_canciones.gif" class="section-icon playlist-icon" alt="">
     <h2>Playlist</h2>
+    <img src="firulete_playlist.png" class="firulete-playlist"  alt="">
+
     <p>Ayudame a elegir las canciones que no pueden faltar.</p>
 
-   <a class="btn" href="#" onclick="abrirCancion(event)">
-     Sugerir canción
-   </a>
-  </section>
+    <a class="btn" href="#" onclick="abrirCancion(event)">
+      Sugerir canción
+    </a>
+  </div>
+</section>
 
   <section class="rosa">
-    <img src="icono-regalo.svg" class="section-icon dress-icon" alt="">
+    <img src="icono_regalo.gif" class="section-icon dress-icon" alt="">
     <h2>Regalo</h2>
     <p>El mejor regalo es que venga mi tía.... asi que todos los regalos son para ella.</p>
 
@@ -1184,7 +1403,7 @@ tu vestuario</p>
   </section>
 
 <section class="light">
-  <img src="icono-frase.svg" class="section-icon" alt="">
+  <img src="icono_asistencia.gif" class="section-icon" alt="">
 
   <h2>Confirmación de asistencia</h2>
 
@@ -1665,6 +1884,33 @@ function cancionGuardada(respuesta) {
   <img id="lightboxImg" src="" alt="">
   <button class="lightbox-next" onclick="cambiarFotoLightbox(1)">›</button>
 </div>
+
+<script>
+  window.addEventListener("load", function () {
+    setTimeout(function () {
+      document.getElementById("pantallaInicio").style.display = "none";
+      document.getElementById("modalEntrada").style.display = "flex";
+    }, 1800);
+  });
+
+  function entrarConMusica() {
+    const musica = document.getElementById("musica");
+    const modal = document.getElementById("modalEntrada");
+    const botonMusica = document.querySelector(".music");
+
+    musica.play();
+    modal.style.display = "none";
+
+    if (botonMusica) {
+      botonMusica.classList.add("playing");
+    }
+  }
+
+  function entrarSinMusica() {
+    const modal = document.getElementById("modalEntrada");
+    modal.style.display = "none";
+  }
+</script>
 
 </body>
 </html>
