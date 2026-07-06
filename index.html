@@ -653,14 +653,55 @@ h4 {
   color: var(--rosa-oscuro);
 }
 
+/* subtítulo general del modal */
 .subtituloAsistencia {
-  margin-top: -2px;
-  margin-bottom: 18px;
-  font-size: 15px;
+  margin: 0 auto 18px;
+  max-width: 420px;
+  font-size: 17px;
+  line-height: 1.42;
   color: rgba(90,70,56,.82);
   font-family: "Quicksand", sans-serif;
   font-weight: 400;
-  letter-spacing: .2px;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.bloque-alimentacion {
+  background: rgba(255,255,255,.92);
+  padding: 22px 16px 16px;
+  margin: 14px auto 12px;
+  border-radius: 22px;
+  max-width: 100%;
+  box-shadow: 0 8px 25px rgba(90,70,56,.08);
+  border: 1px solid rgba(201,167,106,.18);
+  text-align: center;
+}
+
+.bloque-header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.titulo-bloque{
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.12;
+  color: var(--rosa-oscuro);
+  font-weight: normal;
+  text-shadow: none;
+  max-width: 280px;
+}
+
+.bloque-alimentacion .firulete-modal-principal{
+  width: 108px;
+  display: block;
+  margin: 0 auto 2px;
+  opacity: .72;
 }
 
 .modalAsistencia input,
@@ -816,30 +857,32 @@ h4 {
   text-align: center;
 }
 
-.bloque-header {
-  display: grid;
-  grid-template-columns: 28px 1fr 28px;
+.bloque-header{
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 12px;
+  justify-content: center;
+  gap: 6px;
+  text-align: center;
+  margin-bottom: 22px;
 }
 
-.titulo-bloque {
+.titulo-bloque{
   margin: 0;
   font-size: 30px;
-  color: var(--rosa-oscuro);
-  font-family: Georgia, serif;
-  font-weight: normal;
-  letter-spacing: 0;
   line-height: 1.1;
+  color: var(--rosa-oscuro);
+  font-weight: normal;
   text-shadow: none;
 }
 
-.decoracion-hoja,
-.corazon {
-  color: #d9a09b;
-  font-size: 22px;
-  opacity: .85;
+.firulete-modal-principal{
+  width: 120px;
+  display: block;
+  margin: 4px auto 2px;
+  opacity: .65;
 }
+
 
 /* =========================
    DROPDOWN RESTRICCIÓN
@@ -918,8 +961,20 @@ h4 {
 }
 
 .icono-opcion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
   color: #d9a09b;
   font-size: 20px;
+}
+
+.icono-opcion img{
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: block;
 }
 
 .check-opcion {
@@ -1074,29 +1129,42 @@ h4 {
     transform: none;
   }
 
-  .modalAsistenciaContenidoGrande h2,
-  .titulo-bloque {
-    font-size: 22px;
-    font-family: Georgia, serif;
-    font-weight: normal;
-  }
+  .modalAsistenciaContenidoGrande h2 {
+  font-size: 22px;
+  font-family: Georgia, serif;
+  font-weight: normal;
+}
 
-  .subtituloAsistencia {
-    font-size: 13px;
-    margin-bottom: 8px;
-  }
+.titulo-bloque {
+  font-size: 24px;
+  line-height: 1.12;
+  max-width: 240px;
+}
 
-  .cerrarAsistencia {
-    top: 7px;
-    right: 12px;
-    font-size: 27px;
-  }
+.subtituloAsistencia {
+  font-size: 14px;
+  line-height: 1.38;
+  margin: 0 auto 10px;
+  max-width: 290px;
+}
 
-  .firulete-modal-principal {
-    width: 88px;
-    margin: 0 auto 10px;
-    opacity: .75;
-  }
+.bloque-alimentacion .subtituloAsistencia{
+  font-size: 14px;
+  line-height: 1.38;
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+.bloque-header{
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.bloque-alimentacion .firulete-modal-principal{
+  width: 86px;
+  margin: 0 auto 2px;
+  opacity: .72;
+}
 
   .respuesta-invitado {
     padding: 10px 10px 11px;
@@ -1131,16 +1199,7 @@ h4 {
     margin: 10px auto 8px;
     border-radius: 18px;
   }
-
-  .bloque-header {
-    grid-template-columns: 22px 1fr 22px;
-    margin-bottom: 8px;
-  }
-
-  .decoracion-hoja,
-  .corazon {
-    font-size: 17px;
-  }
+  
 
   .dropdown-boton,
   .modalAsistencia input,
@@ -1711,11 +1770,15 @@ function cerrarAsistencia() {
 
 
 
-      <div class="bloque-alimentacion">
+<div class="bloque-alimentacion">
   <div class="bloque-header">
-    <span class="decoracion-hoja">⌞</span>
     <h2 class="titulo-bloque">Restricción alimentaria</h2>
-    <span class="corazon">❤</span>
+
+    <img src="firulete.png" class="firulete-modal-principal" alt="">
+
+    <p class="subtituloAsistencia">
+      Indicá si necesitás algún menú especial.
+    </p>
   </div>
 
   <div class="dropdown-delicado" id="dropdownRestriccion">
@@ -1726,26 +1789,32 @@ function cerrarAsistencia() {
 
     <div class="dropdown-menu-delicado" id="menuRestriccion">
       <button type="button" onclick="elegirRestriccion('ninguna', 'No')">
-        <span class="icono-opcion">⌞</span>
-        <span>No</span>
+        <span class="icono-opcion">
+          <img src="icono_hojitas.png" alt="">
+        </span>        <span>No</span>
         <span class="check-opcion" id="check_ninguna">✓</span>
       </button>
 
       <button type="button" onclick="elegirRestriccion('vegano_vegetariano', 'Vegano / Vegetariano')">
-        <span class="icono-opcion">♡</span>
+        <span class="icono-opcion">
+          <img src="icono_vegano.png" alt="">
+        </span>
         <span>Vegano / Vegetariano</span>
         <span class="check-opcion" id="check_vegano_vegetariano">✓</span>
       </button>
 
       <button type="button" onclick="elegirRestriccion('celiaco', 'Celíaco / Sin TACC')">
-        <span class="icono-opcion">◎</span>
+        <span class="icono-opcion">
+          <img src="icono_celiaco.png" alt="">
+        </span>
         <span>Celíaco / Sin TACC</span>
         <span class="check-opcion" id="check_celiaco">✓</span>
       </button>
 
       <button type="button" onclick="elegirRestriccion('otra', 'Otra')">
-        <span class="icono-opcion">…</span>
-        <span>Otra</span>
+        <span class="icono-opcion">
+          <img src="icono_otro.png" alt="">
+        </span>        <span>Otra</span>
         <span class="check-opcion" id="check_otra">✓</span>
       </button>
     </div>
