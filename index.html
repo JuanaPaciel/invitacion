@@ -7,14 +7,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Quicksand:wght@300;400;600;700&display=swap&family=Qwitcher+Grypen:wght@700&display=swap" rel="stylesheet">
-
-
-
+  <link rel="icon" type="png" href="favicon_juana.png">
+  <link rel="apple-touch-icon" href="favicon_juana.png">
  <style>
 :root {
   --fondo: #f6eee8;
   --claro: #fffaf6;
   --rosa: #9d576b;
+  --rosado-oscuro: #844f5b;
+
   --rosa-viejo: #ead7d0;
   --rosa-oscuro: #8c6a63;
   --dorado: #c9a76a;
@@ -71,7 +72,7 @@ h1 {
 h2 {
   font-size: 30px;
   color: var(--rosa-oscuro);
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   font-family: Georgia, serif;
   font-weight: normal;
   letter-spacing: 0;
@@ -86,7 +87,7 @@ h3 {
 }
 
 h4 {
-  font-size: 20px;
+  font-size: 22px;
   color: var(--claro);
   margin-bottom: -12px;
   font-weight: normal;
@@ -262,14 +263,22 @@ h4 {
    ICONOS
 ========================= */
 .section-icon {
-  width: 72px;
-  height: 72px;
+  width: 65px;
+  height: auto;
   margin-bottom: 5px;
   opacity: .85;
 }
 
+.section-icon2 {
+  width: 140px;
+  height: auto;
+  margin-bottom: 1px;
+  transform-origin: center bottom;
+  animation: dressFloat 3.5s ease-in-out infinite;
+}
+
 .dress-icon {
-  width: 90px;
+  width: 100px;
   height: auto;
   opacity: .95;
   transform-origin: center bottom;
@@ -346,7 +355,7 @@ h4 {
 
 .time span {
   display: block;
-  font-size: 44px;
+  font-size: 50px;
   font-weight: 300;
   line-height: 1;
   color: white;
@@ -355,14 +364,14 @@ h4 {
 
 .time small {
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   letter-spacing: 1px;
   color: #fff;
 }
 
 .count-sep {
-  font-size: 52px;
+  font-size: 45px;
   line-height: 1;
   font-weight: 300;
   color: #fff;
@@ -370,6 +379,47 @@ h4 {
   transform: translateY(0px);
 }
 
+
+/* =========================
+   REGALOS
+========================= */
+
+.modal-cuenta{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.55);
+  z-index:9999;
+  justify-content:center;
+  align-items:center;
+}
+
+.modal-cuenta-contenido{
+  width:min(92%,430px);
+  background:var(--claro);
+  border-radius:24px;
+  padding:32px 24px;
+  text-align:center;
+  position:relative;
+  box-shadow:0 15px 40px rgba(0,0,0,.25);
+}
+
+.cerrarCuenta{
+  position:absolute;
+  right:20px;
+  top:12px;
+  font-size:32px;
+  cursor:pointer;
+  color:var(--rosa-oscuro);
+}
+
+.modal-cuenta-contenido h2{
+  margin-top:0;
+}
+
+.modal-cuenta-contenido p{
+  margin:10px 0;
+}
 /* =========================
    MÚSICA
 ========================= */
@@ -440,13 +490,13 @@ h4 {
 .carousel-dots {
   display: flex;
   justify-content: center;
-  gap: 9px;
-  margin-top: 16px;
+  gap: 8px;
+  margin-top: 10px;
 }
 
 .carousel-dots button {
-  width: 10px;
-  height: 10px;
+  width: 8%;
+  height: 8%;
   border-radius: 50%;
   border: none;
   background: rgba(140,84,88,.35);
@@ -901,12 +951,44 @@ h4 {
 /* =========================
    FOOTER
 ========================= */
-footer {
-  padding: 32px;
-  font-size: 14px;
-  background: #d9bdb5;
-  position: relative;
-  z-index: 2;
+
+.footer-invitacion{
+  background: var(--rosado-oscuro);   /* mismo rosa del modal de entrada */
+  color: white;
+
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+
+  /* más alto para que entre la J completa */
+  padding: 38px 48px;
+  min-height: 230px;
+
+  overflow: visible;
+}
+
+.footer-nombre{
+  font-family: "Dantina", cursive;
+  font-size: 50px;   /* grande, pero ahora con alto suficiente */
+  line-height: .9;
+  color: white;
+  margin: 0;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.footer-frase{
+  color: var(--rosa-viejo);
+  text-align: right;
+  font-size: 18px;
+  line-height: 1.4;
+  max-width: 460px;
+  margin: 0;
 }
 
 /* =========================
@@ -945,7 +1027,6 @@ footer {
     font-size: 16px;
   }
 
-@media (max-width: 520px) {
   .hero {
     min-height: 1000px;
     padding-top: 20px;
@@ -959,7 +1040,7 @@ footer {
     font-size: 4.7rem;
     line-height: 1.05;
   }
-}
+
 
   .mis::before,
   .mis::after {
@@ -1119,6 +1200,28 @@ footer {
   font-size: 34px;
 }
 
+.footer-invitacion{
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  padding: 28px 20px;
+  min-height: auto;
+}
+
+.footer-nombre{
+  font-size: 75px;
+  line-height: .9;
+}
+
+.footer-frase{
+  text-align: center;
+  font-size: 15px;
+  max-width: 280px;
+}
+
+
 }
 
 /* =========================
@@ -1276,7 +1379,7 @@ footer {
   </section>
 
   <section id="info">
-      <img src="icono_calendario.gif" class="section-icon dress-icon" > 
+      <img src="icono_calendario.gif" class="section-icon" > 
     <h2>Faltan...</h2>
     <div class="countdown">
       <div class="time"><span id="dias">0</span>días</div>
@@ -1290,8 +1393,8 @@ footer {
   </section>
 
   <section class="light">
-    <img src="icono_camara.gif" class="section-icon dress-icon" alt="">
-    <p>Un recorrido de estos 15 años...</p>
+    <img src="icono_camara.gif" class="section-icon" alt="">
+    <h2>Un recorrido de estos 15 años...</h2>
 
     <div class="carousel">
       <img src="carrusel1.png" class="active" alt="Foto 1">
@@ -1345,10 +1448,9 @@ footer {
   </section>
 
   <section class="rosa">
-    <img src="corazon.png" class="section-icon dress-icon" alt="">
-    <h2>Fiesta</h2>
+    <img src="corazon_blanco.png" class="section-icon2" alt="">
         <p>Hagamos juntos una fiesta épica. </p>
-    <p><strong>Sábado 22 de Agosto</strong></p>
+    <h2 class="roboto-condensed-fon"t><strong>Sábado 22 de Agosto</strong></h2>
     <p>21:00 a 05:00 hs</p>
     <p>Club Unión de Melo<br>Saravia 1212 - Melo</p>
 
@@ -1359,13 +1461,13 @@ footer {
   </section>
 
   <section class="light">
-  <img src="icono_dress.gif" class="section-icon dress-icon" alt="Vestimenta">    <h2>Dress Code</h2>
+  <img src="icono_dress.gif" class="section-icon" alt="Vestimenta">    <h2>Dress Code</h2>
     <p>Orientación para
 tu vestuario :: Formal</br> </p>
   </section>
 
   <section class="rosa">
-    <img src="icono_insta.gif" class="section-icon dress-icon" alt="">
+    <img src="icono_insta.gif" class="section-icon" alt="">
     <h2>Una gran fiesta junto a vos</h2>
     <p>Subí tus fotos y etiquetame.</p>
     <p><strong>@juanita</strong></p>
@@ -1379,9 +1481,7 @@ tu vestuario :: Formal</br> </p>
   <div class="playlist-content">
     <img src="icono_canciones.gif" class="section-icon playlist-icon" alt="">
     <h2>Playlist</h2>
-    <img src="firulete_playlist.png" class="firulete-playlist"  alt="">
-
-    <p>Ayudame a elegir las canciones que no pueden faltar.</p>
+    <p>Qué canción no pueden faltar?</p>
 
     <a class="btn" href="#" onclick="abrirCancion(event)">
       Sugerir canción
@@ -1390,17 +1490,32 @@ tu vestuario :: Formal</br> </p>
 </section>
 
   <section class="rosa">
-    <img src="icono_regalo.gif" class="section-icon dress-icon" alt="">
-    <h2>Regalo</h2>
-    <p>El mejor regalo es que venga mi tía.... asi que todos los regalos son para ella.</p>
+    <img src="icono_regalo.gif" class="section-icon" alt="">
+    <h2>Regalos</h2>
+    <p>El mejor regalo es que vengas,
+pero si deseás regalarme algo más que tu presencia...</br>
+¡Muchas gracias!</p>
+<a class="btn" href="#" onclick="abrirCuenta(event)">
+    Ver datos de cuenta
+  </a>
 
-    <p>
-      <strong>Datos bancarios</strong><br>
-      Titular: Nombre Apellido<br>
-      Alias: mis15.Juni<br>
-      Banco: Banco Ejemplo
-    </p>
+
   </section>
+
+  <div id="modalCuenta" class="modal-cuenta">
+  <div class="modal-cuenta-contenido">
+    <span class="cerrarCuenta" onclick="cerrarCuenta()">&times;</span>
+
+    <h2>Datos de cuenta</h2>
+
+    <p><strong>Banco:</strong> BROU</p>
+    <p><strong>Titular:</strong> Nombre Apellido</p>
+    <p><strong>Cuenta:</strong> 000000000000</p>
+    <p><strong>Moneda:</strong> Pesos uruguayos</p>
+
+    <button class="btn" onclick="copiarCuenta()">Copiar datos</button>
+  </div>
+</div>
 
 <section class="light">
   <img src="icono_asistencia.gif" class="section-icon" alt="">
@@ -1418,9 +1533,12 @@ tu vestuario :: Formal</br> </p>
   </a>
 </section>
 
-  <footer>
-    Para Juanita!!!! de Titi ❤ ❤ ❤ ❤ ❤ 
-  </footer>
+<footer class="footer-invitacion">
+  <div class="footer-nombre">Juana</div>
+  <div class="footer-frase">
+    Me encantaría compartir este momento contigo.
+  </div>
+</footer>
 
   <script>
     const fechaFiesta = new Date("2026-08-22T21:00:00").getTime();
@@ -1692,7 +1810,6 @@ function mostrarInvitados(invitados) {
     listaModal.innerHTML += `
       <div class="respuesta-invitado">
         <strong class="nombre-invitado"> ${inv.nombre}</strong>
-        <img src="firulete-nombre.png" class="firulete-invitado" alt="">
         <div class="opciones-asistencia">
           <label>
             <input type="radio" name="estado_${inv.fila}" value="asiste">
@@ -1910,7 +2027,30 @@ function cancionGuardada(respuesta) {
     const modal = document.getElementById("modalEntrada");
     modal.style.display = "none";
   }
+
+  
 </script>
+<script>
+function abrirCuenta(event){
+  event.preventDefault();
+  document.getElementById("modalCuenta").style.display = "flex";
+}
+
+function cerrarCuenta(){
+  document.getElementById("modalCuenta").style.display = "none";
+}
+
+function copiarCuenta(){
+  const datos = `Banco: BROU
+Titular: Nombre Apellido
+Cuenta: 000000000000
+Moneda: Pesos uruguayos`;
+
+  navigator.clipboard.writeText(datos);
+  alert("Datos copiados");
+}
+</script>
+
 
 </body>
 </html>
