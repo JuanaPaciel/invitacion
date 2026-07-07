@@ -425,21 +425,35 @@ h4 {
 ========================= */
 .music {
   position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  background: transparent;
-  border: none;
+  top: 18px;
+  right: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 999px;
+  padding: 8px 12px 8px 10px;
   cursor: pointer;
   z-index: 999;
-  padding: 0;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .music img {
-  width: 100%;
-  opacity: .40;
+  width: 24px;
+  height: 24px;
+  opacity: .75;
   transition: all .25s;
+}
+
+.music span {
+  color: white;
+  font-family: "Quicksand", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .2px;
+  white-space: nowrap;
 }
 
 .music.playing img {
@@ -447,7 +461,7 @@ h4 {
 }
 
 .music:active img {
-  transform: scale(1.35);
+  transform: scale(1.15);
 }
 
 @keyframes respirar {
@@ -1285,6 +1299,22 @@ h4 {
   max-width: 280px;
 }
 
+.music {
+  top: 14px;
+  right: 14px;
+  padding: 7px 10px 7px 9px;
+  gap: 6px;
+}
+
+.music img {
+  width: 22px;
+  height: 22px;
+}
+
+.music span {
+  font-size: 12px;
+}
+
 
 }
 
@@ -1426,6 +1456,7 @@ h4 {
 
   <button class="music" onclick="toggleMusic()">
       <img src="musica.png" alt="Música">
+        <span id="musicLabel">Dale Play!</span>
   </button>
 
   <section class="hero">
@@ -1640,18 +1671,23 @@ Muchas gracias!</p>
     actualizarCuenta();
     setInterval(actualizarCuenta, 1000);
 
-    function toggleMusic() {
-        const musica = document.getElementById("musica");
-        const boton = document.querySelector(".music");
 
-        if (musica.paused) {
-            musica.play();
-            boton.classList.add("playing");
-        } else {
-            musica.pause();
-            boton.classList.remove("playing");
-        }
+    function toggleMusic() {
+      const musica = document.getElementById("musica");
+      const boton = document.getElementById("musicBtn");
+      const label = document.getElementById("musicLabel");
+
+      if (musica.paused) {
+        musica.play();
+        boton.classList.add("playing");
+        label.textContent = "Pausar";
+      } else {
+        musica.pause();
+        boton.classList.remove("playing");
+        label.textContent = "Dale Play!";
+      }
     }
+
 
 let fotoActual = 0;
 const fotos = document.querySelectorAll(".carousel img");
@@ -2098,7 +2134,8 @@ function cancionGuardada(respuesta) {
   function entrarConMusica() {
     const musica = document.getElementById("musica");
     const modal = document.getElementById("modalEntrada");
-    const botonMusica = document.querySelector(".music");
+    const botonMusica = document.getElementById("musicBtn");
+    const label = document.getElementById("musicLabel");
 
     musica.play();
     modal.style.display = "none";
@@ -2106,11 +2143,24 @@ function cancionGuardada(respuesta) {
     if (botonMusica) {
       botonMusica.classList.add("playing");
     }
+    if (label) {
+      label.textContent = "Pausar";
+    }
   }
 
   function entrarSinMusica() {
     const modal = document.getElementById("modalEntrada");
+    const botonMusica = document.getElementById("musicBtn");
+    const label = document.getElementById("musicLabel");
+
     modal.style.display = "none";
+
+    if (botonMusica) {
+      botonMusica.classList.remove("playing");
+    }
+    if (label) {
+      label.textContent = "Dale Play!";
+    }
   }
 
   
