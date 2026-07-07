@@ -1,0 +1,2107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Juana  •  Mis 15 años</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Quicksand:wght@300;400;600;700&display=swap&family=Qwitcher+Grypen:wght@700&display=swap" rel="stylesheet">
+
+  <link rel="icon" type="png" href="favicon_juana.png">
+  <link rel="apple-touch-icon" href="favicon_juana.png">
+
+  <style>
+    :root {
+      --fondo: #FBF6F2;
+      --claro: #FFFDFB;
+      --nude: #F2E4DC;
+      --rosa: #D8B0A7;
+      --rosa-viejo: #EAD7D0;
+      --rosa-oscuro: #9A746C;
+      --texto: #624417;
+      --oscuro: #523528;
+
+      --azul-claro: #DCE3EC;
+      --azul: #6C7F99;
+      --azul-oscuro: #52657F;
+      --azul-footer: #5A6E88;
+      --azul-suave: #8FA0B4;
+
+      --blanco: rgba(255,255,255,.58);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    @font-face {
+      font-family: "Dantina";
+      src: url("Dantina.ttf") format("truetype");
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    body {
+      margin: 0;
+      font-family: Georgia, serif;
+      background: var(--fondo);
+      color: var(--texto);
+      text-align: center;
+    }
+
+    section {
+      padding: 35px 15px;
+      max-width: 560px;
+      margin: auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.5;
+      margin-bottom: 10px;
+      color: #5D4A42;
+    }
+
+    h1 {
+      font-family: "Dantina", cursive;
+      font-size: 70px;
+      font-weight: 300;
+      line-height: 2.5;
+      margin: 25px 0;
+      color: var(--claro);
+    }
+
+    h2 {
+      font-size: 30px;
+      color: #8F6F68;
+      margin-bottom: 5px;
+      font-family: Georgia, serif;
+      font-weight: normal;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      font-size: 40px;
+      color: var(--fondo);
+      margin-bottom: -5px;
+      font-weight: normal;
+      text-shadow: 3px 5px 10px rgba(0,0,0,.60);
+    }
+
+    h4 {
+      font-size: 22px;
+      color: var(--claro);
+      margin-bottom: -12px;
+      font-weight: normal;
+      text-shadow: 5px 5px 10px rgba(0,0,0,.90);
+    }
+
+    .light {
+      background: #FBF8F5;
+      max-width: none;
+    }
+
+    .rosa,
+    #info {
+      background: #F4ECE3;
+      max-width: none;
+    }
+
+    .light > *,
+    .rosa > *,
+    #info > * {
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero {
+      max-width: none;
+      min-height: 100vh;
+      background:
+        linear-gradient(rgba(60,35,20,.16), rgba(60,35,20,.22)),
+        url("Juanita3.png") center top / cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 35px 20px;
+    }
+
+    .box-nombres-fecha-portada {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .nombre {
+      font-family: "Dantina", cursive;
+      font-size: 5rem;
+    }
+
+    .mis {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .mis::before,
+    .mis::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 120px;
+      height: 1px;
+      background: rgba(255,255,255,.9);
+    }
+
+    .mis::before { right: calc(100% + 18px); }
+    .mis::after { left: calc(100% + 18px); }
+
+    .fecha {
+      display: block;
+      font-size: 24px;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,.85);
+      text-shadow: 5px 5px 10px rgba(0,0,0,.85);
+    }
+
+    .fecha-recuadro {
+      border: 1px solid #fff;
+      padding: 10px 18px;
+      color: #fff;
+      letter-spacing: 8px;
+    }
+
+    .frase-portada {
+      font-size: 16px;
+      line-height: 1.35;
+      font-weight: normal;
+      max-width: 320px;
+      margin: 10px auto 18px;
+    }
+
+    /* =========================
+       FIRULETES
+    ========================= */
+    .firulete {
+      display: block;
+      width: 80px;
+      max-width: 50%;
+      margin: 0 auto;
+      opacity: .15;
+      animation: fadeFirulete 1.8s ease forwards;
+      pointer-events: none;
+    }
+
+    .firulete-arriba { margin-bottom: -16px; }
+
+    .firulete-abajo {
+      margin-top: -16px;
+      margin-bottom: 8px;
+      animation: fadeFiruleteInvertido 1.8s ease forwards;
+      animation-delay: .4s;
+    }
+
+    .firulete-modal-principal {
+      width: 120px;
+      display: block;
+      margin: -6px auto 14px;
+      opacity: .9;
+    }
+
+    .firulete-portada {
+      width: 240px;
+      display: block;
+      margin: -6px auto 14px;
+      opacity: .5;
+    }
+
+    .firulete-portada-azul {
+      width: 200px;
+      display: block;
+      margin: 5px auto 18px;
+filter: brightness(0) saturate(100%) invert(42%) sepia(18%) saturate(620%) hue-rotate(176deg) brightness(92%) contrast(90%);      opacity: .8;
+    }
+
+    .firulete-modal-azul{
+  display: block;
+  width: 130px !important;
+  max-width: 130px !important;
+  height: auto !important;
+  margin: 5px auto 18px !important;
+  opacity: .4 !important;
+  position: relative;
+  z-index: 2;
+
+  filter: brightness(0) saturate(100%)
+          invert(48%) sepia(14%) saturate(572%)
+          hue-rotate(174deg) brightness(88%) contrast(92%) !important;
+  -webkit-filter: brightness(0) saturate(100%)
+          invert(48%) sepia(14%) saturate(572%)
+          hue-rotate(174deg) brightness(88%) contrast(92%) !important;
+}
+
+#modalCuenta .firulete-modal-azul,
+#modalAsistencia .firulete-modal-azul,
+#modalCancion .firulete-modal-azul{
+  width: 140px !important;
+  max-width: 140px !important;
+  margin: 10px auto 18px !important;
+  opacity: .95 !important;
+}
+
+    .firulete-invitado {
+      width: 68px;
+      display: block;
+      margin: -4px auto 8px;
+      opacity: .75;
+    }
+
+    @keyframes fadeFirulete {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: .45; transform: translateY(0); }
+    }
+
+    @keyframes fadeFiruleteInvertido {
+      from { opacity: 0; transform: rotate(180deg) translateY(-10px); }
+      to   { opacity: .45; transform: rotate(180deg) translateY(0); }
+    }
+
+    /* =========================
+       ICONOS
+    ========================= */
+    .section-icon {
+      width: 65px;
+      height: auto;
+      margin-bottom: 5px;
+      opacity: .85;
+      filter: grayscale(.25) sepia(.10) saturate(.65);
+    }
+
+    .section-icon2 {
+      width: 140px;
+      height: auto;
+      margin-bottom: 1px;
+      transform-origin: center bottom;
+      animation: dressFloat 3.5s ease-in-out infinite;
+      filter: grayscale(.25) sepia(.10) saturate(.65);
+    }
+
+    .dress-icon {
+      width: 100px;
+      height: auto;
+      opacity: .95;
+      transform-origin: center bottom;
+      animation: dressFloat 3.5s ease-in-out infinite;
+      filter: grayscale(.25) sepia(.10) saturate(.65);
+    }
+
+    @keyframes dressFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+      50%      { transform: translateY(-8px) rotate(2deg) scale(1.05); }
+    }
+
+    /* =========================
+       BOTONES
+    ========================= */
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      background: linear-gradient(135deg,#7a8798,#617083);
+      color: #fff;
+      padding: 11px 26px;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 16px;
+      font-family: "Quicksand", sans-serif;
+      font-weight: 600;
+      letter-spacing: .4px;
+      cursor: pointer;
+      box-shadow: 0 10px 22px rgba(97,112,131,.20);
+      transition: all .25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(135deg,#6f7d90,#556579);
+      box-shadow: 0 12px 24px rgba(85,101,121,.24);
+    }
+
+    .btn:focus,
+    .btn:active {
+      outline: none;
+      border: none;
+    }
+
+    /* =========================
+       CUENTA REGRESIVA
+    ========================= */
+    .countdown {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 34px;
+      margin-top: 25px;
+      flex-wrap: nowrap;
+    }
+
+    .time {
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      width: auto;
+      min-width: 70px;
+      padding: 0;
+      color: white;
+      font-family: "Quicksand", sans-serif;
+      text-transform: uppercase;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-shadow: 1px 5px 10px rgba(0, 0, 0, 0.177);
+
+    }
+
+    .time span {
+      display: block;
+      font-size: 50px;
+      font-weight: 300;
+      line-height: 1;
+      color: white;
+      margin-bottom: 10px;
+    }
+
+    .time small {
+      display: block;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .count-sep {
+      font-size: 45px;
+      line-height: 1;
+      font-weight: 300;
+      color: #fff;
+      margin-top: 0;
+      transform: translateY(0px);
+    }
+
+    /* =========================
+       MODAL CUENTA
+    ========================= */
+    .modal-cuenta{
+      display:none;
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.55);
+      z-index:9999;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .modal-cuenta-contenido{
+      width:min(92%,430px);
+      background: #FFFDFB;
+      border-radius:24px;
+      padding:32px 24px;
+      text-align:center;
+      position:relative;
+      box-shadow:0 15px 40px rgba(0,0,0,.25);
+      border: 1px solid rgba(216,176,167,.22);
+    }
+
+    .cerrarCuenta{
+      position:absolute;
+      right:20px;
+      top:12px;
+      font-size:32px;
+      cursor:pointer;
+      color: var(--rosa-oscuro);
+    }
+
+    .modal-cuenta-contenido h2{ margin-top:0; }
+    .modal-cuenta-contenido p{ margin:10px 0; }
+
+    /* =========================
+       MÚSICA
+    ========================= */
+    .music {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      width: 58px;
+      height: 58px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      background: rgba(82,101,127,.24);
+      border: 1px solid rgba(255,255,255,.24);
+      border-radius: 5px;
+      padding: 6px;
+      cursor: pointer;
+      z-index: 999;
+      backdrop-filter: blur(2px);
+      -webkit-backdrop-filter: blur(2px);
+      box-shadow: 0 6px 14px rgba(0,0,0,.10);
+    }
+
+    .music img {
+      width: 20px;
+      height: 20px;
+      opacity: .60;
+    }
+
+    .music span {
+      color: rgba(255,255,255,.88);
+      font-family: "Quicksand", sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      line-height: 1;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .music.playing img {
+      animation: respirar 2.2s infinite ease-in-out;
+    }
+
+    .music:active img {
+      transform: scale(1.12);
+    }
+
+    @keyframes respirar {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.12); }
+    }
+
+    /* =========================
+       CARRUSEL
+    ========================= */
+    .carousel {
+      position: relative;
+      margin-top: 25px;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(90,70,56,.2);
+      border: 1px solid rgba(201,167,106,.35);
+    }
+
+    .carousel img {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+      object-position: center top;
+      display: none;
+      cursor: pointer;
+    }
+
+    .carousel img.active {
+      display: block;
+      animation: fade .8s ease;
+    }
+
+    @keyframes fade {
+      from { opacity: .3; }
+      to { opacity: 1; }
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+      flex-wrap: wrap;
+    }
+
+    .carousel-dots button {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(140, 106, 99, 0.35);
+      cursor: pointer;
+      padding: 0;
+      transition: all .25s ease;
+    }
+
+    .carousel-dots button.active {
+      background: var(--azul);
+      transform: scale(1.2);
+    }
+
+    /* =========================
+       LIGHTBOX
+    ========================= */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.88);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox img {
+      max-width: 92vw;
+      max-height: 82vh;
+      object-fit: contain;
+    }
+
+    .lightbox-close,
+    .lightbox-prev,
+    .lightbox-next {
+      position: fixed;
+      background: rgba(255,255,255,.18);
+      color: white;
+      border: none;
+      cursor: pointer;
+      z-index: 10001;
+    }
+
+    .lightbox-close {
+      top: 20px;
+      right: 22px;
+      font-size: 34px;
+      background: transparent;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 28px;
+    }
+
+    .lightbox-prev { left: 18px; }
+    .lightbox-next { right: 18px; }
+
+    /* =========================
+       MODAL MAPA
+    ========================= */
+    .modalMapa {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modalContenido {
+      width: min(92%,700px);
+      background: white;
+      border-radius: 25px;
+      padding: 25px;
+      text-align: center;
+      position: relative;
+      animation: zoom .35s;
+    }
+
+    .modalContenido iframe {
+      width: 100%;
+      height: 420px;
+      border: none;
+      border-radius: 18px;
+      margin: 20px 0;
+    }
+
+    .cerrarMapa {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      font-size: 34px;
+      cursor: pointer;
+    }
+
+    @keyframes zoom {
+      from {
+        opacity: 0;
+        transform: scale(.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* =========================
+       MODAL ASISTENCIA
+    ========================= */
+    .modalAsistencia {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modalAsistenciaContenido {
+      width: min(92%, 430px);
+      background: #FFFDFB;
+      border-radius: 24px;
+      padding: 30px 24px 24px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 18px 45px rgba(90,70,56,.18);
+      border: 1px solid rgba(209,176,168,.18);
+      animation: aparecerModal .35s ease;
+    }
+
+    .modalAsistenciaContenidoGrande {
+      width: min(90%, 500px);
+      max-height: 84vh;
+      overflow-y: auto;
+      padding: 26px 18px 22px;
+    }
+
+    .cerrarAsistencia {
+      position: absolute;
+      right: 18px;
+      top: 10px;
+      font-size: 32px;
+      cursor: pointer;
+      color: var(--rosa-oscuro);
+    }
+
+    .subtituloAsistencia {
+      margin: 0 auto 18px;
+      max-width: 420px;
+      font-size: 17px;
+      line-height: 1.42;
+      color: rgba(90,70,56,.82);
+      font-family: "Quicksand", sans-serif;
+      font-weight: 400;
+      letter-spacing: 0;
+      text-align: center;
+    }
+
+    .bloque-alimentacion {
+      background: rgba(255,255,255,.92);
+      padding: 18px 14px 16px;
+      margin: 14px auto 12px;
+      border-radius: 22px;
+      max-width: 100%;
+      box-shadow: 0 8px 25px rgba(90,70,56,.08);
+      border: 1px solid rgba(201,167,106,.18);
+      text-align: center;
+    }
+
+    .bloque-header{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .titulo-bloque{
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.1;
+      color: var(--rosa-oscuro);
+      font-weight: normal;
+      text-shadow: none;
+    }
+
+    .modalAsistencia input,
+    .modalAsistencia select,
+    .modalAsistencia textarea {
+      width: 100%;
+      padding: 12px 14px;
+      margin: 8px 0;
+      border-radius: 10px;
+      border: 1px solid rgba(209,176,168,.55);
+      background: rgba(255,255,255,.88);
+      color: var(--texto);
+      font-size: 15px;
+      font-family: "Quicksand", sans-serif;
+      font-weight: 400;
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .modalAsistencia input::placeholder,
+    .modalAsistencia textarea::placeholder {
+      color: rgba(90,70,56,.55);
+    }
+
+    .modalAsistencia input:focus,
+    .modalAsistencia textarea:focus,
+    .dropdown-boton:focus {
+      border-color: #c8928b;
+      box-shadow: 0 0 0 3px rgba(221,184,177,.18);
+    }
+
+    .modalAsistencia textarea {
+      min-height: 78px;
+      resize: none;
+    }
+
+    #errorAsistencia,
+    #errorCancion {
+      color: #a94442;
+      font-size: 15px;
+    }
+
+    @keyframes aparecerModal {
+      from {
+        opacity: 0;
+        transform: scale(.85);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* =========================
+       LISTA INVITADOS
+    ========================= */
+    #listaInvitados {
+      margin: 22px auto 30px;
+      max-width: 360px;
+      text-align: center;
+    }
+
+    #listaInvitados .invitado-item {
+      display: block;
+      width: 100%;
+    }
+
+    .invitado-item {
+      background: transparent;
+      padding: 7px 0;
+      margin: 4px auto;
+      border: none;
+      border-bottom: 1px solid rgba(201,167,106,.22);
+      max-width: 300px;
+      font-size: 20px;
+      text-align: center;
+      color: var(--texto);
+    }
+
+    /* =========================
+       TARJETAS DE ASISTENCIA
+    ========================= */
+    .respuesta-invitado {
+      background: rgba(255,255,255,.92);
+      padding: 16px 14px;
+      margin: 11px auto;
+      border-radius: 22px;
+      max-width: 100%;
+      box-shadow: 0 8px 25px rgba(90,70,56,.08);
+      border: 1px solid rgba(201,167,106,.20);
+      text-align: center;
+    }
+
+    .nombre-invitado {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 22px;
+      color: var(--rosa-oscuro);
+      font-family: Georgia, serif;
+      font-weight: normal;
+      line-height: 1.1;
+    }
+
+    .opciones-asistencia {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .opciones-asistencia input {
+      display: none;
+    }
+
+    .opciones-asistencia span {
+      display: inline-block;
+      min-width: 104px;
+      padding: 9px 14px;
+      border-radius: 28px;
+      background: #f7e8e6;
+      color: #8e6c67;
+      cursor: pointer;
+      border: 1px solid rgba(209,176,168,.42);
+      font-size: 14px;
+      font-family: "Quicksand", sans-serif;
+      font-weight: 500;
+      letter-spacing: .2px;
+      transition: .22s ease;
+    }
+
+    .opciones-asistencia span:hover {
+      background: #f2ddda;
+    }
+
+    .opciones-asistencia input:checked + span {
+      background: linear-gradient(135deg,#D8B0A7,#C8928B);
+      color: white;
+      border-color: transparent;
+      box-shadow: 0 8px 18px rgba(200,146,139,.22);
+    }
+
+    /* =========================
+       DROPDOWN RESTRICCIÓN
+    ========================= */
+    .dropdown-delicado {
+      position: relative;
+      width: 100%;
+    }
+
+    .dropdown-boton {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 8px;
+      border: 1px solid rgba(209,176,168,.55);
+      background: rgba(255,255,255,.88);
+      color: var(--texto);
+      font-family: "Quicksand", sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #flechaRestriccion {
+      font-size: 22px;
+      color: var(--rosa-oscuro);
+      transition: transform .25s ease;
+    }
+
+    .dropdown-delicado.abierto #flechaRestriccion {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu-delicado {
+      display: none;
+      margin-top: 8px;
+      background: rgba(255,255,255,.98);
+      border: 1px solid rgba(223,169,165,.30);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 12px 24px rgba(90,70,56,.10);
+      animation: abrirDropdown .25s ease;
+    }
+
+    .dropdown-delicado.abierto .dropdown-menu-delicado {
+      display: block;
+    }
+
+    .dropdown-menu-delicado button {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(209,176,168,.14);
+      padding: 12px 14px;
+      font-family: "Quicksand", sans-serif;
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--texto);
+      display: grid;
+      grid-template-columns: 32px 1fr 26px;
+      align-items: center;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .dropdown-menu-delicado button:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-menu-delicado button:hover,
+    .dropdown-menu-delicado button.seleccionado {
+      background: rgba(234,215,208,.45);
+    }
+
+    .icono-opcion {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      color: #d9a09b;
+      font-size: 20px;
+    }
+
+    .icono-opcion img{
+      width: 20px;
+      height: 20px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .check-opcion {
+      display: none;
+      color: #d9a09b;
+      font-size: 19px;
+    }
+
+    .dropdown-menu-delicado button.seleccionado .check-opcion {
+      display: inline;
+    }
+
+    .campo-detalle-restriccion {
+      margin-top: 12px !important;
+    }
+
+    #comentariosAsistente {
+      margin-top: 12px;
+    }
+
+    @keyframes abrirDropdown {
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+    .footer-invitacion{
+      background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-footer));
+      color: white;
+      width: 100%;
+      margin: 0;
+      box-sizing: border-box;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 38px 48px;
+      min-height: 230px;
+      overflow: visible;
+    }
+
+    .footer-nombre{
+      font-family: "Dantina", cursive;
+      font-size: 50px;
+      line-height: .9;
+      color: white;
+      margin: 0;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .footer-frase{
+      color: white;
+      text-align: right;
+      font-size: 18px;
+      line-height: 1.4;
+      max-width: 460px;
+      margin: 0;
+    }
+
+    .firulete-playlist{
+      display: block;
+      width: 180px;
+      max-width: 45%;
+      height: auto;
+      margin: 5px auto 5px;
+    }
+
+    /* =========================
+       PANTALLA DE INICIO
+    ========================= */
+    .pantalla-inicio{
+      position: fixed;
+      inset: 0;
+      background: var(--azul-oscuro);
+      z-index: 100000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .loader-corazon-img{
+      width: 120px;
+      height: auto;
+      animation: latido 1.15s infinite ease-in-out;
+      filter: drop-shadow(0 0 18px rgba(255,255,255,.25));
+    }
+
+    @keyframes latido{
+      0%,100%{
+        transform: scale(1);
+        opacity: .75;
+      }
+      50%{
+        transform: scale(1.22);
+        opacity: 1;
+      }
+    }
+
+    /* =========================
+       MODAL DE ENTRADA
+    ========================= */
+    .modal-entrada{
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(180deg, #DCE3EC 0%, #F2E4DC 100%);
+      z-index: 99999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+
+    .modal-entrada-contenido{
+      width: min(90%, 420px);
+      padding: 24px;
+    }
+
+    .corazon-modal{
+      width: 42px;
+      margin-bottom: 26px;
+      opacity: .9;
+    }
+
+    .modal-pretitle{
+      font-size: 16px;
+      letter-spacing: .08em;
+      color: #6D7F90;
+      margin: 0 0 16px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .modal-entrada-contenido h2{
+      font-family: "Dantina", cursive;
+      font-size: 50px;
+      line-height: 1.5;
+      margin: 40px 0 46px;
+      color: var(--azul-oscuro);
+      font-weight: normal;
+    }
+
+    .modal-subtitle{
+      font-size: 14px;
+      letter-spacing: .08em;
+      line-height: 1.9;
+      color: #4F5F70;
+      max-width: 300px;
+      margin: 0 auto 30px;
+    }
+
+    .modal-entrada-contenido button{
+      display: block;
+      width: 100%;
+      max-width: 250px;
+      margin: 12px auto;
+      padding: 12px 20px;
+      border-radius: 20px;
+      border: 1px solid var(--azul);
+      background: var(--azul);
+      color: white;
+      font-size: 15px;
+      font-family: Georgia, serif;
+      cursor: pointer;
+      transition: .25s ease;
+    }
+
+    .modal-entrada-contenido button:hover{
+      background: var(--azul-oscuro);
+      border-color: var(--azul-oscuro);
+    }
+
+    .modal-entrada-contenido .btn-secundario{
+      background: transparent;
+      color: var(--azul-oscuro);
+      border: 1px solid var(--azul-suave);
+    }
+
+    .modal-entrada-contenido .btn-secundario:hover{
+      background: rgba(108,127,153,.12);
+    }
+
+    /* =========================
+       CELULAR
+    ========================= */
+    @media (max-width: 520px) {
+      section {
+        padding: 30px 14px;
+      }
+
+      h1 {
+        font-size: 68px;
+        line-height: 2.2;
+      }
+
+      h2 {
+        font-size: 27px;
+      }
+
+      .rosa h2,
+      .light h2 {
+        color: #8f6f68;
+      }
+
+      h3 {
+        font-size: 32px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+
+      .hero {
+        min-height: 1000px;
+        padding-top: 20px;
+        padding-bottom: 90px;
+        background:
+          linear-gradient(rgba(60,35,20,.16), rgba(60,35,20,.22)),
+          url("Juanita2.png") 70% top / cover no-repeat;
+      }
+
+      .nombre {
+        font-size: 4.7rem;
+        line-height: 1.05;
+      }
+
+      .mis::before,
+      .mis::after {
+        width: 58px;
+      }
+
+      .fecha-recuadro {
+        letter-spacing: 5px;
+        padding: 9px 14px;
+      }
+
+      .modalAsistencia {
+        align-items: flex-start;
+        justify-content: center;
+        padding: 8px;
+        overflow-y: auto;
+      }
+
+      .modalAsistenciaContenidoGrande {
+        width: 100%;
+        max-width: 390px;
+        max-height: 92vh;
+        margin: 0 auto;
+        padding: 14px 10px;
+        border-radius: 20px;
+        left: auto;
+        right: auto;
+        transform: none;
+      }
+
+      .modalAsistenciaContenidoGrande h2 {
+        font-size: 22px;
+        font-family: Georgia, serif;
+        font-weight: normal;
+      }
+
+      .titulo-bloque {
+        font-size: 24px;
+        line-height: 1.12;
+        max-width: 240px;
+      }
+
+      .subtituloAsistencia {
+        font-size: 14px;
+        line-height: 1.38;
+        margin: 0 auto 10px;
+        max-width: 290px;
+      }
+
+      .bloque-alimentacion .subtituloAsistencia{
+        font-size: 14px;
+        line-height: 1.38;
+        max-width: 250px;
+        margin: 0 auto;
+      }
+
+      .bloque-header{
+        gap: 6px;
+        margin-bottom: 14px;
+      }
+
+      .respuesta-invitado {
+        padding: 10px 10px 11px;
+        margin: 8px auto;
+        border-radius: 18px;
+      }
+
+      .nombre-invitado {
+        font-size: 15px;
+        margin-bottom: 4px;
+        line-height: 1.2;
+      }
+
+      .firulete-invitado {
+        width: 44px;
+        margin: 0 auto 5px;
+        opacity: .52;
+      }
+
+      .opciones-asistencia {
+        gap: 8px;
+      }
+
+      .opciones-asistencia span {
+        min-width: 84px;
+        font-size: 13px;
+        padding: 7px 10px;
+      }
+
+      .bloque-alimentacion {
+        padding: 13px 10px 12px;
+        margin: 10px auto 8px;
+        border-radius: 18px;
+      }
+
+      .dropdown-boton,
+      .modalAsistencia input,
+      .modalAsistencia select,
+      .modalAsistencia textarea {
+        padding: 10px 12px;
+        margin: 6px 0;
+        border-radius: 9px;
+        font-size: 14px;
+      }
+
+      .dropdown-menu-delicado button {
+        font-size: 14px;
+        padding: 9px 12px;
+      }
+
+      .modalAsistencia textarea {
+        min-height: 58px;
+      }
+
+      .modalAsistencia .btn,
+      .btn {
+        padding: 11px 22px;
+        font-size: 15px;
+      }
+
+      .carousel img {
+        height: 310px;
+      }
+
+      .modalContenido {
+        width: calc(100vw - 24px);
+        padding: 20px 14px;
+      }
+
+      .modalContenido iframe {
+        height: 330px;
+      }
+
+      .countdown {
+        gap: 10px;
+        margin-top: 22px;
+      }
+
+      .time {
+        min-width: 58px;
+      }
+
+      .time span {
+        font-size: 34px;
+        margin-bottom: 6px;
+      }
+
+      .time small {
+        font-size: 10px;
+        letter-spacing: .8px;
+      }
+
+      .count-sep {
+        font-size: 34px;
+      }
+
+      .footer-invitacion{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 14px;
+        padding: 28px 20px;
+        min-height: auto;
+      }
+
+      .footer-nombre{
+        font-size: 75px;
+        line-height: .9;
+      }
+
+      .footer-frase{
+        text-align: center;
+        font-size: 15px;
+        max-width: 280px;
+      }
+
+      .music {
+        top: 12px;
+        right: 12px;
+        width: 52px;
+        height: 52px;
+        border-radius: 8px;
+      }
+
+      .music img {
+        width: 18px;
+        height: 18px;
+      }
+
+      .music span {
+        font-size: 10px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="pantallaInicio" class="pantalla-inicio">
+    <img src="corazon_blanco.png" alt="" class="loader-corazon-img">
+  </div>
+
+  <div id="modalEntrada" class="modal-entrada">
+    <div class="modal-entrada-contenido">
+      <p class="modal-pretitle">Bienvenidos a la invitación de</p>
+      <h2>Juana</h2>
+
+      <p class="modal-subtitle">
+        La música de fondo es parte de la experiencia
+      </p>
+
+      <button onclick="entrarConMusica()">Ingresar con música</button>
+      <button onclick="entrarSinMusica()" class="btn-secundario">Ingresar sin música</button>
+    </div>
+  </div>
+
+  <audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
+
+  <button class="music" onclick="toggleMusic()" id="musicBtn" aria-label="Control de música">
+    <img src="musica.png" alt="Música">
+    <span id="musicLabel">Play</span>
+  </button>
+
+  <section class="hero">
+    <div class="box-nombres-fecha-portada">
+      <span class="fecha">&nbsp;22 • 08 • 2026&nbsp;</span>
+      <h1 class="nombre">Juana</h1>
+      <h3 class="mis">Mis 15 años</h3>
+      <h4 class="frase-portada">Llegó esta gran noche,<br>y quiero compartirla con vos!</h4>
+      <img src="firulete-blanco.png" class="firulete-portada" alt="">
+      <a href="#info" class="btn">Ver invitación</a>
+    </div>
+  </section>
+
+  <section id="info">
+    <img src="icono_calendario.gif" class="section-icon" alt="">
+    <h2>Faltan...</h2>
+
+    <div class="countdown">
+      <div class="time"><span id="dias">0</span>días</div>
+      <div class="count-sep">:</div>
+      <div class="time"><span id="horas">0</span>hs</div>
+      <div class="count-sep">:</div>
+      <div class="time"><span id="minutos">0</span>min</div>
+      <div class="count-sep">:</div>
+      <div class="time"><span id="segundos">0</span>seg</div>
+    </div>
+
+    <img src="firulete-blanco.png" class="firulete-portada-azul" alt="">
+  </section>
+
+  <section class="light">
+    <img src="icono_camara.gif" class="section-icon" alt="">
+    <h2>Un recorrido de estos 15 años...</h2>
+
+    <div class="carousel">
+      <img src="carrusel1.png" class="active" alt="Foto 1">
+      <img src="carrusel01.png" alt="Foto 2">
+      <img src="carrusel2.png" alt="Foto 3">
+      <img src="carrusel02.png" alt="Foto 4">
+      <img src="carrusel3.png" alt="Foto 5">
+      <img src="carrusel4.png" alt="Foto 6">
+      <img src="carrusel5.png" alt="Foto 7">
+      <img src="carrusel6.png" alt="Foto 8">
+      <img src="carrusel06.png" alt="Foto 9">
+      <img src="carrusel8.png" alt="Foto 10">
+      <img src="carrusel9.png" alt="Foto 11">
+      <img src="carrusel18.png" alt="Foto 12">
+      <img src="carrusel19.png" alt="Foto 13">
+      <img src="carrusel20.png" alt="Foto 14">
+      <img src="carrusel21.png" alt="Foto 15">
+      <img src="carrusel22.jpeg" alt="Foto 16">
+      <img src="carrusel23.jpeg" alt="Foto 17">
+      <img src="carrusel24.jpeg" alt="Foto 18">
+      <img src="carrusel25.jpeg" alt="Foto 19">
+      <img src="carrusel26.jpeg" alt="Foto 20">
+      <img src="carrusel28.jpeg" alt="Foto 21">
+      <img src="carrusel30.jpeg" alt="Foto 22">
+      <img src="carrusel31.jpeg" alt="Foto 23">
+      <img src="carrusel33.jpeg" alt="Foto 24">
+      <img src="carrusel34.jpeg" alt="Foto 25">
+      <img src="carrusel37.jpeg" alt="Foto 26">
+      <img src="carrusel38.jpeg" alt="Foto 27">
+      <img src="carrusel100.png" alt="Foto 28">
+      <img src="carrusel101.jpeg" alt="Foto 29">
+      <img src="carrusel130.png" alt="Foto 30">
+      <img src="carrusel145.jpeg" alt="Foto 31">
+      <img src="carrusel149.png" alt="Foto 32">
+      <img src="carrusel166.jpeg" alt="Foto 33">
+      <img src="carrusel170.png" alt="Foto 34">
+    </div>
+
+    <div class="carousel-dots" id="carouselDots"></div>
+  </section>
+
+  <section class="rosa">
+    <img src="corazon_blanco.png" class="section-icon2" alt="">
+    <p>Hagamos juntos una fiesta épica.</p>
+    <h2><strong>Sábado 22 de Agosto</strong></h2>
+    <p>21:00 a 05:00 hs</p>
+    <p>Club Unión de Melo<br>Aparicio Saravia 487 - Melo</p>
+
+    <a class="btn" href="#" onclick="abrirMapa(event)">
+      Cómo llegar
+    </a>
+  </section>
+
+  <section class="light">
+    <img src="icono_dress.gif" class="section-icon" alt="Vestimenta">
+    <h2>Dress Code</h2>
+    <p>Orientación para tu vestuario: Formal</p>
+    <img src="firulete-blanco.png" class="firulete-portada-azul" alt="">
+  </section>
+
+  <section class="rosa">
+    <img src="icono_insta.gif" class="section-icon" alt="">
+    <h2>Una gran fiesta junto a vos!</h2>
+    <p>Subí tus fotos y etiquetame.</p>
+    <p><strong>@juanita</strong></p>
+
+    <a class="btn" href="https://instagram.com" target="_blank">
+      Ver Instagram
+    </a>
+  </section>
+
+  <section class="light playlist-section">
+    <div class="playlist-content">
+      <img src="icono_canciones.gif" class="section-icon playlist-icon" alt="">
+      <h2>Playlist</h2>
+      <p>Qué canción no pueden faltar?</p>
+
+      <a class="btn" href="#" onclick="abrirCancion(event)">
+        Sugerir canción
+      </a>
+    </div>
+  </section>
+
+  <section class="rosa">
+    <img src="icono_regalo.gif" class="section-icon" alt="">
+    <h2>Regalos</h2>
+    <p>
+      El mejor regalo es que vengas,
+      pero si deseás regalarme algo más que tu presencia...<br>
+      Muchas gracias!
+    </p>
+
+    <img src="firulete-blanco.png" class="firulete-portada-azul" alt="">
+
+    <a class="btn" href="#" onclick="abrirCuenta(event)">
+      Ver datos de cuenta
+    </a>
+  </section>
+
+  <!-- MODAL CUENTA -->
+  <div id="modalCuenta" class="modal-cuenta">
+    <div class="modal-cuenta-contenido">
+      <span class="cerrarCuenta" onclick="cerrarCuenta()">&times;</span>
+
+      <h2>Datos de cuenta</h2>
+
+<img src="firulete-blanco.png" class="firulete-modal-azul" alt="">
+      <p><strong>Banco:</strong> SANTANDER</p>
+      <p><strong>Titular:</strong> Cecilia Paciel</p>
+      <p><strong>Cuenta:</strong> 000000000000</p>
+      <p><strong>Moneda:</strong> Dólares</p>
+
+      <button class="btn" onclick="copiarCuentaSantander()">Copiar datos</button>
+
+<img src="firulete-blanco.png" class="firulete-modal-azul" alt="">
+      <p><strong>Banco:</strong> BROU</p>
+      <p><strong>Titular:</strong> Cecilia Paciel</p>
+      <p><strong>Cuenta:</strong> 000000000000</p>
+      <p><strong>Moneda:</strong> Pesos uruguayos</p>
+
+      <button class="btn" onclick="copiarCuentaBrou()">Copiar datos</button>
+    </div>
+  </div>
+
+  <section class="light">
+    <img src="icono_asistencia.gif" class="section-icon" alt="">
+    <h2>Confirmación de asistencia</h2>
+
+    <p id="textoConfirmacion">
+      Cargando invitados...
+    </p>
+
+    <div id="listaInvitados"></div>
+
+    <a class="btn confirmar-asistencia" href="#" onclick="abrirAsistencia(event)">
+      Confirmar asistencia
+    </a>
+  </section>
+
+  <footer class="footer-invitacion">
+    <div class="footer-nombre">Juana</div>
+    <div class="footer-frase">
+      Me encantaría compartir este momento contigo.
+    </div>
+  </footer>
+
+  <!-- MODAL MAPA -->
+  <div id="modalMapa" class="modalMapa">
+    <div class="modalContenido">
+      <span class="cerrarMapa" onclick="cerrarMapa()">&times;</span>
+      <h2>Cómo llegar a la fiesta?</h2>
+
+      <iframe
+        id="iframeMapa"
+        src="https://www.google.com/maps?q=Club%20Union%20Melo%20Saravia%201212%20Melo%20Uruguay&output=embed"
+        loading="lazy">
+      </iframe>
+
+      <a
+        class="btn"
+        href="https://www.google.com/maps?vet=10CAAQoqAOahcKEwjIjpbBor-VAxUAAAAAHQAAAAAQEg..i&rlz=1C5GCEM_enUY1190UY1192&pvq=CgsvZy8xdHg0ODY2bSIQCgpjbHViIHVuaW9uEAIYAw&lqi=ChljbHViIHVuaW9uIG1lbG8gZGlyZWNjaW9uIgJIAUjTsZDC54CAgAhaGxAAEAEYABgBGAIiD2NsdWIgdW5pb24gbWVsb5IBC3NvY2lhbF9jbHVimgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVVJLYjFCNU9EaEJSUkFC-gEECAAQIA&fvr=1&cs=1&um=1&ie=UTF-8&fb=1&gl=uy&sa=X&ftid=0x95092bd454e59627:0xa4882af465adc253"
+        target="_blank">
+        Abrir en Google Maps
+      </a>
+    </div>
+  </div>
+
+  <!-- MODAL ASISTENCIA -->
+  <div id="modalAsistencia" class="modalAsistencia">
+    <div class="modalAsistenciaContenido modalAsistenciaContenidoGrande">
+      <span class="cerrarAsistencia" onclick="cerrarAsistencia()">&times;</span>
+
+      <h2>Confirmar asistencia</h2>
+      <p class="subtituloAsistencia">Indicá quiénes asisten y quiénes no.</p>
+
+<img src="firulete-blanco.png" class="firulete-modal-azul" alt="">
+      <form id="formAsistencia">
+        <div id="listaInvitadosModal"></div>
+
+        <div class="bloque-alimentacion">
+          <div class="bloque-header">
+            <h2 class="titulo-bloque">Restricción alimentaria</h2>
+
+<img src="firulete-blanco.png" class="firulete-modal-azul" alt="">
+            <p class="subtituloAsistencia">
+              Indicá si necesitás algún menú especial.
+            </p>
+          </div>
+
+          <div class="dropdown-delicado" id="dropdownRestriccion">
+            <button type="button" class="dropdown-boton" onclick="toggleRestriccion()">
+              <span id="textoRestriccion">Elegí una opción</span>
+              <span id="flechaRestriccion">⌄</span>
+            </button>
+
+            <div class="dropdown-menu-delicado" id="menuRestriccion">
+              <button type="button" onclick="elegirRestriccion('ninguna', 'No')">
+                <span class="icono-opcion">
+                  <img src="icono_hojitas.png" alt="">
+                </span>
+                <span>No</span>
+                <span class="check-opcion" id="check_ninguna">✓</span>
+              </button>
+
+              <button type="button" onclick="elegirRestriccion('vegano_vegetariano', 'Vegano / Vegetariano')">
+                <span class="icono-opcion">
+                  <img src="icono_vegano.png" alt="">
+                </span>
+                <span>Vegano / Vegetariano</span>
+                <span class="check-opcion" id="check_vegano_vegetariano">✓</span>
+              </button>
+
+              <button type="button" onclick="elegirRestriccion('celiaco', 'Celíaco / Sin TACC')">
+                <span class="icono-opcion">
+                  <img src="icono_celiaco.png" alt="">
+                </span>
+                <span>Celíaco / Sin TACC</span>
+                <span class="check-opcion" id="check_celiaco">✓</span>
+              </button>
+
+              <button type="button" onclick="elegirRestriccion('otra', 'Otra')">
+                <span class="icono-opcion">
+                  <img src="icono_otro.png" alt="">
+                </span>
+                <span>Otra</span>
+                <span class="check-opcion" id="check_otra">✓</span>
+              </button>
+            </div>
+          </div>
+
+          <input type="hidden" id="restriccionAlimentaria" value="">
+
+          <textarea
+            id="detalleRestriccion"
+            class="campo-detalle-restriccion"
+            placeholder="Contanos más (opcional)"
+            style="display:none;"
+          ></textarea>
+        </div>
+
+        <textarea id="comentariosAsistente" placeholder="Comentario opcional"></textarea>
+
+        <p id="errorAsistencia"></p>
+
+        <button class="btn" onclick="enviarAsistencia(event)">
+          Confirmar
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL CANCIÓN -->
+  <div id="modalCancion" class="modalAsistencia">
+    <div class="modalAsistenciaContenido">
+      <span class="cerrarAsistencia" onclick="cerrarCancion()">&times;</span>
+
+      <h2>Sugerir canción</h2>
+      <p>¿Qué canción no puede faltar en la PlayList de la fiesta?</p>
+
+<img src="firulete-blanco.png" class="firulete-modal-igual" alt="">
+      <form>
+        <input type="text" id="nombreCancion" placeholder="Tu nombre">
+        <input type="text" id="tituloCancion" placeholder="Nombre de canción y/o autor">
+        <input type="text" id="linkCancion" placeholder="Link de YouTube, Spotify, etc.">
+
+        <p id="errorCancion"></p>
+
+        <button class="btn" onclick="enviarCancion(event)">
+          Sugerir canción
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox">
+    <button class="lightbox-close" onclick="cerrarLightbox()">×</button>
+    <button class="lightbox-prev" onclick="cambiarFotoLightbox(-1)">‹</button>
+    <img id="lightboxImg" src="" alt="">
+    <button class="lightbox-next" onclick="cambiarFotoLightbox(1)">›</button>
+  </div>
+
+  <script>
+    const fechaFiesta = new Date("2026-08-22T21:00:00").getTime();
+
+    function actualizarCuentaRegresiva() {
+      const ahora = new Date().getTime();
+      const diferencia = fechaFiesta - ahora;
+
+      if (diferencia <= 0) {
+        document.querySelector(".countdown").innerHTML = "<h2>¡Es hoy!</h2>";
+        return;
+      }
+
+      const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+      const segundos = Math.floor((diferencia / 1000) % 60);
+
+      document.getElementById("dias").innerText = dias;
+      document.getElementById("horas").innerText = horas;
+      document.getElementById("minutos").innerText = minutos;
+      document.getElementById("segundos").innerText = segundos;
+    }
+
+    actualizarCuentaRegresiva();
+    setInterval(actualizarCuentaRegresiva, 1000);
+
+    function toggleMusic() {
+      const musica = document.getElementById("musica");
+      const boton = document.getElementById("musicBtn");
+      const label = document.getElementById("musicLabel");
+
+      if (musica.paused) {
+        musica.play();
+        boton.classList.add("playing");
+        label.textContent = "Pausar";
+      } else {
+        musica.pause();
+        boton.classList.remove("playing");
+        label.textContent = "Play";
+      }
+    }
+
+    let fotoActual = 0;
+    const fotos = document.querySelectorAll(".carousel img");
+    const dotsContainer = document.getElementById("carouselDots");
+
+    fotos.forEach((foto, index) => {
+      foto.addEventListener("click", () => abrirLightbox(index));
+
+      const dot = document.createElement("button");
+      dot.onclick = () => mostrarFoto(index);
+      dotsContainer.appendChild(dot);
+    });
+
+    function actualizarDots() {
+      const dots = document.querySelectorAll(".carousel-dots button");
+      dots.forEach(dot => dot.classList.remove("active"));
+      if (dots[fotoActual]) dots[fotoActual].classList.add("active");
+    }
+
+    function mostrarFoto(index) {
+      fotoActual = index;
+      fotos.forEach(foto => foto.classList.remove("active"));
+      fotos[fotoActual].classList.add("active");
+      actualizarDots();
+    }
+
+    function cambiarFoto(direccion) {
+      fotoActual += direccion;
+      if (fotoActual < 0) fotoActual = fotos.length - 1;
+      if (fotoActual >= fotos.length) fotoActual = 0;
+      mostrarFoto(fotoActual);
+    }
+
+    function abrirLightbox(index) {
+      fotoActual = index;
+      document.getElementById("lightboxImg").src = fotos[fotoActual].src;
+      document.getElementById("lightbox").style.display = "flex";
+    }
+
+    function cerrarLightbox() {
+      document.getElementById("lightbox").style.display = "none";
+    }
+
+    function cambiarFotoLightbox(direccion) {
+      cambiarFoto(direccion);
+      document.getElementById("lightboxImg").src = fotos[fotoActual].src;
+    }
+
+    mostrarFoto(0);
+
+    setInterval(() => {
+      cambiarFoto(1);
+    }, 3500);
+
+    // MAPA
+    function abrirMapa(e){
+      e.preventDefault();
+      document.getElementById("modalMapa").style.display="flex";
+    }
+
+    function cerrarMapa(){
+      document.getElementById("modalMapa").style.display="none";
+    }
+
+    // ASISTENCIA
+    function abrirAsistencia(e) {
+      e.preventDefault();
+      document.getElementById("modalAsistencia").style.display = "flex";
+    }
+
+    function cerrarAsistencia() {
+      document.getElementById("modalAsistencia").style.display = "none";
+    }
+
+    // CUENTA
+    function abrirCuenta(event){
+      event.preventDefault();
+      document.getElementById("modalCuenta").style.display = "flex";
+    }
+
+    function cerrarCuenta(){
+      document.getElementById("modalCuenta").style.display = "none";
+    }
+
+    function copiarCuentaSantander(){
+      const datos = `Banco: SANTANDER
+Titular: Cecilia Paciel
+Cuenta: 000000000000
+Moneda: Dólares`;
+
+      navigator.clipboard.writeText(datos);
+      alert("Datos copiados");
+    }
+
+    function copiarCuentaBrou(){
+      const datos = `Banco: BROU
+Titular: Cecilia Paciel
+Cuenta: 000000000000
+Moneda: Pesos uruguayos`;
+
+      navigator.clipboard.writeText(datos);
+      alert("Datos copiados");
+    }
+
+    // CIERRE MODAL MAPA AL HACER CLICK AFUERA
+    window.onclick = function(e){
+      if(e.target == document.getElementById("modalMapa")){
+        cerrarMapa();
+      }
+    };
+  </script>
+
+  <script>
+    const API = "https://script.google.com/macros/s/AKfycbyVlW3T-LGoC88GhSAfGPmThzv0pCBmHBt4MD3PiWwZ9VNdh1G2eeU4QUN39O5wgsKKdA/exec";
+    let invitadosActuales = [];
+
+    function cargarInvitados() {
+      const texto = document.getElementById("textoConfirmacion");
+      const params = new URLSearchParams(window.location.search);
+      const grupo = params.get("grupo");
+
+      texto.innerHTML = "Cargando invitados...";
+
+      const script = document.createElement("script");
+      script.src = API + "?grupo=" + encodeURIComponent(grupo) + "&callback=mostrarInvitados";
+      document.body.appendChild(script);
+    }
+
+    function mostrarInvitados(invitados) {
+      invitadosActuales = invitados;
+
+      const texto = document.getElementById("textoConfirmacion");
+      const lista = document.getElementById("listaInvitados");
+      const listaModal = document.getElementById("listaInvitadosModal");
+
+      texto.innerHTML = "Es importante que confirmes tu asistencia:";
+      lista.innerHTML = "";
+      listaModal.innerHTML = "";
+
+      invitados.forEach(inv => {
+        lista.innerHTML += `
+          <div class="invitado-item">
+            ${inv.nombre}
+          </div>
+        `;
+
+        listaModal.innerHTML += `
+          <div class="respuesta-invitado">
+            <strong class="nombre-invitado">${inv.nombre}</strong>
+            <div class="opciones-asistencia">
+              <label>
+                <input type="radio" name="estado_${inv.fila}" value="asiste">
+                <span>Asiste</span>
+              </label>
+
+              <label>
+                <input type="radio" name="estado_${inv.fila}" value="no_asiste">
+                <span>No asiste</span>
+              </label>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function enviarAsistencia(e) {
+      e.preventDefault();
+
+      const comentarios = document.getElementById("comentariosAsistente").value.trim();
+      const detalleRestriccion = document.getElementById("detalleRestriccion").value.trim();
+      const restriccion = document.getElementById("restriccionAlimentaria").value;
+      const error = document.getElementById("errorAsistencia");
+      error.innerText = "";
+
+      let respuestas = [];
+
+      invitadosActuales.forEach(inv => {
+        const seleccionado = document.querySelector(`input[name="estado_${inv.fila}"]:checked`);
+
+        if (seleccionado) {
+          respuestas.push({
+            fila: inv.fila,
+            estado: seleccionado.value
+          });
+        }
+      });
+
+      if (respuestas.length === 0) {
+        error.innerText = "Marcá al menos una respuesta.";
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.src =
+        API +
+        "?accion=confirmar" +
+        "&respuestas=" + encodeURIComponent(JSON.stringify(respuestas)) +
+        "&comentario=" + encodeURIComponent(comentarios) +
+        "&restriccion=" + encodeURIComponent(restriccion) +
+        "&detalleRestriccion=" + encodeURIComponent(detalleRestriccion) +
+        "&callback=confirmacionGuardada";
+
+      document.body.appendChild(script);
+    }
+
+    function confirmacionGuardada(respuesta) {
+      cerrarAsistencia();
+
+      document.getElementById("textoConfirmacion").innerHTML =
+        "¡Gracias! La asistencia quedó confirmada.";
+
+      document.getElementById("listaInvitados").innerHTML = "";
+    }
+
+    cargarInvitados();
+
+    function toggleRestriccion() {
+      document.getElementById("dropdownRestriccion").classList.toggle("abierto");
+    }
+
+    function elegirRestriccion(valor, texto) {
+      document.getElementById("restriccionAlimentaria").value = valor;
+      document.getElementById("textoRestriccion").innerText = texto;
+
+      document.querySelectorAll(".dropdown-menu-delicado button").forEach(btn => {
+        btn.classList.remove("seleccionado");
+      });
+
+      const check = document.getElementById("check_" + valor);
+      if (check) {
+        check.parentElement.classList.add("seleccionado");
+      }
+
+      const detalle = document.getElementById("detalleRestriccion");
+
+      if (valor === "otra") {
+        detalle.style.display = "block";
+      } else {
+        detalle.style.display = "none";
+        detalle.value = "";
+      }
+
+      document.getElementById("dropdownRestriccion").classList.remove("abierto");
+    }
+
+    document.addEventListener("click", function(e) {
+      const dropdown = document.getElementById("dropdownRestriccion");
+      if (dropdown && !dropdown.contains(e.target)) {
+        dropdown.classList.remove("abierto");
+      }
+    });
+
+    // CANCIÓN
+    function abrirCancion(e) {
+      e.preventDefault();
+      document.getElementById("modalCancion").style.display = "flex";
+    }
+
+    function cerrarCancion() {
+      document.getElementById("modalCancion").style.display = "none";
+    }
+
+    function enviarCancion(e) {
+      e.preventDefault();
+
+      const params = new URLSearchParams(window.location.search);
+      const grupo = params.get("grupo") || "";
+
+      const nombre = document.getElementById("nombreCancion").value.trim();
+      const cancion = document.getElementById("tituloCancion").value.trim();
+      const link = document.getElementById("linkCancion").value.trim();
+      const error = document.getElementById("errorCancion");
+
+      error.innerText = "";
+
+      if (nombre === "" || cancion === "") {
+        error.innerText = "Completá tu nombre y la canción.";
+        return;
+      }
+
+      const script = document.createElement("script");
+      script.src =
+        API +
+        "?accion=cancion" +
+        "&grupo=" + encodeURIComponent(grupo) +
+        "&nombre=" + encodeURIComponent(nombre) +
+        "&cancion=" + encodeURIComponent(cancion) +
+        "&link=" + encodeURIComponent(link) +
+        "&callback=cancionGuardada";
+
+      document.body.appendChild(script);
+    }
+
+    function cancionGuardada(respuesta) {
+      cerrarCancion();
+      alert("¡Gracias! La canción quedó sugerida.");
+
+      document.getElementById("nombreCancion").value = "";
+      document.getElementById("tituloCancion").value = "";
+      document.getElementById("linkCancion").value = "";
+    }
+  </script>
+
+  <script>
+    window.addEventListener("load", function () {
+      setTimeout(function () {
+        document.getElementById("pantallaInicio").style.display = "none";
+        document.getElementById("modalEntrada").style.display = "flex";
+      }, 1800);
+    });
+
+    function entrarConMusica() {
+      const musica = document.getElementById("musica");
+      const modal = document.getElementById("modalEntrada");
+      const botonMusica = document.getElementById("musicBtn");
+      const label = document.getElementById("musicLabel");
+
+      musica.play();
+      modal.style.display = "none";
+
+      if (botonMusica) botonMusica.classList.add("playing");
+      if (label) label.textContent = "Pausar";
+    }
+
+    function entrarSinMusica() {
+      const modal = document.getElementById("modalEntrada");
+      const botonMusica = document.getElementById("musicBtn");
+      const label = document.getElementById("musicLabel");
+
+      modal.style.display = "none";
+
+      if (botonMusica) botonMusica.classList.remove("playing");
+      if (label) label.textContent = "Play";
+    }
+  </script>
+
+</body>
+</html>
