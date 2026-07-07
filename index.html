@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -12,1376 +13,1653 @@
   <link rel="icon" type="png" href="favicon_juana.png">
   <link rel="apple-touch-icon" href="favicon_juana.png">
 
-  <style>
-    :root {
-      --fondo: #FBF6F2;
-      --claro: #FFFDFB;
-      --nude: #F2E4DC;
-      --rosa: #D8B0A7;
-      --rosa-viejo: #EAD7D0;
-      --rosa-oscuro: #9A746C;
-      --texto: #624417;
-      --oscuro: #523528;
+<style>
+  :root {
+    --fondo: #FBF6F2;
+    --claro: #FFFDFB;
+    --nude: #F2E4DC;
+    --rosa: #D8B0A7;
+    --rosa-viejo: #EAD7D0;
+    --rosa-oscuro: #9A746C;
+    --texto: #624417;
+    --oscuro: #523528;
 
-      --azul-claro: #DCE3EC;
-      --azul: #6C7F99;
-      --azul-oscuro: #52657F;
-      --azul-footer: #5A6E88;
-      --azul-suave: #8FA0B4;
+    --azul-claro: #DCE3EC;
+    --azul: #6C7F99;
+    --azul-oscuro: #52657F;
+    --azul-footer: #5A6E88;
+    --azul-suave: #8FA0B4;
 
-      --blanco: rgba(255,255,255,.58);
+    --blanco: rgba(255,255,255,.58);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  @font-face {
+    font-family: "Dantina";
+    src: url("Dantina.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  body {
+    margin: 0;
+    font-family: Georgia, serif;
+    background: var(--fondo);
+    color: var(--texto);
+    text-align: center;
+  }
+
+  section {
+    padding: 35px 15px;
+    max-width: 560px;
+    margin: auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    color: #5D4A42;
+  }
+
+  h1 {
+    font-family: "Dantina", cursive;
+    font-size: 70px;
+    font-weight: 300;
+    line-height: 2.5;
+    margin: 25px 0;
+    color: var(--claro);
+  }
+
+  h2 {
+    font-size: 30px;
+    color: #8F6F68;
+    margin-bottom: 5px;
+    font-family: Georgia, serif;
+    font-weight: normal;
+    letter-spacing: 0;
+  }
+
+  h3 {
+    font-size: 40px;
+    color: var(--fondo);
+    margin-bottom: -5px;
+    font-weight: normal;
+    text-shadow: 3px 5px 10px rgba(0,0,0,.60);
+  }
+
+  h4 {
+    font-size: 22px;
+    color: var(--claro);
+    margin-bottom: -12px;
+    font-weight: normal;
+    text-shadow: 5px 5px 10px rgba(0,0,0,.90);
+  }
+
+  .light {
+    background: #FBF8F5;
+    max-width: none;
+  }
+
+  .rosa,
+  #info {
+    background: #F4ECE3;
+    max-width: none;
+  }
+
+  .light > *,
+  .rosa > *,
+  #info > * {
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* =========================
+     CUENTA REGRESIVA
+  ========================= */
+  #info{
+   position: relative !important;
+    overflow: visible !important;
+    min-height: unset !important;
+    padding-top: 35px;
+    padding-bottom: 28px;
+      z-index: 1;
+
+  }
+
+  #info > *{
+    position: relative;
+    z-index: 3;
+  }
+
+  .hero {
+    max-width: none;
+    min-height: 100vh;
+    background:
+      linear-gradient(rgba(60,35,20,.16), rgba(60,35,20,.22)),
+      url("Juanita3.png") center top / cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 35px 20px;
+  }
+
+  .box-nombres-fecha-portada {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .nombre {
+    font-family: "Dantina", cursive;
+    font-size: 5rem;
+  }
+
+  .mis {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+
+  .mis::before,
+  .mis::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 120px;
+    height: 1px;
+    background: rgba(255,255,255,.9);
+  }
+
+  .mis::before { right: calc(100% + 18px); }
+  .mis::after { left: calc(100% + 18px); }
+
+  .fecha {
+    display: block;
+    font-size: 24px;
+    letter-spacing: 3px;
+    color: rgba(255,255,255,.85);
+    text-shadow: 5px 5px 10px rgba(0,0,0,.85);
+  }
+
+  .fecha-recuadro {
+    border: 1px solid #fff;
+    padding: 10px 18px;
+    color: #fff;
+    letter-spacing: 8px;
+  }
+
+  .frase-portada {
+    font-size: 16px;
+    line-height: 1.35;
+    font-weight: normal;
+    max-width: 320px;
+    margin: 10px auto 18px;
+  }
+
+ /* =========================================
+   BLOQUES CONTENEDORES DE RAMAS
+========================================= */
+
+/* bloque general: portada + countdown + carrusel */
+.bloque-portada-info{
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+}
+
+/* wrapper de countdown + carrusel */
+.bloque-info-carrusel{
+  position: relative;
+  overflow: visible;
+  z-index: 1;
+}
+
+/* el contenido siempre por arriba de las ramas */
+.hero,
+#info,
+.light{
+  position: relative;
+  z-index: 2;
+}
+
+.hero > *,
+#info > *,
+.light > *{
+  position: relative;
+  z-index: 6;
+}
+
+/* ==============================
+   RAMA IZQUIERDA
+   Nace desde la portada y baja
+   hacia la cuenta regresiva
+============================== */
+.bloque-portada-info::before{
+  content: "";
+  position: absolute;
+  left: -28px;
+  top: 0;
+  width: 220px;
+  height: 1500px;
+
+  background-image: url("lado_blanco.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left top;
+
+  pointer-events: none;
+  z-index: 4;
+
+  /* blanca con leve presencia */
+  opacity: .28;
+
+  /* blanco apenas azulado */
+  filter: brightness(0) saturate(100%)
+          invert(100%) sepia(5%) saturate(417%)
+          hue-rotate(178deg) brightness(97%) contrast(92%);
+
+  /* sale desde la izquierda */
+  transform: scaleX(-1);
+}
+
+/* ==============================
+   RAMA DERECHA
+   Cruza countdown + carrusel
+============================== */
+.bloque-info-carrusel::after{
+  content: "";
+  position: absolute;
+  right: -26px;
+  z-index: 2;
+
+
+  /* arranca dentro de la cuenta regresiva */
+  top: 40px;
+
+  width: 165px;
+  height: 1150px;
+
+  background-image: url("lado_blanco.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right top;
+
+  pointer-events: none;
+
+  opacity: .22;
+
+  /* azul grisáceo */
+  filter: brightness(0) saturate(100%)
+          invert(48%) sepia(12%) saturate(604%)
+          hue-rotate(176deg) brightness(92%) contrast(88%);
+
+  transform: none;
+}
+
+
+
+
+
+
+.bloque-rama-derecha {
+  position: relative;
+    overflow: hidden;
+  z-index: 1;
+}
+
+.bloque-rama-derecha .rosa,
+.bloque-rama-derecha .light {
+  position: relative;
+  z-index: 1;
+}
+
+.rama-doble-derecha {
+  position: absolute;
+  left: -55px;
+  top: 100px;
+  width: 180px;
+  height: 420px;
+  background-image: url("lado_blanco.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: left top;
+  opacity: 0.22;
+  filter: brightness(0) saturate(100%) invert(18%) sepia(18%) saturate(882%) hue-rotate(176deg) brightness(91%) contrast(92%);
+  transform: scaleX(-1) scaleY(-1);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.bloque-rama-derecha .rosa > *,
+.bloque-rama-derecha .light > * {
+  position: relative;
+  z-index: 3;
+}
+
+.bloque-rama-izquierda {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Las dos sections quedan normales */
+.bloque-rama-izquierda .light,
+.bloque-rama-izquierda .rosa {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+
+
+
+/* Rama izquierda que cubre Playlist + Regalos */
+.rama-doble-izquierda {
+  position: absolute;
+  right: -55px;
+  top: -210px;
+
+  width: 180px;
+  height: 760px;
+
+  background-image: url("lado_blanco.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: right top;
+
+  opacity: 0.5;
+
+  filter: brightness(0) saturate(100%)
+          invert(48%) sepia(12%) saturate(604%)
+          hue-rotate(176deg) brightness(92%) contrast(88%);
+
+  transform:  scaleY(-1);
+
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* El contenido queda por arriba de la rama */
+.bloque-rama-izquierda .light > *,
+.bloque-rama-izquierda .rosa > * {
+  position: relative;
+  z-index: 3;
+}
+
+
+  /* =========================
+     FIRULETES
+  ========================= */
+  .firulete {
+    display: block;
+    width: 80px;
+    max-width: 50%;
+    margin: 0 auto;
+    opacity: .15;
+    animation: fadeFirulete 1.8s ease forwards;
+    pointer-events: none;
+  }
+
+  .firulete-arriba { margin-bottom: -16px; }
+
+  .firulete-abajo {
+    margin-top: -16px;
+    margin-bottom: 8px;
+    animation: fadeFiruleteInvertido 1.8s ease forwards;
+    animation-delay: .4s;
+  }
+
+  .firulete-modal-principal {
+    width: 120px;
+    display: block;
+    margin: -6px auto 14px;
+    opacity: .9;
+  }
+
+  .firulete-portada {
+    width: 240px;
+    display: block;
+    margin: -6px auto 14px;
+    opacity: .5;
+  }
+
+  .firulete-portada-azul {
+    width: 200px;
+    display: block;
+    margin: 5px auto 18px;
+    filter: brightness(0) saturate(100%) invert(42%) sepia(18%) saturate(620%) hue-rotate(176deg) brightness(92%) contrast(90%);
+    opacity: .8;
+  }
+
+  .firulete-modal-azul{
+    display: block;
+    width: 130px !important;
+    max-width: 130px !important;
+    height: auto !important;
+    margin: 5px auto 18px !important;
+    opacity: .4 !important;
+    position: relative;
+    z-index: 2;
+    filter: brightness(0) saturate(100%)
+            invert(48%) sepia(14%) saturate(572%)
+            hue-rotate(174deg) brightness(88%) contrast(92%) !important;
+    -webkit-filter: brightness(0) saturate(100%)
+            invert(48%) sepia(14%) saturate(572%)
+            hue-rotate(174deg) brightness(88%) contrast(92%) !important;
+  }
+
+  #modalCuenta .firulete-modal-azul,
+  #modalAsistencia .firulete-modal-azul,
+  #modalCancion .firulete-modal-azul{
+    width: 140px !important;
+    max-width: 140px !important;
+    margin: 10px auto 18px !important;
+    opacity: .95 !important;
+  }
+
+  .firulete-invitado {
+    width: 68px;
+    display: block;
+    margin: -4px auto 8px;
+    opacity: .75;
+  }
+
+  @keyframes fadeFirulete {
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: .45; transform: translateY(0); }
+  }
+
+  @keyframes fadeFiruleteInvertido {
+    from { opacity: 0; transform: rotate(180deg) translateY(-10px); }
+    to   { opacity: .45; transform: rotate(180deg) translateY(0); }
+  }
+
+  /* =========================
+     ICONOS
+  ========================= */
+  .section-icon {
+    width: 65px;
+    height: auto;
+    margin-bottom: 5px;
+    opacity: .85;
+    filter: grayscale(.25) sepia(.10) saturate(.65);
+  }
+
+  .section-icon2 {
+    width: 140px;
+    height: auto;
+    margin-bottom: 1px;
+    transform-origin: center bottom;
+    animation: dressFloat 3.5s ease-in-out infinite;
+    filter: grayscale(.25) sepia(.10) saturate(.65);
+  }
+
+  .dress-icon {
+    width: 100px;
+    height: auto;
+    opacity: .95;
+    transform-origin: center bottom;
+    animation: dressFloat 3.5s ease-in-out infinite;
+    filter: grayscale(.25) sepia(.10) saturate(.65);
+  }
+
+  @keyframes dressFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+    50%      { transform: translateY(-8px) rotate(2deg) scale(1.05); }
+  }
+
+  /* =========================
+     BOTONES
+  ========================= */
+  .btn {
+    display: inline-block;
+    margin-top: 20px;
+    background: linear-gradient(135deg,#7a8798,#617083);
+    color: #fff;
+    padding: 11px 26px;
+    border: 1px solid rgba(255,255,255,.35);
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 600;
+    letter-spacing: .4px;
+    cursor: pointer;
+    box-shadow: 0 10px 22px rgba(97,112,131,.20);
+    transition: all .25s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg,#6f7d90,#556579);
+    box-shadow: 0 12px 24px rgba(85,101,121,.24);
+  }
+
+  .btn:focus,
+  .btn:active {
+    outline: none;
+    border: none;
+  }
+
+  /* =========================
+     CUENTA REGRESIVA
+  ========================= */
+  .countdown {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 34px;
+    margin-top: 25px;
+    flex-wrap: nowrap;
+    z-index:9999;
+
+  }
+
+  .time {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    width: auto;
+    min-width: 80px;
+    padding: 0;
+    color: white;
+    font-family: "Quicksand", sans-serif;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 1px;
+    text-shadow: 1px 5px 10px rgba(0, 0, 0, 0.177);
+  }
+
+  .time span {
+    display: block;
+    font-size: 50px;
+    font-weight: 600;
+    line-height: 1;
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  .time small {
+    display: block;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #fff;
+  }
+
+  .count-sep {
+    font-size: 45px;
+    line-height: 1;
+    font-weight: 300;
+    color: #fff;
+    margin-top: 0;
+    transform: translateY(0px);
+  }
+
+  /* =========================
+     MODAL CUENTA
+  ========================= */
+  .modal-cuenta{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    z-index:9999;
+    justify-content:center;
+    align-items:center;
+  }
+
+  .modal-cuenta-contenido{
+    width:min(92%,430px);
+    background: #FFFDFB;
+    border-radius:24px;
+    padding:32px 24px;
+    text-align:center;
+    position:relative;
+    box-shadow:0 15px 40px rgba(0,0,0,.25);
+    border: 1px solid rgba(216,176,167,.22);
+  }
+
+  .cerrarCuenta{
+    position:absolute;
+    right:20px;
+    top:12px;
+    font-size:32px;
+    cursor:pointer;
+    color: var(--rosa-oscuro);
+  }
+
+  .modal-cuenta-contenido h2{ margin-top:0; }
+  .modal-cuenta-contenido p{ margin:10px 0; }
+
+  /* =========================
+     MÚSICA
+  ========================= */
+  .music {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    width: 58px;
+    height: 58px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    background: rgba(82,101,127,.24);
+    border: 1px solid rgba(255,255,255,.24);
+    border-radius: 5px;
+    padding: 6px;
+    cursor: pointer;
+    z-index: 999;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,.10);
+  }
+
+  .music img {
+    width: 20px;
+    height: 20px;
+    opacity: .60;
+  }
+
+  .music span {
+    color: rgba(255,255,255,.88);
+    font-family: "Quicksand", sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .music.playing img {
+    animation: respirar 2.2s infinite ease-in-out;
+  }
+
+  .music:active img {
+    transform: scale(1.12);
+  }
+
+  @keyframes respirar {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+  }
+
+  /* =========================
+     CARRUSEL
+  ========================= */
+  .carousel {
+    position: relative;
+    margin-top: 25px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(90,70,56,.2);
+    border: 1px solid rgba(201,167,106,.35);
+  }
+
+  .carousel img {
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    object-position: center top;
+    display: none;
+    cursor: pointer;
+  }
+
+  .carousel img.active {
+    display: block;
+    animation: fade .8s ease;
+  }
+
+  @keyframes fade {
+    from { opacity: .3; }
+    to { opacity: 1; }
+  }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+
+  .carousel-dots button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(140, 106, 99, 0.35);
+    cursor: pointer;
+    padding: 0;
+    transition: all .25s ease;
+  }
+
+  .carousel-dots button.active {
+    background: var(--azul);
+    transform: scale(1.2);
+  }
+
+  /* =========================
+     LIGHTBOX
+  ========================= */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.88);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lightbox img {
+    max-width: 92vw;
+    max-height: 82vh;
+    object-fit: contain;
+  }
+
+  .lightbox-close,
+  .lightbox-prev,
+  .lightbox-next {
+    position: fixed;
+    background: rgba(255,255,255,.18);
+    color: white;
+    border: none;
+    cursor: pointer;
+    z-index: 10001;
+  }
+
+  .lightbox-close {
+    top: 20px;
+    right: 22px;
+    font-size: 34px;
+    background: transparent;
+  }
+
+  .lightbox-prev,
+  .lightbox-next {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    font-size: 28px;
+  }
+
+  .lightbox-prev { left: 18px; }
+  .lightbox-next { right: 18px; }
+
+  /* =========================
+     MODAL MAPA
+  ========================= */
+  .modalMapa {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modalContenido {
+    width: min(92%,700px);
+    background: white;
+    border-radius: 25px;
+    padding: 25px;
+    text-align: center;
+    position: relative;
+    animation: zoom .35s;
+  }
+
+  .modalContenido iframe {
+    width: 100%;
+    height: 420px;
+    border: none;
+    border-radius: 18px;
+    margin: 20px 0;
+  }
+
+  .cerrarMapa {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 34px;
+    cursor: pointer;
+  }
+
+  @keyframes zoom {
+    from {
+      opacity: 0;
+      transform: scale(.8);
     }
-
-    * {
-      box-sizing: border-box;
+    to {
+      opacity: 1;
+      transform: scale(1);
     }
+  }
 
-    @font-face {
-      font-family: "Dantina";
-      src: url("Dantina.ttf") format("truetype");
-      font-weight: normal;
-      font-style: normal;
+  /* =========================
+     MODAL ASISTENCIA
+  ========================= */
+  .modalAsistencia {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modalAsistenciaContenido {
+    width: min(92%, 430px);
+    background: #FFFDFB;
+    border-radius: 24px;
+    padding: 30px 24px 24px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 18px 45px rgba(90,70,56,.18);
+    border: 1px solid rgba(209,176,168,.18);
+    animation: aparecerModal .35s ease;
+  }
+
+  .modalAsistenciaContenidoGrande {
+    width: min(90%, 500px);
+    max-height: 84vh;
+    overflow-y: auto;
+    padding: 26px 18px 22px;
+  }
+
+  .cerrarAsistencia {
+    position: absolute;
+    right: 18px;
+    top: 10px;
+    font-size: 32px;
+    cursor: pointer;
+    color: var(--rosa-oscuro);
+  }
+
+  .subtituloAsistencia {
+    margin: 0 auto 18px;
+    max-width: 420px;
+    font-size: 17px;
+    line-height: 1.42;
+    color: rgba(90,70,56,.82);
+    font-family: "Quicksand", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  .bloque-alimentacion {
+    background: rgba(255,255,255,.92);
+    padding: 18px 14px 16px;
+    margin: 14px auto 12px;
+    border-radius: 22px;
+    max-width: 100%;
+    box-shadow: 0 8px 25px rgba(90,70,56,.08);
+    border: 1px solid rgba(201,167,106,.18);
+    text-align: center;
+  }
+
+  .bloque-header{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    text-align: center;
+    margin-bottom: 22px;
+  }
+
+  .titulo-bloque{
+    margin: 0;
+    font-size: 30px;
+    line-height: 1.1;
+    color: var(--rosa-oscuro);
+    font-weight: normal;
+    text-shadow: none;
+  }
+
+  .modalAsistencia input,
+  .modalAsistencia select,
+  .modalAsistencia textarea {
+    width: 100%;
+    padding: 12px 14px;
+    margin: 8px 0;
+    border-radius: 10px;
+    border: 1px solid rgba(209,176,168,.55);
+    background: rgba(255,255,255,.88);
+    color: var(--texto);
+    font-size: 15px;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 400;
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease;
+  }
+
+  .modalAsistencia input::placeholder,
+  .modalAsistencia textarea::placeholder {
+    color: rgba(90,70,56,.55);
+  }
+
+  .modalAsistencia input:focus,
+  .modalAsistencia textarea:focus,
+  .dropdown-boton:focus {
+    border-color: #c8928b;
+    box-shadow: 0 0 0 3px rgba(221,184,177,.18);
+  }
+
+  .modalAsistencia textarea {
+    min-height: 78px;
+    resize: none;
+  }
+
+  #errorAsistencia,
+  #errorCancion {
+    color: #a94442;
+    font-size: 15px;
+  }
+
+  @keyframes aparecerModal {
+    from {
+      opacity: 0;
+      transform: scale(.85);
     }
-
-    body {
-      margin: 0;
-      font-family: Georgia, serif;
-      background: var(--fondo);
-      color: var(--texto);
-      text-align: center;
+    to {
+      opacity: 1;
+      transform: scale(1);
     }
+  }
 
+  /* =========================
+     LISTA INVITADOS
+  ========================= */
+  #listaInvitados {
+    margin: 22px auto 30px;
+    max-width: 360px;
+    text-align: center;
+  }
+
+  #listaInvitados .invitado-item {
+    display: block;
+    width: 100%;
+  }
+
+  .invitado-item {
+    background: transparent;
+    padding: 7px 0;
+    margin: 4px auto;
+    border: none;
+    border-bottom: 1px solid rgba(201,167,106,.22);
+    max-width: 300px;
+    font-size: 20px;
+    text-align: center;
+    color: var(--texto);
+  }
+
+  /* =========================
+     TARJETAS DE ASISTENCIA
+  ========================= */
+  .respuesta-invitado {
+    background: rgba(255,255,255,.92);
+    padding: 16px 14px;
+    margin: 11px auto;
+    border-radius: 22px;
+    max-width: 100%;
+    box-shadow: 0 8px 25px rgba(90,70,56,.08);
+    border: 1px solid rgba(201,167,106,.20);
+    text-align: center;
+  }
+
+  .nombre-invitado {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 22px;
+    color: var(--rosa-oscuro);
+    font-family: Georgia, serif;
+    font-weight: normal;
+    line-height: 1.1;
+  }
+
+  .opciones-asistencia {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .opciones-asistencia input {
+    display: none;
+  }
+
+  .opciones-asistencia span {
+    display: inline-block;
+    min-width: 104px;
+    padding: 9px 14px;
+    border-radius: 28px;
+    background: #f7e8e6;
+    color: #8e6c67;
+    cursor: pointer;
+    border: 1px solid rgba(209,176,168,.42);
+    font-size: 14px;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 500;
+    letter-spacing: .2px;
+    transition: .22s ease;
+  }
+
+  .opciones-asistencia span:hover {
+    background: #f2ddda;
+  }
+
+  .opciones-asistencia input:checked + span {
+    background: linear-gradient(135deg,#D8B0A7,#C8928B);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 8px 18px rgba(200,146,139,.22);
+  }
+
+  /* =========================
+     DROPDOWN RESTRICCIÓN
+  ========================= */
+  .dropdown-delicado {
+    position: relative;
+    width: 100%;
+  }
+
+  .dropdown-boton {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 8px;
+    border: 1px solid rgba(209,176,168,.55);
+    background: rgba(255,255,255,.88);
+    color: var(--texto);
+    font-family: "Quicksand", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #flechaRestriccion {
+    font-size: 22px;
+    color: var(--rosa-oscuro);
+    transition: transform .25s ease;
+  }
+
+  .dropdown-delicado.abierto #flechaRestriccion {
+    transform: rotate(180deg);
+  }
+
+  .dropdown-menu-delicado {
+    display: none;
+    margin-top: 8px;
+    background: rgba(255,255,255,.98);
+    border: 1px solid rgba(223,169,165,.30);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 12px 24px rgba(90,70,56,.10);
+    animation: abrirDropdown .25s ease;
+  }
+
+  .dropdown-delicado.abierto .dropdown-menu-delicado {
+    display: block;
+  }
+
+  .dropdown-menu-delicado button {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(209,176,168,.14);
+    padding: 12px 14px;
+    font-family: "Quicksand", sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--texto);
+    display: grid;
+    grid-template-columns: 32px 1fr 26px;
+    align-items: center;
+    text-align: left;
+    cursor: pointer;
+  }
+
+  .dropdown-menu-delicado button:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown-menu-delicado button:hover,
+  .dropdown-menu-delicado button.seleccionado {
+    background: rgba(234,215,208,.45);
+  }
+
+  .icono-opcion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    color: #d9a09b;
+    font-size: 20px;
+  }
+
+  .icono-opcion img{
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .check-opcion {
+    display: none;
+    color: #d9a09b;
+    font-size: 19px;
+  }
+
+  .dropdown-menu-delicado button.seleccionado .check-opcion {
+    display: inline;
+  }
+
+  .campo-detalle-restriccion {
+    margin-top: 12px !important;
+  }
+
+  #comentariosAsistente {
+    margin-top: 12px;
+  }
+
+  @keyframes abrirDropdown {
+    from {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* =========================
+     FOOTER
+  ========================= */
+  .footer-invitacion{
+    background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-footer));
+    color: white;
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 38px 48px;
+    min-height: 230px;
+    overflow: visible;
+  }
+
+  .footer-nombre{
+    font-family: "Dantina", cursive;
+    font-size: 50px;
+    line-height: .9;
+    color: white;
+    margin: 0;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .footer-frase{
+    color: white;
+    text-align: right;
+    font-size: 18px;
+    line-height: 1.4;
+    max-width: 460px;
+    margin: 0;
+  }
+
+  .firulete-playlist{
+    display: block;
+    width: 180px;
+    max-width: 45%;
+    height: auto;
+    margin: 5px auto 5px;
+  }
+
+  /* =========================
+     PANTALLA DE INICIO
+  ========================= */
+  .pantalla-inicio{
+    position: fixed;
+    inset: 0;
+    background: var(--azul-oscuro);
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .loader-corazon-img{
+    width: 120px;
+    height: auto;
+    animation: latido 1.15s infinite ease-in-out;
+    filter: drop-shadow(0 0 18px rgba(255,255,255,.25));
+  }
+
+  @keyframes latido{
+    0%,100%{
+      transform: scale(1);
+      opacity: .75;
+    }
+    50%{
+      transform: scale(1.22);
+      opacity: 1;
+    }
+  }
+
+  /* =========================
+     MODAL DE ENTRADA
+  ========================= */
+  .modal-entrada{
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(180deg, #DCE3EC 0%, #F2E4DC 100%);
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+  }
+
+  .modal-entrada-contenido{
+    width: min(90%, 420px);
+    padding: 24px;
+  }
+
+  .corazon-modal{
+    width: 42px;
+    margin-bottom: 26px;
+    opacity: .9;
+  }
+
+  .modal-pretitle{
+    font-size: 16px;
+    letter-spacing: .08em;
+    color: #6D7F90;
+    margin: 0 0 16px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .modal-entrada-contenido h2{
+    font-family: "Dantina", cursive;
+    font-size: 50px;
+    line-height: 1.5;
+    margin: 40px 0 46px;
+    color: var(--azul-oscuro);
+    font-weight: normal;
+  }
+
+  .modal-subtitle{
+    font-size: 14px;
+    letter-spacing: .08em;
+    line-height: 1.9;
+    color: #4F5F70;
+    max-width: 300px;
+    margin: 0 auto 30px;
+  }
+
+  .modal-entrada-contenido button{
+    display: block;
+    width: 100%;
+    max-width: 250px;
+    margin: 12px auto;
+    padding: 12px 20px;
+    border-radius: 20px;
+    border: 1px solid var(--azul);
+    background: var(--azul);
+    color: white;
+    font-size: 15px;
+    font-family: Georgia, serif;
+    cursor: pointer;
+    transition: .25s ease;
+  }
+
+  .modal-entrada-contenido button:hover{
+    background: var(--azul-oscuro);
+    border-color: var(--azul-oscuro);
+  }
+
+  .modal-entrada-contenido .btn-secundario{
+    background: transparent;
+    color: var(--azul-oscuro);
+    border: 1px solid var(--azul-suave);
+  }
+
+  .modal-entrada-contenido .btn-secundario:hover{
+    background: rgba(108,127,153,.12);
+  }
+
+  /* =========================
+     CELULAR
+  ========================= */
+  @media (max-width: 520px) {
     section {
-      padding: 35px 15px;
-      max-width: 560px;
-      margin: auto;
-      position: relative;
-      z-index: 2;
-    }
-
-    p {
-      font-size: 18px;
-      line-height: 1.5;
-      margin-bottom: 10px;
-      color: #5D4A42;
+      padding: 30px 14px;
     }
 
     h1 {
-      font-family: "Dantina", cursive;
-      font-size: 70px;
-      font-weight: 300;
-      line-height: 2.5;
-      margin: 25px 0;
-      color: var(--claro);
+      font-size: 68px;
+      line-height: 2.2;
     }
 
     h2 {
-      font-size: 30px;
-      color: #8F6F68;
-      margin-bottom: 5px;
-      font-family: Georgia, serif;
-      font-weight: normal;
-      letter-spacing: 0;
+      font-size: 27px;
+    }
+
+    .rosa h2,
+    .light h2 {
+      color: #8f6f68;
     }
 
     h3 {
-      font-size: 40px;
-      color: var(--fondo);
-      margin-bottom: -5px;
-      font-weight: normal;
-      text-shadow: 3px 5px 10px rgba(0,0,0,.60);
+      font-size: 32px;
     }
 
-    h4 {
-      font-size: 22px;
-      color: var(--claro);
-      margin-bottom: -12px;
-      font-weight: normal;
-      text-shadow: 5px 5px 10px rgba(0,0,0,.90);
-    }
-
-    .light {
-      background: #FBF8F5;
-      max-width: none;
-    }
-
-    .rosa,
-    #info {
-      background: #F4ECE3;
-      max-width: none;
-    }
-
-    .light > *,
-    .rosa > *,
-    #info > * {
-      max-width: 560px;
-      margin-left: auto;
-      margin-right: auto;
+    p {
+      font-size: 16px;
     }
 
     .hero {
-      max-width: none;
-      min-height: 100vh;
+      min-height: 1000px;
+      padding-top: 20px;
+      padding-bottom: 90px;
       background:
         linear-gradient(rgba(60,35,20,.16), rgba(60,35,20,.22)),
-        url("Juanita3.png") center top / cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 35px 20px;
-    }
-
-    .box-nombres-fecha-portada {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
+        url("Juanita2.png") 70% top / cover no-repeat;
     }
 
     .nombre {
-      font-family: "Dantina", cursive;
-      font-size: 5rem;
-    }
-
-    .mis {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 10px;
+      font-size: 4.7rem;
+      line-height: 1.05;
     }
 
     .mis::before,
     .mis::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      width: 120px;
-      height: 1px;
-      background: rgba(255,255,255,.9);
-    }
-
-    .mis::before { right: calc(100% + 18px); }
-    .mis::after { left: calc(100% + 18px); }
-
-    .fecha {
-      display: block;
-      font-size: 24px;
-      letter-spacing: 3px;
-      color: rgba(255,255,255,.85);
-      text-shadow: 5px 5px 10px rgba(0,0,0,.85);
+      width: 58px;
     }
 
     .fecha-recuadro {
-      border: 1px solid #fff;
-      padding: 10px 18px;
-      color: #fff;
-      letter-spacing: 8px;
+      letter-spacing: 5px;
+      padding: 9px 14px;
     }
 
-    .frase-portada {
-      font-size: 16px;
-      line-height: 1.35;
-      font-weight: normal;
-      max-width: 320px;
-      margin: 10px auto 18px;
-    }
 
-    /* =========================
-       FIRULETES
-    ========================= */
-    .firulete {
-      display: block;
-      width: 80px;
-      max-width: 50%;
-      margin: 0 auto;
-      opacity: .15;
-      animation: fadeFirulete 1.8s ease forwards;
-      pointer-events: none;
-    }
-
-    .firulete-arriba { margin-bottom: -16px; }
-
-    .firulete-abajo {
-      margin-top: -16px;
-      margin-bottom: 8px;
-      animation: fadeFiruleteInvertido 1.8s ease forwards;
-      animation-delay: .4s;
-    }
-
-    .firulete-modal-principal {
-      width: 120px;
-      display: block;
-      margin: -6px auto 14px;
-      opacity: .9;
-    }
-
-    .firulete-portada {
-      width: 240px;
-      display: block;
-      margin: -6px auto 14px;
-      opacity: .5;
-    }
-
-    .firulete-portada-azul {
-      width: 200px;
-      display: block;
-      margin: 5px auto 18px;
-filter: brightness(0) saturate(100%) invert(42%) sepia(18%) saturate(620%) hue-rotate(176deg) brightness(92%) contrast(90%);      opacity: .8;
-    }
-
-    .firulete-modal-azul{
-  display: block;
-  width: 130px !important;
-  max-width: 130px !important;
-  height: auto !important;
-  margin: 5px auto 18px !important;
-  opacity: .4 !important;
-  position: relative;
-  z-index: 2;
-
-  filter: brightness(0) saturate(100%)
-          invert(48%) sepia(14%) saturate(572%)
-          hue-rotate(174deg) brightness(88%) contrast(92%) !important;
-  -webkit-filter: brightness(0) saturate(100%)
-          invert(48%) sepia(14%) saturate(572%)
-          hue-rotate(174deg) brightness(88%) contrast(92%) !important;
+  /* rama izquierda mobile */
+.bloque-portada-info::before{
+  left: -62px;
+  top: 0;
+  width: 170px;
+  height: 980px;   /* importante: que llegue hasta countdown */
+  opacity: .22;
 }
 
-#modalCuenta .firulete-modal-azul,
-#modalAsistencia .firulete-modal-azul,
-#modalCancion .firulete-modal-azul{
-  width: 140px !important;
-  max-width: 140px !important;
-  margin: 10px auto 18px !important;
-  opacity: .95 !important;
+/* rama derecha mobile */
+.bloque-info-carrusel::after{
+  right: -52px;
+  top: 140px;      /* arranca dentro del countdown */
+  width: 135px;
+  height: 820px;   /* countdown + carrusel */
+  opacity: .18;
 }
 
-    .firulete-invitado {
-      width: 68px;
-      display: block;
-      margin: -4px auto 8px;
-      opacity: .75;
+    #info{
+      min-height: unset !important;
+      padding-top: 34px;
+      padding-bottom: 22px;
     }
-
-    @keyframes fadeFirulete {
-      from { opacity: 0; transform: translateY(-10px); }
-      to   { opacity: .45; transform: translateY(0); }
-    }
-
-    @keyframes fadeFiruleteInvertido {
-      from { opacity: 0; transform: rotate(180deg) translateY(-10px); }
-      to   { opacity: .45; transform: rotate(180deg) translateY(0); }
-    }
-
-    /* =========================
-       ICONOS
-    ========================= */
-    .section-icon {
-      width: 65px;
-      height: auto;
-      margin-bottom: 5px;
-      opacity: .85;
-      filter: grayscale(.25) sepia(.10) saturate(.65);
-    }
-
-    .section-icon2 {
-      width: 140px;
-      height: auto;
-      margin-bottom: 1px;
-      transform-origin: center bottom;
-      animation: dressFloat 3.5s ease-in-out infinite;
-      filter: grayscale(.25) sepia(.10) saturate(.65);
-    }
-
-    .dress-icon {
-      width: 100px;
-      height: auto;
-      opacity: .95;
-      transform-origin: center bottom;
-      animation: dressFloat 3.5s ease-in-out infinite;
-      filter: grayscale(.25) sepia(.10) saturate(.65);
-    }
-
-    @keyframes dressFloat {
-      0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-      50%      { transform: translateY(-8px) rotate(2deg) scale(1.05); }
-    }
-
-    /* =========================
-       BOTONES
-    ========================= */
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      background: linear-gradient(135deg,#7a8798,#617083);
-      color: #fff;
-      padding: 11px 26px;
-      border: 1px solid rgba(255,255,255,.35);
-      border-radius: 10px;
-      text-decoration: none;
-      font-size: 16px;
-      font-family: "Quicksand", sans-serif;
-      font-weight: 600;
-      letter-spacing: .4px;
-      cursor: pointer;
-      box-shadow: 0 10px 22px rgba(97,112,131,.20);
-      transition: all .25s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-      background: linear-gradient(135deg,#6f7d90,#556579);
-      box-shadow: 0 12px 24px rgba(85,101,121,.24);
-    }
-
-    .btn:focus,
-    .btn:active {
-      outline: none;
-      border: none;
-    }
-
-    /* =========================
-       CUENTA REGRESIVA
-    ========================= */
-    .countdown {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 34px;
-      margin-top: 25px;
-      flex-wrap: nowrap;
-    }
-
-    .time {
-      background: transparent;
-      border: none;
-      box-shadow: none;
-      width: auto;
-      min-width: 70px;
-      padding: 0;
-      color: white;
-      font-family: "Quicksand", sans-serif;
-      text-transform: uppercase;
-      font-size: 14px;
-      letter-spacing: 1px;
-      text-shadow: 1px 5px 10px rgba(0, 0, 0, 0.177);
-
-    }
-
-    .time span {
-      display: block;
-      font-size: 50px;
-      font-weight: 300;
-      line-height: 1;
-      color: white;
-      margin-bottom: 10px;
-    }
-
-    .time small {
-      display: block;
-      font-size: 16px;
-      font-weight: 400;
-      letter-spacing: 1px;
-      color: #fff;
-    }
-
-    .count-sep {
-      font-size: 45px;
-      line-height: 1;
-      font-weight: 300;
-      color: #fff;
-      margin-top: 0;
-      transform: translateY(0px);
-    }
-
-    /* =========================
-       MODAL CUENTA
-    ========================= */
-    .modal-cuenta{
-      display:none;
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.55);
-      z-index:9999;
-      justify-content:center;
-      align-items:center;
-    }
-
-    .modal-cuenta-contenido{
-      width:min(92%,430px);
-      background: #FFFDFB;
-      border-radius:24px;
-      padding:32px 24px;
-      text-align:center;
-      position:relative;
-      box-shadow:0 15px 40px rgba(0,0,0,.25);
-      border: 1px solid rgba(216,176,167,.22);
-    }
-
-    .cerrarCuenta{
-      position:absolute;
-      right:20px;
-      top:12px;
-      font-size:32px;
-      cursor:pointer;
-      color: var(--rosa-oscuro);
-    }
-
-    .modal-cuenta-contenido h2{ margin-top:0; }
-    .modal-cuenta-contenido p{ margin:10px 0; }
-
-    /* =========================
-       MÚSICA
-    ========================= */
-    .music {
-      position: fixed;
-      top: 16px;
-      right: 16px;
-      width: 58px;
-      height: 58px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 3px;
-      background: rgba(82,101,127,.24);
-      border: 1px solid rgba(255,255,255,.24);
-      border-radius: 5px;
-      padding: 6px;
-      cursor: pointer;
-      z-index: 999;
-      backdrop-filter: blur(2px);
-      -webkit-backdrop-filter: blur(2px);
-      box-shadow: 0 6px 14px rgba(0,0,0,.10);
-    }
-
-    .music img {
-      width: 20px;
-      height: 20px;
-      opacity: .60;
-    }
-
-    .music span {
-      color: rgba(255,255,255,.88);
-      font-family: "Quicksand", sans-serif;
-      font-size: 10px;
-      font-weight: 600;
-      line-height: 1;
-      text-align: center;
-      white-space: nowrap;
-    }
-
-    .music.playing img {
-      animation: respirar 2.2s infinite ease-in-out;
-    }
-
-    .music:active img {
-      transform: scale(1.12);
-    }
-
-    @keyframes respirar {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.12); }
-    }
-
-    /* =========================
-       CARRUSEL
-    ========================= */
-    .carousel {
-      position: relative;
-      margin-top: 25px;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 12px 30px rgba(90,70,56,.2);
-      border: 1px solid rgba(201,167,106,.35);
-    }
-
-    .carousel img {
-      width: 100%;
-      height: 360px;
-      object-fit: cover;
-      object-position: center top;
-      display: none;
-      cursor: pointer;
-    }
-
-    .carousel img.active {
-      display: block;
-      animation: fade .8s ease;
-    }
-
-    @keyframes fade {
-      from { opacity: .3; }
-      to { opacity: 1; }
-    }
-
-    .carousel-dots {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 10px;
-      flex-wrap: wrap;
-    }
-
-    .carousel-dots button {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      border: none;
-      background: rgba(140, 106, 99, 0.35);
-      cursor: pointer;
-      padding: 0;
-      transition: all .25s ease;
-    }
-
-    .carousel-dots button.active {
-      background: var(--azul);
-      transform: scale(1.2);
-    }
-
-    /* =========================
-       LIGHTBOX
-    ========================= */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.88);
-      z-index: 10000;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .lightbox img {
-      max-width: 92vw;
-      max-height: 82vh;
-      object-fit: contain;
-    }
-
-    .lightbox-close,
-    .lightbox-prev,
-    .lightbox-next {
-      position: fixed;
-      background: rgba(255,255,255,.18);
-      color: white;
-      border: none;
-      cursor: pointer;
-      z-index: 10001;
-    }
-
-    .lightbox-close {
-      top: 20px;
-      right: 22px;
-      font-size: 34px;
-      background: transparent;
-    }
-
-    .lightbox-prev,
-    .lightbox-next {
-      top: 50%;
-      transform: translateY(-50%);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      font-size: 28px;
-    }
-
-    .lightbox-prev { left: 18px; }
-    .lightbox-next { right: 18px; }
-
-    /* =========================
-       MODAL MAPA
-    ========================= */
-    .modalMapa {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.55);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .modalContenido {
-      width: min(92%,700px);
-      background: white;
-      border-radius: 25px;
-      padding: 25px;
-      text-align: center;
-      position: relative;
-      animation: zoom .35s;
-    }
-
-    .modalContenido iframe {
-      width: 100%;
-      height: 420px;
-      border: none;
-      border-radius: 18px;
-      margin: 20px 0;
-    }
-
-    .cerrarMapa {
-      position: absolute;
-      right: 20px;
-      top: 15px;
-      font-size: 34px;
-      cursor: pointer;
-    }
-
-    @keyframes zoom {
-      from {
-        opacity: 0;
-        transform: scale(.8);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    /* =========================
-       MODAL ASISTENCIA
-    ========================= */
+.countdown{
+  margin-top: 16px;
+}
     .modalAsistencia {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,.55);
-      z-index: 9999;
+      align-items: flex-start;
       justify-content: center;
-      align-items: center;
-    }
-
-    .modalAsistenciaContenido {
-      width: min(92%, 430px);
-      background: #FFFDFB;
-      border-radius: 24px;
-      padding: 30px 24px 24px;
-      text-align: center;
-      position: relative;
-      box-shadow: 0 18px 45px rgba(90,70,56,.18);
-      border: 1px solid rgba(209,176,168,.18);
-      animation: aparecerModal .35s ease;
+      padding: 8px;
+      overflow-y: auto;
     }
 
     .modalAsistenciaContenidoGrande {
-      width: min(90%, 500px);
-      max-height: 84vh;
-      overflow-y: auto;
-      padding: 26px 18px 22px;
+      width: 100%;
+      max-width: 390px;
+      max-height: 92vh;
+      margin: 0 auto;
+      padding: 14px 10px;
+      border-radius: 20px;
+      left: auto;
+      right: auto;
+      transform: none;
     }
 
-    .cerrarAsistencia {
-      position: absolute;
-      right: 18px;
-      top: 10px;
-      font-size: 32px;
-      cursor: pointer;
-      color: var(--rosa-oscuro);
+    .modalAsistenciaContenidoGrande h2 {
+      font-size: 22px;
+      font-family: Georgia, serif;
+      font-weight: normal;
+    }
+
+    .titulo-bloque {
+      font-size: 24px;
+      line-height: 1.12;
+      max-width: 240px;
     }
 
     .subtituloAsistencia {
-      margin: 0 auto 18px;
-      max-width: 420px;
-      font-size: 17px;
-      line-height: 1.42;
-      color: rgba(90,70,56,.82);
-      font-family: "Quicksand", sans-serif;
-      font-weight: 400;
-      letter-spacing: 0;
-      text-align: center;
+      font-size: 14px;
+      line-height: 1.38;
+      margin: 0 auto 10px;
+      max-width: 290px;
     }
 
-    .bloque-alimentacion {
-      background: rgba(255,255,255,.92);
-      padding: 18px 14px 16px;
-      margin: 14px auto 12px;
-      border-radius: 22px;
-      max-width: 100%;
-      box-shadow: 0 8px 25px rgba(90,70,56,.08);
-      border: 1px solid rgba(201,167,106,.18);
-      text-align: center;
+    .bloque-alimentacion .subtituloAsistencia{
+      font-size: 14px;
+      line-height: 1.38;
+      max-width: 250px;
+      margin: 0 auto;
     }
 
     .bloque-header{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
       gap: 6px;
-      text-align: center;
-      margin-bottom: 22px;
+      margin-bottom: 14px;
     }
 
-    .titulo-bloque{
-      margin: 0;
-      font-size: 30px;
-      line-height: 1.1;
-      color: var(--rosa-oscuro);
-      font-weight: normal;
-      text-shadow: none;
-    }
-
-    .modalAsistencia input,
-    .modalAsistencia select,
-    .modalAsistencia textarea {
-      width: 100%;
-      padding: 12px 14px;
-      margin: 8px 0;
-      border-radius: 10px;
-      border: 1px solid rgba(209,176,168,.55);
-      background: rgba(255,255,255,.88);
-      color: var(--texto);
-      font-size: 15px;
-      font-family: "Quicksand", sans-serif;
-      font-weight: 400;
-      outline: none;
-      transition: border-color .2s ease, box-shadow .2s ease;
-    }
-
-    .modalAsistencia input::placeholder,
-    .modalAsistencia textarea::placeholder {
-      color: rgba(90,70,56,.55);
-    }
-
-    .modalAsistencia input:focus,
-    .modalAsistencia textarea:focus,
-    .dropdown-boton:focus {
-      border-color: #c8928b;
-      box-shadow: 0 0 0 3px rgba(221,184,177,.18);
-    }
-
-    .modalAsistencia textarea {
-      min-height: 78px;
-      resize: none;
-    }
-
-    #errorAsistencia,
-    #errorCancion {
-      color: #a94442;
-      font-size: 15px;
-    }
-
-    @keyframes aparecerModal {
-      from {
-        opacity: 0;
-        transform: scale(.85);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
-    }
-
-    /* =========================
-       LISTA INVITADOS
-    ========================= */
-    #listaInvitados {
-      margin: 22px auto 30px;
-      max-width: 360px;
-      text-align: center;
-    }
-
-    #listaInvitados .invitado-item {
-      display: block;
-      width: 100%;
-    }
-
-    .invitado-item {
-      background: transparent;
-      padding: 7px 0;
-      margin: 4px auto;
-      border: none;
-      border-bottom: 1px solid rgba(201,167,106,.22);
-      max-width: 300px;
-      font-size: 20px;
-      text-align: center;
-      color: var(--texto);
-    }
-
-    /* =========================
-       TARJETAS DE ASISTENCIA
-    ========================= */
     .respuesta-invitado {
-      background: rgba(255,255,255,.92);
-      padding: 16px 14px;
-      margin: 11px auto;
-      border-radius: 22px;
-      max-width: 100%;
-      box-shadow: 0 8px 25px rgba(90,70,56,.08);
-      border: 1px solid rgba(201,167,106,.20);
-      text-align: center;
+      padding: 10px 10px 11px;
+      margin: 8px auto;
+      border-radius: 18px;
     }
 
     .nombre-invitado {
-      display: block;
-      font-size: 20px;
-      margin-bottom: 22px;
-      color: var(--rosa-oscuro);
-      font-family: Georgia, serif;
-      font-weight: normal;
-      line-height: 1.1;
+      font-size: 15px;
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .firulete-invitado {
+      width: 44px;
+      margin: 0 auto 5px;
+      opacity: .52;
     }
 
     .opciones-asistencia {
-      display: flex;
-      gap: 14px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .opciones-asistencia input {
-      display: none;
+      gap: 8px;
     }
 
     .opciones-asistencia span {
-      display: inline-block;
-      min-width: 104px;
-      padding: 9px 14px;
-      border-radius: 28px;
-      background: #f7e8e6;
-      color: #8e6c67;
-      cursor: pointer;
-      border: 1px solid rgba(209,176,168,.42);
+      min-width: 84px;
+      font-size: 13px;
+      padding: 7px 10px;
+    }
+
+    .bloque-alimentacion {
+      padding: 13px 10px 12px;
+      margin: 10px auto 8px;
+      border-radius: 18px;
+    }
+
+    .dropdown-boton,
+    .modalAsistencia input,
+    .modalAsistencia select,
+    .modalAsistencia textarea {
+      padding: 10px 12px;
+      margin: 6px 0;
+      border-radius: 9px;
       font-size: 14px;
-      font-family: "Quicksand", sans-serif;
-      font-weight: 500;
-      letter-spacing: .2px;
-      transition: .22s ease;
-    }
-
-    .opciones-asistencia span:hover {
-      background: #f2ddda;
-    }
-
-    .opciones-asistencia input:checked + span {
-      background: linear-gradient(135deg,#D8B0A7,#C8928B);
-      color: white;
-      border-color: transparent;
-      box-shadow: 0 8px 18px rgba(200,146,139,.22);
-    }
-
-    /* =========================
-       DROPDOWN RESTRICCIÓN
-    ========================= */
-    .dropdown-delicado {
-      position: relative;
-      width: 100%;
-    }
-
-    .dropdown-boton {
-      width: 100%;
-      padding: 12px 14px;
-      border-radius: 8px;
-      border: 1px solid rgba(209,176,168,.55);
-      background: rgba(255,255,255,.88);
-      color: var(--texto);
-      font-family: "Quicksand", sans-serif;
-      font-size: 15px;
-      font-weight: 400;
-      text-align: left;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    #flechaRestriccion {
-      font-size: 22px;
-      color: var(--rosa-oscuro);
-      transition: transform .25s ease;
-    }
-
-    .dropdown-delicado.abierto #flechaRestriccion {
-      transform: rotate(180deg);
-    }
-
-    .dropdown-menu-delicado {
-      display: none;
-      margin-top: 8px;
-      background: rgba(255,255,255,.98);
-      border: 1px solid rgba(223,169,165,.30);
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 12px 24px rgba(90,70,56,.10);
-      animation: abrirDropdown .25s ease;
-    }
-
-    .dropdown-delicado.abierto .dropdown-menu-delicado {
-      display: block;
     }
 
     .dropdown-menu-delicado button {
-      width: 100%;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid rgba(209,176,168,.14);
-      padding: 12px 14px;
-      font-family: "Quicksand", sans-serif;
+      font-size: 14px;
+      padding: 9px 12px;
+    }
+
+    .modalAsistencia textarea {
+      min-height: 58px;
+    }
+
+    .modalAsistencia .btn,
+    .btn {
+      padding: 11px 22px;
       font-size: 15px;
-      font-weight: 400;
-      color: var(--texto);
-      display: grid;
-      grid-template-columns: 32px 1fr 26px;
-      align-items: center;
-      text-align: left;
-      cursor: pointer;
     }
 
-    .dropdown-menu-delicado button:last-child {
-      border-bottom: none;
+    .carousel img {
+      height: 310px;
     }
 
-    .dropdown-menu-delicado button:hover,
-    .dropdown-menu-delicado button.seleccionado {
-      background: rgba(234,215,208,.45);
+    .modalContenido {
+      width: calc(100vw - 24px);
+      padding: 20px 14px;
     }
 
-    .icono-opcion {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 22px;
-      height: 22px;
-      color: #d9a09b;
-      font-size: 20px;
+    .modalContenido iframe {
+      height: 330px;
     }
 
-    .icono-opcion img{
-      width: 20px;
-      height: 20px;
-      object-fit: contain;
-      display: block;
+    .countdown {
+      gap: 10px;
+      margin-top: 18px;
     }
 
-    .check-opcion {
-      display: none;
-      color: #d9a09b;
-      font-size: 19px;
+    .time {
+      min-width: 58px;
     }
 
-    .dropdown-menu-delicado button.seleccionado .check-opcion {
-      display: inline;
+    .time span {
+      font-size: 34px;
+      margin-bottom: 6px;
     }
 
-    .campo-detalle-restriccion {
-      margin-top: 12px !important;
+    .time small {
+      font-size: 10px;
+      letter-spacing: .8px;
     }
 
-    #comentariosAsistente {
-      margin-top: 12px;
+    .count-sep {
+      font-size: 34px;
     }
 
-    @keyframes abrirDropdown {
-      from {
-        opacity: 0;
-        transform: translateY(-6px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* =========================
-       FOOTER
-    ========================= */
     .footer-invitacion{
-      background: linear-gradient(135deg, var(--azul-oscuro), var(--azul-footer));
-      color: white;
-      width: 100%;
-      margin: 0;
-      box-sizing: border-box;
-      display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      justify-content: space-between;
-      gap: 40px;
-      padding: 38px 48px;
-      min-height: 230px;
-      overflow: visible;
+      text-align: center;
+      gap: 14px;
+      padding: 28px 20px;
+      min-height: auto;
     }
 
     .footer-nombre{
-      font-family: "Dantina", cursive;
-      font-size: 50px;
+      font-size: 75px;
       line-height: .9;
-      color: white;
-      margin: 0;
-      white-space: nowrap;
-      flex-shrink: 0;
     }
 
     .footer-frase{
-      color: white;
-      text-align: right;
-      font-size: 18px;
-      line-height: 1.4;
-      max-width: 460px;
-      margin: 0;
-    }
-
-    .firulete-playlist{
-      display: block;
-      width: 180px;
-      max-width: 45%;
-      height: auto;
-      margin: 5px auto 5px;
-    }
-
-    /* =========================
-       PANTALLA DE INICIO
-    ========================= */
-    .pantalla-inicio{
-      position: fixed;
-      inset: 0;
-      background: var(--azul-oscuro);
-      z-index: 100000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .loader-corazon-img{
-      width: 120px;
-      height: auto;
-      animation: latido 1.15s infinite ease-in-out;
-      filter: drop-shadow(0 0 18px rgba(255,255,255,.25));
-    }
-
-    @keyframes latido{
-      0%,100%{
-        transform: scale(1);
-        opacity: .75;
-      }
-      50%{
-        transform: scale(1.22);
-        opacity: 1;
-      }
-    }
-
-    /* =========================
-       MODAL DE ENTRADA
-    ========================= */
-    .modal-entrada{
-      position: fixed;
-      inset: 0;
-      background: linear-gradient(180deg, #DCE3EC 0%, #F2E4DC 100%);
-      z-index: 99999;
-      display: none;
-      align-items: center;
-      justify-content: center;
       text-align: center;
-      padding: 24px;
-    }
-
-    .modal-entrada-contenido{
-      width: min(90%, 420px);
-      padding: 24px;
-    }
-
-    .corazon-modal{
-      width: 42px;
-      margin-bottom: 26px;
-      opacity: .9;
-    }
-
-    .modal-pretitle{
-      font-size: 16px;
-      letter-spacing: .08em;
-      color: #6D7F90;
-      margin: 0 0 16px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .modal-entrada-contenido h2{
-      font-family: "Dantina", cursive;
-      font-size: 50px;
-      line-height: 1.5;
-      margin: 40px 0 46px;
-      color: var(--azul-oscuro);
-      font-weight: normal;
-    }
-
-    .modal-subtitle{
-      font-size: 14px;
-      letter-spacing: .08em;
-      line-height: 1.9;
-      color: #4F5F70;
-      max-width: 300px;
-      margin: 0 auto 30px;
-    }
-
-    .modal-entrada-contenido button{
-      display: block;
-      width: 100%;
-      max-width: 250px;
-      margin: 12px auto;
-      padding: 12px 20px;
-      border-radius: 20px;
-      border: 1px solid var(--azul);
-      background: var(--azul);
-      color: white;
       font-size: 15px;
-      font-family: Georgia, serif;
-      cursor: pointer;
-      transition: .25s ease;
+      max-width: 280px;
     }
 
-    .modal-entrada-contenido button:hover{
-      background: var(--azul-oscuro);
-      border-color: var(--azul-oscuro);
+    .music {
+      top: 12px;
+      right: 12px;
+      width: 52px;
+      height: 52px;
+      border-radius: 8px;
     }
 
-    .modal-entrada-contenido .btn-secundario{
-      background: transparent;
-      color: var(--azul-oscuro);
-      border: 1px solid var(--azul-suave);
+    .music img {
+      width: 18px;
+      height: 18px;
     }
 
-    .modal-entrada-contenido .btn-secundario:hover{
-      background: rgba(108,127,153,.12);
+    .music span {
+      font-size: 10px;
     }
+  }
 
-    /* =========================
-       CELULAR
-    ========================= */
-    @media (max-width: 520px) {
-      section {
-        padding: 30px 14px;
-      }
 
-      h1 {
-        font-size: 68px;
-        line-height: 2.2;
-      }
+  /*----------------
+  SEPARADOR
+  ------------------*/
 
-      h2 {
-        font-size: 27px;
-      }
+  .separador-seccion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  max-width: none;  
+  margin: -22px auto;
+  padding: 0 18px;
 
-      .rosa h2,
-      .light h2 {
-        color: #8f6f68;
-      }
+  position: relative;
+  z-index: 5;
+}
 
-      h3 {
-        font-size: 32px;
-      }
+.linea-puntos {
+  flex: 1;
+  max-width: 100%;
+  height: 14px;
+  opacity: 0.55;
+  background:
+    radial-gradient(circle, rgba(140, 155, 175, 0.70) 0 2.4px, transparent 2.6px) left center / 24px 14px repeat-x,
+    radial-gradient(circle, rgba(140, 155, 175, 0.35) 0 3.2px, transparent 3.4px) 12px 4px / 36px 14px repeat-x;
+}
 
-      p {
-        font-size: 16px;
-      }
+.corazon-separador {
+  width: 35px;
+  height: auto;
+  flex-shrink: 0;
+  opacity: 0.9;
+  filter: brightness(0) saturate(100%)
+          invert(50%) sepia(13%) saturate(480%)
+          hue-rotate(176deg) brightness(92%) contrast(88%);
+}
 
-      .hero {
-        min-height: 1000px;
-        padding-top: 20px;
-        padding-bottom: 90px;
-        background:
-          linear-gradient(rgba(60,35,20,.16), rgba(60,35,20,.22)),
-          url("Juanita2.png") 70% top / cover no-repeat;
-      }
-
-      .nombre {
-        font-size: 4.7rem;
-        line-height: 1.05;
-      }
-
-      .mis::before,
-      .mis::after {
-        width: 58px;
-      }
-
-      .fecha-recuadro {
-        letter-spacing: 5px;
-        padding: 9px 14px;
-      }
-
-      .modalAsistencia {
-        align-items: flex-start;
-        justify-content: center;
-        padding: 8px;
-        overflow-y: auto;
-      }
-
-      .modalAsistenciaContenidoGrande {
-        width: 100%;
-        max-width: 390px;
-        max-height: 92vh;
-        margin: 0 auto;
-        padding: 14px 10px;
-        border-radius: 20px;
-        left: auto;
-        right: auto;
-        transform: none;
-      }
-
-      .modalAsistenciaContenidoGrande h2 {
-        font-size: 22px;
-        font-family: Georgia, serif;
-        font-weight: normal;
-      }
-
-      .titulo-bloque {
-        font-size: 24px;
-        line-height: 1.12;
-        max-width: 240px;
-      }
-
-      .subtituloAsistencia {
-        font-size: 14px;
-        line-height: 1.38;
-        margin: 0 auto 10px;
-        max-width: 290px;
-      }
-
-      .bloque-alimentacion .subtituloAsistencia{
-        font-size: 14px;
-        line-height: 1.38;
-        max-width: 250px;
-        margin: 0 auto;
-      }
-
-      .bloque-header{
-        gap: 6px;
-        margin-bottom: 14px;
-      }
-
-      .respuesta-invitado {
-        padding: 10px 10px 11px;
-        margin: 8px auto;
-        border-radius: 18px;
-      }
-
-      .nombre-invitado {
-        font-size: 15px;
-        margin-bottom: 4px;
-        line-height: 1.2;
-      }
-
-      .firulete-invitado {
-        width: 44px;
-        margin: 0 auto 5px;
-        opacity: .52;
-      }
-
-      .opciones-asistencia {
-        gap: 8px;
-      }
-
-      .opciones-asistencia span {
-        min-width: 84px;
-        font-size: 13px;
-        padding: 7px 10px;
-      }
-
-      .bloque-alimentacion {
-        padding: 13px 10px 12px;
-        margin: 10px auto 8px;
-        border-radius: 18px;
-      }
-
-      .dropdown-boton,
-      .modalAsistencia input,
-      .modalAsistencia select,
-      .modalAsistencia textarea {
-        padding: 10px 12px;
-        margin: 6px 0;
-        border-radius: 9px;
-        font-size: 14px;
-      }
-
-      .dropdown-menu-delicado button {
-        font-size: 14px;
-        padding: 9px 12px;
-      }
-
-      .modalAsistencia textarea {
-        min-height: 58px;
-      }
-
-      .modalAsistencia .btn,
-      .btn {
-        padding: 11px 22px;
-        font-size: 15px;
-      }
-
-      .carousel img {
-        height: 310px;
-      }
-
-      .modalContenido {
-        width: calc(100vw - 24px);
-        padding: 20px 14px;
-      }
-
-      .modalContenido iframe {
-        height: 330px;
-      }
-
-      .countdown {
-        gap: 10px;
-        margin-top: 22px;
-      }
-
-      .time {
-        min-width: 58px;
-      }
-
-      .time span {
-        font-size: 34px;
-        margin-bottom: 6px;
-      }
-
-      .time small {
-        font-size: 10px;
-        letter-spacing: .8px;
-      }
-
-      .count-sep {
-        font-size: 34px;
-      }
-
-      .footer-invitacion{
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        gap: 14px;
-        padding: 28px 20px;
-        min-height: auto;
-      }
-
-      .footer-nombre{
-        font-size: 75px;
-        line-height: .9;
-      }
-
-      .footer-frase{
-        text-align: center;
-        font-size: 15px;
-        max-width: 280px;
-      }
-
-      .music {
-        top: 12px;
-        right: 12px;
-        width: 52px;
-        height: 52px;
-        border-radius: 8px;
-      }
-
-      .music img {
-        width: 18px;
-        height: 18px;
-      }
-
-      .music span {
-        font-size: 10px;
-      }
-
-    }
-  </style>
+</style>
 </head>
 
 <body>
@@ -1413,6 +1691,8 @@ filter: brightness(0) saturate(100%) invert(42%) sepia(18%) saturate(620%) hue-r
     <span id="musicLabel">Play</span>
   </button>
 
+<div class="bloque-portada-info">
+
   <section class="hero">
     <div class="box-nombres-fecha-portada">
       <span class="fecha">&nbsp;22 • 08 • 2026&nbsp;</span>
@@ -1424,66 +1704,74 @@ filter: brightness(0) saturate(100%) invert(42%) sepia(18%) saturate(620%) hue-r
     </div>
   </section>
 
-  <section id="info">
-    <img src="icono_calendario.gif" class="section-icon" alt="">
-    <h2>Faltan...</h2>
+  <div class="bloque-info-carrusel">
 
-    <div class="countdown">
-      <div class="time"><span id="dias">0</span>días</div>
-      <div class="count-sep">:</div>
-      <div class="time"><span id="horas">0</span>hs</div>
-      <div class="count-sep">:</div>
-      <div class="time"><span id="minutos">0</span>min</div>
-      <div class="count-sep">:</div>
-      <div class="time"><span id="segundos">0</span>seg</div>
-    </div>
+    <section id="info">
+      <img src="icono_calendario.gif" class="section-icon" alt="">
+      <h2>Faltan...</h2>
 
-    <img src="firulete-blanco.png" class="firulete-portada-azul" alt="">
-  </section>
+      <div class="countdown">
+        <div class="time"><span id="dias"></span><small>DÍAS</small></div>
+        <div class="count-sep">:</div>
+        <div class="time"><span id="horas"></span><small>HS</small></div>
+        <div class="count-sep">:</div>
+        <div class="time"><span id="minutos"></span><small>MIN</small></div>
+        <div class="count-sep">:</div>
+        <div class="time"><span id="segundos"></span><small>SEG</small></div>
+      </div>
+    </section>
 
-  <section class="light">
-    <img src="icono_camara.gif" class="section-icon" alt="">
-    <h2>Un recorrido de estos 15 años...</h2>
 
-    <div class="carousel">
-      <img src="carrusel1.png" class="active" alt="Foto 1">
-      <img src="carrusel01.png" alt="Foto 2">
-      <img src="carrusel2.png" alt="Foto 3">
-      <img src="carrusel02.png" alt="Foto 4">
-      <img src="carrusel3.png" alt="Foto 5">
-      <img src="carrusel4.png" alt="Foto 6">
-      <img src="carrusel5.png" alt="Foto 7">
-      <img src="carrusel6.png" alt="Foto 8">
-      <img src="carrusel06.png" alt="Foto 9">
-      <img src="carrusel8.png" alt="Foto 10">
-      <img src="carrusel9.png" alt="Foto 11">
-      <img src="carrusel18.png" alt="Foto 12">
-      <img src="carrusel19.png" alt="Foto 13">
-      <img src="carrusel20.png" alt="Foto 14">
-      <img src="carrusel21.png" alt="Foto 15">
-      <img src="carrusel22.jpeg" alt="Foto 16">
-      <img src="carrusel23.jpeg" alt="Foto 17">
-      <img src="carrusel24.jpeg" alt="Foto 18">
-      <img src="carrusel25.jpeg" alt="Foto 19">
-      <img src="carrusel26.jpeg" alt="Foto 20">
-      <img src="carrusel28.jpeg" alt="Foto 21">
-      <img src="carrusel30.jpeg" alt="Foto 22">
-      <img src="carrusel31.jpeg" alt="Foto 23">
-      <img src="carrusel33.jpeg" alt="Foto 24">
-      <img src="carrusel34.jpeg" alt="Foto 25">
-      <img src="carrusel37.jpeg" alt="Foto 26">
-      <img src="carrusel38.jpeg" alt="Foto 27">
-      <img src="carrusel100.png" alt="Foto 28">
-      <img src="carrusel101.jpeg" alt="Foto 29">
-      <img src="carrusel130.png" alt="Foto 30">
-      <img src="carrusel145.jpeg" alt="Foto 31">
-      <img src="carrusel149.png" alt="Foto 32">
-      <img src="carrusel166.jpeg" alt="Foto 33">
-      <img src="carrusel170.png" alt="Foto 34">
-    </div>
+    <section class="light">
+      <img src="icono_camara.gif" class="section-icon" alt="">
+      <h2>Un recorrido de estos 15 años...</h2>
 
-    <div class="carousel-dots" id="carouselDots"></div>
-  </section>
+      <div class="carousel">
+        <img src="carrusel1.png" class="active" alt="Foto 1">
+        <img src="carrusel01.png" alt="Foto 2">
+        <img src="carrusel2.png" alt="Foto 3">
+        <img src="carrusel02.png" alt="Foto 4">
+        <img src="carrusel3.png" alt="Foto 5">
+        <img src="carrusel4.png" alt="Foto 6">
+        <img src="carrusel5.png" alt="Foto 7">
+        <img src="carrusel6.png" alt="Foto 8">
+        <img src="carrusel06.png" alt="Foto 9">
+        <img src="carrusel8.png" alt="Foto 10">
+        <img src="carrusel9.png" alt="Foto 11">
+        <img src="carrusel18.png" alt="Foto 12">
+        <img src="carrusel19.png" alt="Foto 13">
+        <img src="carrusel20.png" alt="Foto 14">
+        <img src="carrusel21.png" alt="Foto 15">
+        <img src="carrusel22.jpeg" alt="Foto 16">
+        <img src="carrusel23.jpeg" alt="Foto 17">
+        <img src="carrusel24.jpeg" alt="Foto 18">
+        <img src="carrusel25.jpeg" alt="Foto 19">
+        <img src="carrusel26.jpeg" alt="Foto 20">
+        <img src="carrusel28.jpeg" alt="Foto 21">
+        <img src="carrusel30.jpeg" alt="Foto 22">
+        <img src="carrusel31.jpeg" alt="Foto 23">
+        <img src="carrusel33.jpeg" alt="Foto 24">
+        <img src="carrusel34.jpeg" alt="Foto 25">
+        <img src="carrusel37.jpeg" alt="Foto 26">
+        <img src="carrusel38.jpeg" alt="Foto 27">
+        <img src="carrusel100.png" alt="Foto 28">
+        <img src="carrusel101.jpeg" alt="Foto 29">
+        <img src="carrusel130.png" alt="Foto 30">
+        <img src="carrusel145.jpeg" alt="Foto 31">
+        <img src="carrusel149.png" alt="Foto 32">
+        <img src="carrusel166.jpeg" alt="Foto 33">
+        <img src="carrusel170.png" alt="Foto 34">
+      </div>
+
+      <div class="carousel-dots" id="carouselDots"></div>
+    </section>
+
+  </div>
+
+</div>
+
+ <div class="bloque-rama-derecha">
+  <div class="rama-doble-derecha"></div>
 
   <section class="rosa">
     <img src="corazon_blanco.png" class="section-icon2" alt="">
@@ -1503,6 +1791,17 @@ filter: brightness(0) saturate(100%) invert(42%) sepia(18%) saturate(620%) hue-r
     <p>Orientación para tu vestuario: Formal</p>
     <img src="firulete-blanco.png" class="firulete-portada-azul" alt="">
   </section>
+</div>
+
+
+
+<div class="separador-seccion">
+  <span class="linea-puntos"></span>
+  <img src="corazon_blanco.png" class="corazon-separador" alt="">
+  <span class="linea-puntos"></span>
+</div>
+
+
 
   <section class="rosa">
     <img src="icono_insta.gif" class="section-icon" alt="">
@@ -1515,11 +1814,14 @@ filter: brightness(0) saturate(100%) invert(42%) sepia(18%) saturate(620%) hue-r
     </a>
   </section>
 
+  <div class="bloque-rama-izquierda">
+  <div class="rama-doble-izquierda"></div>
+
   <section class="light playlist-section">
     <div class="playlist-content">
       <img src="icono_canciones.gif" class="section-icon playlist-icon" alt="">
       <h2>Playlist</h2>
-      <p>Qué canción no pueden faltar?</p>
+      <p>Qué canción no puede faltar?</p>
 
       <a class="btn" href="#" onclick="abrirCancion(event)">
         Sugerir canción
@@ -1542,6 +1844,9 @@ filter: brightness(0) saturate(100%) invert(42%) sepia(18%) saturate(620%) hue-r
       Ver datos de cuenta
     </a>
   </section>
+</div>
+
+
 
   <!-- MODAL CUENTA -->
   <div id="modalCuenta" class="modal-cuenta">
@@ -1567,6 +1872,10 @@ filter: brightness(0) saturate(100%) invert(42%) sepia(18%) saturate(620%) hue-r
       <button class="btn" onclick="copiarCuentaBrou()">Copiar datos</button>
     </div>
   </div>
+
+
+
+
 
   <section class="light">
     <img src="icono_asistencia.gif" class="section-icon" alt="">
@@ -1703,7 +2012,7 @@ filter: brightness(0) saturate(100%) invert(42%) sepia(18%) saturate(620%) hue-r
       <h2>Sugerir canción</h2>
       <p>¿Qué canción no puede faltar en la PlayList de la fiesta?</p>
 
-<img src="firulete-blanco.png" class="firulete-modal-igual" alt="">
+<img src="firulete-blanco.png" class="firulete-modal-azul" alt="">
       <form>
         <input type="text" id="nombreCancion" placeholder="Tu nombre">
         <input type="text" id="tituloCancion" placeholder="Nombre de canción y/o autor">
