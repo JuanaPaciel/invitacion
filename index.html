@@ -1435,7 +1435,7 @@ h4 {
                 <h1 class="nombre">Juana </h1>
     <h3 class="mis">Mis 15 años</h3>
      <h4 class="frase-portada"> Llegó esta gran noche, 
-      </br>y quiero compartirla con vos.</h4>
+      </br>y quiero compartirla con vos!</h4>
           <img src="firulete-blanco.png" class="firulete-portada" alt="">
 
       <a href="#info" class="btn">Ver invitación</a>
@@ -1514,7 +1514,7 @@ h4 {
         <p>Hagamos juntos una fiesta épica. </p>
     <h2 class="roboto-condensed-fon"t><strong>Sábado 22 de Agosto</strong></h2>
     <p>21:00 a 05:00 hs</p>
-    <p>Club Unión de Melo<br>Saravia 1212 - Melo</p>
+    <p>Club Unión de Melo<br>Aparicio Saravia 487 - Melo</p>
 
     <a class="btn" href="#" onclick="abrirMapa(event)">
     Cómo llegar
@@ -1525,12 +1525,12 @@ h4 {
   <section class="light">
   <img src="icono_dress.gif" class="section-icon" alt="Vestimenta">    <h2>Dress Code</h2>
     <p>Orientación para
-tu vestuario :: Formal</br> </p>
+tu vestuario: Formal</br> </p>
   </section>
 
   <section class="rosa">
     <img src="icono_insta.gif" class="section-icon" alt="">
-    <h2>Una gran fiesta junto a vos</h2>
+    <h2>Una gran fiesta junto a vos!</h2>
     <p>Subí tus fotos y etiquetame.</p>
     <p><strong>@juanita</strong></p>
 
@@ -1556,7 +1556,7 @@ tu vestuario :: Formal</br> </p>
     <h2>Regalos</h2>
     <p>El mejor regalo es que vengas,
 pero si deseás regalarme algo más que tu presencia...</br>
-¡Muchas gracias!</p>
+Muchas gracias!</p>
 <a class="btn" href="#" onclick="abrirCuenta(event)">
     Ver datos de cuenta
   </a>
@@ -1569,6 +1569,8 @@ pero si deseás regalarme algo más que tu presencia...</br>
     <span class="cerrarCuenta" onclick="cerrarCuenta()">&times;</span>
 
     <h2>Datos de cuenta</h2>
+
+<img src="firulete.png" class="firulete-modal-principal" alt="">
 
     <p><strong>Banco:</strong> BROU</p>
     <p><strong>Titular:</strong> Nombre Apellido</p>
@@ -1740,17 +1742,17 @@ function cerrarAsistencia() {
 
       <span class="cerrarMapa" onclick="cerrarMapa()">&times;</span>
 
-      <h2>Cómo llegar</h2>
+      <h2>Cómo llegar a la fiesta?</h2>
 
-      <iframe
-          id="iframeMapa"
-          src="https://www.google.com/maps?q=-32.3704,-54.1675&output=embed"
-          loading="lazy">
-      </iframe>
+     <iframe
+      id="iframeMapa"
+      src="https://www.google.com/maps?q=Club%20Union%20Melo%20Saravia%201212%20Melo%20Uruguay&output=embed"
+      loading="lazy">
+    </iframe>
 
       <a
         class="btn"
-        href="https://maps.app.goo.gl/vHVjyyH2W2Z4kUmj9"
+        href="https://www.google.com/maps?vet=10CAAQoqAOahcKEwjIjpbBor-VAxUAAAAAHQAAAAAQEg..i&rlz=1C5GCEM_enUY1190UY1192&pvq=CgsvZy8xdHg0ODY2bSIQCgpjbHViIHVuaW9uEAIYAw&lqi=ChljbHViIHVuaW9uIG1lbG8gZGlyZWNjaW9uIgJIAUjTsZDC54CAgAhaGxAAEAEYABgBGAIiD2NsdWIgdW5pb24gbWVsb5IBC3NvY2lhbF9jbHVimgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVVJLYjFCNU9EaEJSUkFC-gEECAAQIA&fvr=1&cs=1&um=1&ie=UTF-8&fb=1&gl=uy&sa=X&ftid=0x95092bd454e59627:0xa4882af465adc253"
         target="_blank">
         Abrir en Google Maps
       </a>
@@ -1868,7 +1870,7 @@ function mostrarInvitados(invitados) {
   const lista = document.getElementById("listaInvitados");
   const listaModal = document.getElementById("listaInvitadosModal");
 
-  texto.innerHTML = "Lista de invitados:";
+  texto.innerHTML = "Es importante que confirmes tu asistencia:";
   lista.innerHTML = "";
   listaModal.innerHTML = "";
 
@@ -2051,6 +2053,7 @@ function cancionGuardada(respuesta) {
 
     <h2>Sugerir canción</h2>
     <p>¿Qué canción no puede faltar en la PlayList de la fiesta?</p>
+<img src="firulete.png" class="firulete-modal-principal" alt="">
 
     <form>
       <input type="text" id="nombreCancion" placeholder="Tu nombre">
