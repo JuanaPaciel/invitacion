@@ -425,34 +425,39 @@ h4 {
 ========================= */
 .music {
   position: fixed;
-  top: 18px;
-  right: 18px;
+  top: 16px;
+  right: 16px;
+  width: 58px;
+  height: 58px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
-  background: rgba(255,255,255,.18);
-  border: 1px solid rgba(255,255,255,.18);
-  border-radius: 999px;
-  padding: 8px 12px 8px 10px;
+  justify-content: center;
+  gap: 3px;
+  background: rgba(45, 35, 30, .22);
+  border: 1px solid rgba(255,255,255,.22);
+  border-radius: 5px;
+  padding: 6px;
   cursor: pointer;
   z-index: 999;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,.10);
 }
 
 .music img {
-  width: 24px;
-  height: 24px;
-  opacity: .75;
-  transition: all .25s;
+  width: 18px;
+  height: 18px;
+  opacity: .60;
 }
 
 .music span {
-  color: white;
+  color: rgba(255,255,255,.88);
   font-family: "Quicksand", sans-serif;
-  font-size: 13px;
+  font-size: 9px;
   font-weight: 600;
-  letter-spacing: .2px;
+  line-height: 1;
+  text-align: center;
   white-space: nowrap;
 }
 
@@ -461,7 +466,7 @@ h4 {
 }
 
 .music:active img {
-  transform: scale(1.15);
+  transform: scale(1.12);
 }
 
 @keyframes respirar {
@@ -1300,19 +1305,20 @@ h4 {
 }
 
 .music {
-  top: 14px;
-  right: 14px;
-  padding: 7px 10px 7px 9px;
-  gap: 6px;
+  top: 12px;
+  right: 12px;
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
 }
 
 .music img {
-  width: 22px;
-  height: 22px;
+  width: 16px;
+  height: 16px;
 }
 
 .music span {
-  font-size: 12px;
+  font-size: 8px;
 }
 
 
@@ -1454,9 +1460,9 @@ h4 {
     <source src="musica.mp3" type="audio/mpeg">
   </audio>
 
-  <button class="music" onclick="toggleMusic()">
-      <img src="musica.png" alt="Música">
-        <span id="musicLabel">Dale Play!</span>
+  <button class="music" onclick="toggleMusic()" id="musicBtn" aria-label="Control de música">
+    <img src="musica.png" alt="Música">
+    <span id="musicLabel">Play</span>
   </button>
 
   <section class="hero">
@@ -1684,7 +1690,7 @@ Muchas gracias!</p>
       } else {
         musica.pause();
         boton.classList.remove("playing");
-        label.textContent = "Dale Play!";
+        label.textContent = "Play!";
       }
     }
 
@@ -2159,7 +2165,7 @@ function cancionGuardada(respuesta) {
       botonMusica.classList.remove("playing");
     }
     if (label) {
-      label.textContent = "Dale Play!";
+      label.textContent = "Play";
     }
   }
 
