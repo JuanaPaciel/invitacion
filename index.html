@@ -1058,33 +1058,37 @@ html {
   }
 
   .opciones-asistencia span {
-    display: inline-block;
-    min-width: 104px;
-    padding: 9px 14px;
-    border-radius: 28px;
-    background: #f7e8e6;
-    color: var(--azul-oscuro);
-    cursor: pointer;
-    border: 1px solid rgba(82,101,127,.55);
-    font-size: 14px;
-    font-family: "Quicksand", sans-serif;
-    font-weight: 500;
-    letter-spacing: .2px;
-    transition: .22s ease;
-  }
+  display: inline-block;
+  min-width: 104px;
+  padding: 9px 14px;
+  border-radius: 28px;
 
-  .opciones-asistencia span:hover {
-    background: #f2ddda;
-    border-color: var(--azul);
-    color: var(--azul-oscuro);
-  }
+  background: #ffffff;
+  color: var(--azul-oscuro);
 
-  .opciones-asistencia input:checked + span {
-     background: linear-gradient(135deg,#7a8798,#617083);
-      color: white;
-      border-color: var(--azul-oscuro);
-      box-shadow: 0 8px 18px rgba(82,101,127,.22);
-  }
+  cursor: pointer;
+  border: 1.5px solid rgba(82,101,127,.65);
+
+  font-size: 14px;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+  letter-spacing: .2px;
+
+  transition: .22s ease;
+}
+
+.opciones-asistencia span:hover {
+  background: #ffffff;
+  color: var(--azul-oscuro);
+  border-color: var(--azul);
+}
+
+.opciones-asistencia input:checked + span {
+  background: var(--azul-oscuro);
+  color: #ffffff;
+  border-color: var(--azul-oscuro);
+  box-shadow: 0 8px 18px rgba(82,101,127,.22);
+}
 
   /* =========================
      DROPDOWN RESTRICCIÓN
@@ -1521,11 +1525,17 @@ html {
       gap: 8px;
     }
 
-    .opciones-asistencia span {
-      min-width: 84px;
-      font-size: 13px;
-      padding: 7px 10px;
-    }
+   .opciones-asistencia span {
+  background: #ffffff !important;
+  color: var(--azul-oscuro) !important;
+  border: 1.5px solid rgba(82,101,127,.65) !important;
+}
+
+.opciones-asistencia input:checked + span {
+  background: var(--azul-oscuro) !important;
+  color: #ffffff !important;
+  border-color: var(--azul-oscuro) !important;
+}
 
     .bloque-alimentacion {
       padding: 13px 10px 12px;
