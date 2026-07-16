@@ -1083,12 +1083,30 @@ html {
   border-color: var(--azul);
 }
 
-.opciones-asistencia input:checked + span {
+  .opciones-asistencia input:checked + span {
   background: var(--azul-oscuro);
   color: #ffffff;
   border-color: var(--azul-oscuro);
   box-shadow: 0 8px 18px rgba(82,101,127,.22);
 }
+
+  .campo-identificacion {
+    margin-top: 16px;
+    text-align: left;
+  }
+
+  .campo-identificacion label {
+    display: block;
+    margin: 0 0 5px 2px;
+    color: var(--rosa-oscuro);
+    font-family: "Quicksand", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  .campo-identificacion input {
+    margin: 0;
+  }
 
   /* =========================
      DROPDOWN RESTRICCIÓN
@@ -2266,6 +2284,17 @@ Moneda: Pesos uruguayos`;
                 <span>No asiste</span>
               </label>
             </div>
+
+            <div class="campo-identificacion">
+              <label for="identificacion_${inv.fila}">Cédula de Identidad</label>
+              <input
+                type="text"
+                id="identificacion_${inv.fila}"
+                name="identificacion_${inv.fila}"
+                placeholder="Completá con CI u otro identificador"
+                autocomplete="off"
+              >
+            </div>
           </div>
         `;
       });
@@ -2284,11 +2313,13 @@ Moneda: Pesos uruguayos`;
 
       invitadosActuales.forEach(inv => {
         const seleccionado = document.querySelector(`input[name="estado_${inv.fila}"]:checked`);
+        const identificacion = document.getElementById(`identificacion_${inv.fila}`).value.trim();
 
         if (seleccionado) {
           respuestas.push({
             fila: inv.fila,
-            estado: seleccionado.value
+            estado: seleccionado.value,
+            identificacion: identificacion
           });
         }
       });
